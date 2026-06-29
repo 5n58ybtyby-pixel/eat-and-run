@@ -382,19 +382,51 @@
     /* Press */
     .press-band {
       background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 36px 32px; margin-bottom: 50px;
+      border-radius: 20px; padding: 36px 0; margin-bottom: 50px;
+      overflow: hidden;
     }
     .press-label { font-size: 12px; color: var(--subtle); text-transform: uppercase; letter-spacing: 1px; text-align: center; margin-bottom: 24px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
-    .press-logos {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
-    }
     .press-pill {
       background: var(--dark); border: 1px solid var(--border2);
       border-radius: 8px; padding: 9px 18px;
       font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600;
       color: #4A4A4A; transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap; flex-shrink: 0;
     }
     .press-pill:hover { color: #888; border-color: #333; }
+
+    /* Partner pill */
+    .partner-pill {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--card); border: 1px solid var(--border2);
+      border-radius: 12px; padding: 12px 20px;
+      transition: border-color 0.2s; flex-shrink: 0;
+    }
+    .partner-pill:hover { border-color: var(--lime-border); }
+
+    /* Carousel */
+    .carousel-outer {
+      overflow: hidden;
+      mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+    .carousel-track {
+      display: flex; gap: 10px;
+      width: max-content;
+      animation: car-left 30s linear infinite;
+    }
+    .carousel-track.slow { animation-duration: 22s; }
+    .carousel-track.reverse { animation-name: car-right; }
+    .carousel-outer:hover .carousel-track { animation-play-state: paused; }
+
+    @keyframes car-left {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes car-right {
+      from { transform: translateX(-50%); }
+      to   { transform: translateX(0); }
+    }
 
     /* Trust signals */
     .trust-row {
@@ -413,16 +445,6 @@
       margin-top: 60px; text-align: center;
     }
     .partners-label { font-size: 13px; color: var(--subtle); margin-bottom: 24px; }
-    .partners-grid {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
-    }
-    .partner-pill {
-      display: flex; align-items: center; gap: 10px;
-      background: var(--card); border: 1px solid var(--border2);
-      border-radius: 12px; padding: 12px 20px;
-      transition: border-color 0.2s;
-    }
-    .partner-pill:hover { border-color: var(--lime-border); }
     .partner-icon-wrap {
       width: 32px; height: 32px; border-radius: 8px;
       background: var(--lime-dim); display: flex; align-items: center; justify-content: center; font-size: 16px;
@@ -981,16 +1003,28 @@
     <!-- Press -->
     <div class="press-band fade-up">
       <div class="press-label">Bekannt aus</div>
-      <div class="press-logos">
-        <div class="press-pill">Peak Life Weekly</div>
-        <div class="press-pill">Future Fitness</div>
-        <div class="press-pill">BalanceLab</div>
-        <div class="press-pill">Urban Athlete</div>
-        <div class="press-pill">NextGen Body</div>
-        <div class="press-pill">Performance Daily</div>
-        <div class="press-pill">VitaKitchen</div>
-        <div class="press-pill">Move+</div>
-        <div class="press-pill">Peak Channel</div>
+      <div class="carousel-outer">
+        <div class="carousel-track">
+          <div class="press-pill">Peak Life Weekly</div>
+          <div class="press-pill">Future Fitness</div>
+          <div class="press-pill">BalanceLab</div>
+          <div class="press-pill">Urban Athlete</div>
+          <div class="press-pill">NextGen Body</div>
+          <div class="press-pill">Performance Daily</div>
+          <div class="press-pill">VitaKitchen</div>
+          <div class="press-pill">Move+</div>
+          <div class="press-pill">Peak Channel</div>
+          <!-- duplicate for seamless loop -->
+          <div class="press-pill">Peak Life Weekly</div>
+          <div class="press-pill">Future Fitness</div>
+          <div class="press-pill">BalanceLab</div>
+          <div class="press-pill">Urban Athlete</div>
+          <div class="press-pill">NextGen Body</div>
+          <div class="press-pill">Performance Daily</div>
+          <div class="press-pill">VitaKitchen</div>
+          <div class="press-pill">Move+</div>
+          <div class="press-pill">Peak Channel</div>
+        </div>
       </div>
     </div>
 
@@ -1016,12 +1050,21 @@
     <!-- Partners -->
     <div class="partners-row fade-up">
       <div class="partners-label">Unsere Partner</div>
-      <div class="partners-grid">
-        <div class="partner-pill"><div class="partner-icon-wrap">🏥</div><div class="partner-name">Krankenkasse</div></div>
-        <div class="partner-pill"><div class="partner-icon-wrap">🏙️</div><div class="partner-name">MarathonStadt</div></div>
-        <div class="partner-pill"><div class="partner-icon-wrap">🧘</div><div class="partner-name">ZenFit</div></div>
-        <div class="partner-pill"><div class="partner-icon-wrap">🌿</div><div class="partner-name">Vitalis</div></div>
-        <div class="partner-pill"><div class="partner-icon-wrap">⚡</div><div class="partner-name">FitFuel</div></div>
+      <div class="carousel-outer">
+        <div class="carousel-track slow reverse">
+          <div class="partner-pill"><div class="partner-icon-wrap">🏥</div><div class="partner-name">Krankenkasse</div></div>
+          <div class="partner-pill"><div class="partner-icon-wrap">🏙️</div><div class="partner-name">MarathonStadt</div></div>
+          <div class="partner-pill"><div class="partner-icon-wrap">🧘</div><div class="partner-name">ZenFit</div></div>
+          <div class="partner-pill"><div class="partner-icon-wrap">🌿</div><div class="partner-name">Vitalis</div></div>
+          <div class="partner-pill"><div class="partner-icon-wrap">⚡</div><div class="partner-name">FitFuel</div></div>
+          <!-- duplicate for seamless loop -->
+          <div class="partner-pill"><div class="partner-icon-wrap">🏥</div><div class="partner-name">Krankenkasse</div></div>
+          <div class="partner-pill"><div class="partner-icon-wrap">🏙️</div><div class="partner-name">MarathonStadt</div></div>
+          <div class="partner-pill"><div class="partner-icon-wrap">🧘</div><div class="partner-name">ZenFit</div></div>
+          <div class="partner-pill"><div class="partner-icon-wrap">🌿</div><div class="partner-name">Vitalis</div></div>
+          <div class="partner-pill"><div class="partner-icon-wrap">⚡</div><div class="partner-name">FitFuel</div></div>
+        </div>
+      </div>
       </div>
     </div>
 
