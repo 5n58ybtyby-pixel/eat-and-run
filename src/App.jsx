@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import TabBar from './components/TabBar'
 import Home from './screens/Home'
-import Plan from './screens/Plan'
+import Training from './screens/Training'
 import Analyse from './screens/Analyse'
 import Nutrition from './screens/Nutrition'
+import Community from './screens/Community'
 import Profile from './screens/Profile'
 
 export default function App() {
@@ -11,9 +12,9 @@ export default function App() {
 
   const screens = {
     home: Home,
-    plan: Plan,
-    analyse: Analyse,
+    training: Training,
     nutrition: Nutrition,
+    community: Community,
     profile: Profile
   }
 

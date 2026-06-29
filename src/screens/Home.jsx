@@ -1,31 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
+import Logo from '../components/Logo'
 
 const LIME = '#B6F23E'
-
-function Logo() {
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-      <div style={{
-        width: 36, height: 36,
-        background: LIME,
-        borderRadius: '9px',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        position: 'relative', overflow: 'hidden', flexShrink: 0
-      }}>
-        <svg viewBox="0 0 36 36" width="36" height="36">
-          <text x="4" y="18" fontFamily="Space Grotesk" fontWeight="800" fontSize="15" fill="#000">E</text>
-          <path d="M15 10 L12 20 L15.5 20 L13 26 L20 16 L16.5 16 Z" fill="#000" opacity="0.85"/>
-          <text x="19" y="30" fontFamily="Space Grotesk" fontWeight="800" fontSize="15" fill="#000">R</text>
-        </svg>
-      </div>
-      <div>
-        <div style={{ font: "700 15px 'Space Grotesk'", letterSpacing: '-0.3px' }}>
-          Eat<span style={{ color: LIME }}>&</span>Run
-        </div>
-      </div>
-    </div>
-  )
-}
 
 function WorkoutOverlay({ onExit }) {
   const [phase, setPhase] = useState('countdown') // 'countdown' | 'running'
@@ -437,7 +413,7 @@ export default function Home({ navigate }) {
             NÄCHSTE EINHEITEN
           </div>
           <button
-            onClick={() => navigate('plan')}
+            onClick={() => navigate('training')}
             style={{
               background: 'none', border: 'none',
               font: "600 12px 'Hanken Grotesk'", color: LIME, cursor: 'pointer'
