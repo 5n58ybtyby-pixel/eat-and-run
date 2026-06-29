@@ -73,9 +73,9 @@
     .nav-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
     .nav-logo-mark {
       width: 32px; height: 32px; border-radius: 8px;
-      background: #000;
-      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; flex-shrink: 0;
     }
+    .nav-logo-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .nav-logo-text { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: #fff; }
     .nav-logo-text span { color: var(--lime); }
     .nav-links { display: flex; gap: 28px; }
@@ -691,15 +691,7 @@
 <nav>
   <a class="nav-logo" href="#">
     <div class="nav-logo-mark">
-      <svg viewBox="0 0 56 56" width="26" height="26">
-        <rect x="4" y="4" width="7" height="48" rx="2" fill="#B6F23E"/>
-        <rect x="4" y="4" width="27" height="7" rx="2" fill="#B6F23E"/>
-        <rect x="4" y="24" width="20" height="6" rx="2" fill="#B6F23E"/>
-        <rect x="4" y="45" width="27" height="7" rx="2" fill="#B6F23E"/>
-        <rect x="24" y="4" width="7" height="48" rx="2" fill="#B6F23E"/>
-        <path fill="#B6F23E" fill-rule="evenodd" d="M 31,4 C 52,4 52,31 31,31 Z M 31,12 C 43,12 43,23 31,23 Z"/>
-        <path d="M 31,31 L 48,31 L 31,52 L 14,52 Z" fill="#B6F23E"/>
-      </svg>
+      <img src="/er-logo.png" alt="Eat&Run"/>
     </div>
     <span class="nav-logo-text">Eat<span>&amp;</span>Run</span>
   </a>
@@ -1325,15 +1317,7 @@
     <div class="footer-brand">
       <a class="nav-logo" href="#" style="display:inline-flex">
         <div class="nav-logo-mark">
-          <svg viewBox="0 0 56 56" width="26" height="26">
-            <rect x="4" y="4" width="7" height="48" rx="2" fill="#B6F23E"/>
-            <rect x="4" y="4" width="27" height="7" rx="2" fill="#B6F23E"/>
-            <rect x="4" y="24" width="20" height="6" rx="2" fill="#B6F23E"/>
-            <rect x="4" y="45" width="27" height="7" rx="2" fill="#B6F23E"/>
-            <rect x="24" y="4" width="7" height="48" rx="2" fill="#B6F23E"/>
-            <path fill="#B6F23E" fill-rule="evenodd" d="M 31,4 C 52,4 52,31 31,31 Z M 31,12 C 43,12 43,23 31,23 Z"/>
-            <path d="M 31,31 L 48,31 L 31,52 L 14,52 Z" fill="#B6F23E"/>
-          </svg>
+          <img src="/er-logo.png" alt="Eat&Run"/>
         </div>
         <span class="nav-logo-text">Eat<span>&amp;</span>Run</span>
       </a>
