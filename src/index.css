@@ -1,0 +1,113 @@
+:root {
+  --lime: #B6F23E;
+  --lime-bright: #C9F865;
+  --lime-deep: #97D420;
+  --lime-tint: rgba(182, 242, 62, 0.14);
+  --black: #000000;
+  --surface: #0E0E0E;
+  --card: #161616;
+  --raised: #1F1F1F;
+  --line: #2A2A2A;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1A1;
+  --text-muted: #7A7A7A;
+  --error: #F2555A;
+  --warning: #F5A524;
+  --info: #58A6FF;
+  --violet: #9B8CFA;
+  --sky: #5AA9F0;
+  --orange: #F2944A;
+  --magenta: #F06AA8;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  background: #000;
+  height: 100%;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Hanken Grotesk', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  overflow: hidden;
+}
+
+#root {
+  height: 100%;
+}
+
+::selection { background: #B6F23E; color: #000; }
+
+::-webkit-scrollbar { width: 0; height: 0; }
+
+button { font-family: inherit; cursor: pointer; border: none; outline: none; }
+input { font-family: inherit; outline: none; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(182, 242, 62, 0.25); }
+  50% { box-shadow: 0 0 36px rgba(182, 242, 62, 0.5); }
+}
+
+@keyframes scan-line {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.animate-in {
+  animation: fadeInUp 0.35s ease forwards;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+.spinner-white {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255,255,255,0.15);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes countPop {
+  0% { transform: scale(1.4); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1a1a1a 25%, #252525 50%, #1a1a1a 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
