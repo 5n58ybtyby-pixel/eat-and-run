@@ -2,9 +2,9 @@ import { useState } from 'react'
 
 const LIME = '#B6F23E'
 
-function SettingRow({ icon, label, value, arrow = true }) {
+function SettingRow({ icon, label, value, arrow = true, onClick, badge }) {
   return (
-    <div style={{
+    <div onClick={onClick} style={{
       display: 'flex', alignItems: 'center', gap: '14px',
       padding: '14px 16px',
       cursor: 'pointer'
@@ -19,7 +19,17 @@ function SettingRow({ icon, label, value, arrow = true }) {
         {icon}
       </div>
       <div style={{ flex: 1 }}>
-        <div style={{ font: "500 14px 'Hanken Grotesk'", color: '#D0D0D0' }}>{label}</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ font: "500 14px 'Hanken Grotesk'", color: '#D0D0D0' }}>{label}</span>
+          {badge && (
+            <span style={{
+              font: "700 10px 'Space Grotesk'",
+              color: '#000', background: LIME,
+              borderRadius: '20px', padding: '2px 8px',
+              letterSpacing: '0.2px'
+            }}>{badge}</span>
+          )}
+        </div>
         {value && (
           <div style={{ font: "400 12px 'Hanken Grotesk'", color: '#5A5A5A', marginTop: '2px' }}>{value}</div>
         )}
@@ -43,7 +53,16 @@ export default function Profile() {
     { label: 'Wochen', value: '12' },
   ]
 
+  const openSubscription = () => window.open('/landing.html', '_blank')
+
   const settings = [
+    {
+      icon: '⭐',
+      label: 'Abonnement',
+      value: 'Pro-Mitglied · jederzeit kündbar',
+      badge: 'PRO',
+      onClick: openSubscription
+    },
     { icon: '🎯', label: 'Plan & Ziele', value: '10 km Sub-55 · Hamburg 2027' },
     { icon: '🔔', label: 'Benachrichtigungen', value: 'Workout-Erinnerungen aktiv' },
     { icon: '🍏', label: 'Ernährungsziele', value: `${goalKcal.toLocaleString('de')} kcal · ${goalKm} km/Wo` },
@@ -202,7 +221,13 @@ export default function Profile() {
         }}>
           {settings.map((s, i) => (
             <div key={i} style={{ borderBottom: i < settings.length - 1 ? '1px solid #161616' : 'none' }}>
-              <SettingRow {...s} />
+              <SettingRow
+                icon={s.icon}
+                label={s.label}
+                value={s.value}
+                badge={s.badge}
+                onClick={s.onClick}
+              />
             </div>
           ))}
         </div>
