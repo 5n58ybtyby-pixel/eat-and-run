@@ -671,6 +671,60 @@
     .footer-links a { font-size: 13px; color: var(--subtle); text-decoration: none; transition: color 0.15s; }
     .footer-links a:hover { color: #888; }
 
+    /* ─── FAQ ─── */
+    .faq-section {
+      padding: 110px 20px;
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+    }
+    .faq-inner { max-width: 720px; margin: 0 auto; }
+    .faq-header { text-align: center; margin-bottom: 56px; }
+    .faq-header h2 {
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 800; letter-spacing: -1px; line-height: 1.1; margin-bottom: 12px;
+    }
+    .faq-header p { font-size: 16px; color: var(--muted); }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-item:first-of-type { border-top: 1px solid var(--border); }
+
+    details.faq-item summary {
+      list-style: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 4px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px; font-weight: 600; color: #fff;
+      user-select: none;
+      transition: color 0.15s;
+    }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary:hover { color: var(--lime); }
+    .faq-chevron {
+      width: 22px; height: 22px; flex-shrink: 0;
+      border: 1.5px solid var(--border2); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.25s, border-color 0.15s;
+    }
+    details[open].faq-item summary .faq-chevron {
+      transform: rotate(180deg);
+      border-color: var(--lime);
+    }
+    details[open].faq-item summary { color: var(--lime); }
+    .faq-body {
+      padding: 0 4px 22px;
+      font-size: 15px; color: #999; line-height: 1.7;
+    }
+    .faq-body strong { color: #ccc; }
+
+    .faq-still-questions {
+      margin-top: 48px; text-align: center;
+      font-size: 15px; color: var(--muted);
+    }
+    .faq-still-questions a { color: var(--lime); text-decoration: none; font-weight: 600; }
+    .faq-still-questions a:hover { text-decoration: underline; }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 760px) {
       nav { padding: 0 16px; }
@@ -698,6 +752,7 @@
   <div class="nav-links">
     <a href="#interest">Warum Eat&Run</a>
     <a href="#conviction">Bewertungen</a>
+    <a href="#faq">FAQ</a>
     <a href="#pricing">Preise</a>
     <a href="#satisfaction">Nach dem Start</a>
   </div>
@@ -1145,6 +1200,84 @@
 
 
 <!-- ═══════════════════════════════════════════════
+     [C+] FAQ — Einwände ausräumen
+     ═══════════════════════════════════════════════ -->
+<section id="faq" class="faq-section">
+  <div class="faq-inner">
+
+    <div class="faq-header fade-up">
+      <div class="section-tag">FAQ</div>
+      <h2>Häufige <span class="lime">Fragen</span></h2>
+      <p>Alles, was du vor dem Start wissen möchtest.</p>
+    </div>
+
+    <details class="faq-item fade-up">
+      <summary>
+        Brauche ich eine Smartwatch oder spezielles Equipment?
+        <span class="faq-chevron"><svg viewBox="0 0 12 8" width="11" height="7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5 5-5"/></svg></span>
+      </summary>
+      <div class="faq-body">
+        Nein. <strong>Dein Smartphone reicht vollständig aus.</strong> Die App nutzt GPS, Kamera und Mikrofon deines Handys — keine externe Hardware nötig. Apple Watch und Garmin werden unterstützt, sind aber optional. Du kannst direkt nach dem Download mit deinem ersten Lauf starten.
+      </div>
+    </details>
+
+    <details class="faq-item fade-up">
+      <summary>
+        Ich bin Anfänger — ist Eat&Run auch für mich?
+        <span class="faq-chevron"><svg viewBox="0 0 12 8" width="11" height="7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5 5-5"/></svg></span>
+      </summary>
+      <div class="faq-body">
+        Absolut. Die KI analysiert beim Setup dein aktuelles Fitnesslevel und erstellt einen Plan, der <strong>exakt dort anfängt, wo du gerade bist</strong> — nicht wo du sein solltest. Ob du deinen ersten Kilometer läufst oder auf deinen ersten Halbmarathon trainierst: der Plan passt sich wöchentlich an deinen Fortschritt an.
+      </div>
+    </details>
+
+    <details class="faq-item fade-up">
+      <summary>
+        Was passiert nach dem kostenlosen Monat?
+        <span class="faq-chevron"><svg viewBox="0 0 12 8" width="11" height="7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5 5-5"/></svg></span>
+      </summary>
+      <div class="faq-body">
+        Du bekommst 5 Tage vorher eine Erinnerung und <strong>entscheidest selbst, ob du weitermachst</strong>. Es wird nichts automatisch abgebucht, wenn du keine Zahlungsmethode hinterlegst — und das ist beim Start nicht nötig. Entscheidest du dich für Pro, wähle zwischen monatlich (€19,99) oder jährlich (–50%).
+      </div>
+    </details>
+
+    <details class="faq-item fade-up">
+      <summary>
+        Kann ich jederzeit kündigen?
+        <span class="faq-chevron"><svg viewBox="0 0 12 8" width="11" height="7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5 5-5"/></svg></span>
+      </summary>
+      <div class="faq-body">
+        Ja, jederzeit — <strong>mit einem Klick in den App-Einstellungen</strong>, kein Formular, kein Kundenservice, keine versteckten Fristen. Nach der Kündigung läuft Pro bis zum Ende des bezahlten Zeitraums. Deine Daten bleiben 30 Tage gespeichert, falls du dich umentscheidest.
+      </div>
+    </details>
+
+    <details class="faq-item fade-up">
+      <summary>
+        Funktioniert die App auch offline?
+        <span class="faq-chevron"><svg viewBox="0 0 12 8" width="11" height="7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5 5-5"/></svg></span>
+      </summary>
+      <div class="faq-body">
+        Ja. <strong>GPS-Tracking, Stoppuhr und Workout-Pläne funktionieren ohne Internet</strong> — ideal für Läufe im Wald oder Gebirge ohne Signal. Ernährungs-Scan und KI-Analyse synchronisieren, sobald du wieder online bist. Dein Fortschritt geht nie verloren.
+      </div>
+    </details>
+
+    <details class="faq-item fade-up">
+      <summary>
+        Wie unterscheidet sich Eat&Run von anderen Lauf-Apps?
+        <span class="faq-chevron"><svg viewBox="0 0 12 8" width="11" height="7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5 5-5"/></svg></span>
+      </summary>
+      <div class="faq-body">
+        Die meisten Apps tracken entweder Laufen <em>oder</em> Ernährung. Eat&Run verbindet beides intelligent: <strong>Der KI-Plan berücksichtigt deine Kalorienbilanz, Makros und Erholung beim Erstellen des nächsten Trainings.</strong> Das Ergebnis: weniger Verletzungen, schnellere Fortschritte, und du weißt immer, was du essen sollst — bevor und nach dem Lauf.
+      </div>
+    </details>
+
+    <p class="faq-still-questions fade-up">Noch eine Frage? <a href="mailto:support@eatandrun.app">Schreib uns →</a></p>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
      [A] ACTION — Klarer Aufruf. Niedrige Schwelle.
      ═══════════════════════════════════════════════ -->
 <section id="pricing" class="action-section">
@@ -1192,7 +1325,7 @@
       <div class="p-feat"><span class="ck">✓</span> Community Challenges & Gruppen</div>
       <div class="p-feat"><span class="ck">✓</span> Marathon & Rennen-Vorbereitung</div>
       <div class="p-feat"><span class="ck">✓</span> Herzfrequenz-Zonen & Pace-Coaching</div>
-      <a href="#" class="p-cta-btn lime">Jetzt kostenlos loslegen</a>
+      <a href="#" class="p-cta-btn lime">30 Tage gratis starten</a>
     </div>
   </div>
 
