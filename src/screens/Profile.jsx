@@ -55,21 +55,22 @@ export default function Profile() {
 
   const openSubscription = () => window.open('/landing.html', '_blank')
 
+  const IC = { stroke: '#7A7A7A', fill: 'none', strokeWidth: '1.5', strokeLinecap: 'round', strokeLinejoin: 'round' }
   const settings = [
     {
-      icon: '⭐',
+      icon: <svg viewBox="0 0 20 20" width="17" height="17" {...IC}><path d="M3 15H17M3 15L4 9L7 13L10 7L13 13L16 9L17 15H3Z"/><circle cx="4" cy="9" r="1.3" fill="#7A7A7A" stroke="none"/><circle cx="10" cy="7" r="1.3" fill="#7A7A7A" stroke="none"/><circle cx="16" cy="9" r="1.3" fill="#7A7A7A" stroke="none"/></svg>,
       label: 'Abonnement',
       value: 'Pro-Mitglied · jederzeit kündbar',
       badge: 'PRO',
       onClick: openSubscription
     },
-    { icon: '🎯', label: 'Plan & Ziele', value: '10 km Sub-55 · Hamburg 2027' },
-    { icon: '🔔', label: 'Benachrichtigungen', value: 'Workout-Erinnerungen aktiv' },
-    { icon: '🍏', label: 'Ernährungsziele', value: `${goalKcal.toLocaleString('de')} kcal · ${goalKm} km/Wo` },
-    { icon: '👟', label: 'Geräte & Uhren', value: 'Apple Watch Series 9' },
-    { icon: '🎨', label: 'Erscheinungsbild', value: 'Dunkel · Lime' },
-    { icon: '🔒', label: 'Datenschutz', value: null },
-    { icon: '❓', label: 'Hilfe & Support', value: null },
+    { icon: <svg viewBox="0 0 20 20" width="17" height="17" {...IC}><circle cx="10" cy="10" r="8"/><circle cx="10" cy="10" r="4"/><circle cx="10" cy="10" r="1.5" fill="#7A7A7A" stroke="none"/></svg>, label: 'Plan & Ziele', value: '10 km Sub-55 · Hamburg 2027' },
+    { icon: <svg viewBox="0 0 20 20" width="17" height="17" {...IC}><path d="M5 13V9C5 6 7 3.5 10 3.5C13 3.5 15 6 15 9V13H5Z"/><path d="M8 13A2 2 0 0 0 12 13"/><line x1="10" y1="3.5" x2="10" y2="2"/></svg>, label: 'Benachrichtigungen', value: 'Workout-Erinnerungen aktiv' },
+    { icon: <svg viewBox="0 0 20 20" width="17" height="17" {...IC}><path d="M10 17C5 17 3 13.5 3 10C3 7 5 4.5 7.5 4.5C8.5 4.5 9.5 5 10 5C10.5 5 11.5 4.5 12.5 4.5C15 4.5 17 7 17 10C17 13.5 15 17 10 17Z"/><path d="M10 4.5C10 3.5 11 2.2 12.5 1.5"/></svg>, label: 'Ernährungsziele', value: `${goalKcal.toLocaleString('de')} kcal · ${goalKm} km/Wo` },
+    { icon: <svg viewBox="0 0 20 20" width="17" height="17" {...IC}><rect x="5.5" y="5" width="9" height="10" rx="2.5"/><path d="M8 3.5V5M12 3.5V5M8 15V16.5M12 15V16.5"/><path d="M10 8V10.5L11.5 11.5"/></svg>, label: 'Geräte & Uhren', value: 'Apple Watch Series 9' },
+    { icon: <svg viewBox="0 0 20 20" width="17" height="17" {...IC}><line x1="3" y1="5" x2="17" y2="5"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="15" x2="17" y2="15"/><circle cx="13" cy="5" r="2.5" fill="#0D0D0D" strokeWidth="1.5"/><circle cx="7" cy="10" r="2.5" fill="#0D0D0D" strokeWidth="1.5"/><circle cx="11" cy="15" r="2.5" fill="#0D0D0D" strokeWidth="1.5"/></svg>, label: 'Erscheinungsbild', value: 'Dunkel · Lime' },
+    { icon: <svg viewBox="0 0 20 20" width="17" height="17" {...IC}><rect x="4" y="9" width="12" height="9" rx="2"/><path d="M7 9V6.5A3 3 0 0 1 13 6.5V9"/><circle cx="10" cy="14" r="1.5" fill="#7A7A7A" stroke="none"/></svg>, label: 'Datenschutz', value: null },
+    { icon: <svg viewBox="0 0 20 20" width="17" height="17" {...IC}><circle cx="10" cy="10" r="8"/><path d="M7.5 7.5C7.5 6 8.5 5 10 5C11.5 5 12.5 6 12.5 7.5C12.5 9 10.5 9.5 10 11"/><circle cx="10" cy="14.5" r="1" fill="#7A7A7A" stroke="none"/></svg>, label: 'Hilfe & Support', value: null },
   ]
 
   return (
@@ -163,7 +164,7 @@ export default function Profile() {
             borderRadius: '16px', padding: '16px'
           }}>
             <div style={{ font: "400 11px 'Hanken Grotesk'", color: '#5A5A5A', marginBottom: '6px' }}>
-              🏃 Wochenziel
+              <svg viewBox="0 0 14 14" width="11" height="11" fill="none" stroke="#5A5A5A" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" style={{marginRight:4,verticalAlign:'middle'}}><circle cx="10" cy="2.5" r="1.5"/><path d="M8 4.5L10.5 4L12 6.5M8 4.5L6 9M10.5 6.5L9 10.5M6 9L4.5 12M10.5 6.5L12.5 9"/></svg> Wochenziel
             </div>
             <div style={{ font: "700 24px 'Space Grotesk'", color: LIME, letterSpacing: '-0.5px' }}>
               {goalKm} <span style={{ font: "400 13px 'Hanken Grotesk'", color: '#5A5A5A' }}>km</span>
@@ -178,7 +179,7 @@ export default function Profile() {
             borderRadius: '16px', padding: '16px'
           }}>
             <div style={{ font: "400 11px 'Hanken Grotesk'", color: '#5A5A5A', marginBottom: '6px' }}>
-              🍎 Kalorienziel
+              <svg viewBox="0 0 14 14" width="11" height="11" fill="none" stroke="#5A5A5A" strokeWidth="1.4" strokeLinecap="round" style={{marginRight:4,verticalAlign:'middle'}}><path d="M7 13C4.5 13 2.5 11 2.5 8.5C2.5 6.5 3.5 5 4 3.5C4 5.5 5.5 6 6 7C6.5 5 7 3.5 8.5 1.5C8.5 3.5 10 5 10.5 6.5C11 7 11.5 8 11.5 8.5C11.5 11 9.5 13 7 13Z"/></svg> Kalorienziel
             </div>
             <div style={{ font: "700 24px 'Space Grotesk'", color: '#9B8CFA', letterSpacing: '-0.5px' }}>
               {goalKcal.toLocaleString('de')} <span style={{ font: "400 12px 'Hanken Grotesk'", color: '#5A5A5A' }}>kcal</span>
@@ -196,7 +197,9 @@ export default function Profile() {
           borderRadius: '16px', padding: '16px', marginTop: '10px',
           display: 'flex', alignItems: 'center', gap: '14px'
         }}>
-          <div style={{ fontSize: '24px' }}>🏁</div>
+          <div style={{ width:24, height:24, display:'flex', alignItems:'center', justifyContent:'center' }}>
+            <svg viewBox="0 0 20 20" width="22" height="22" fill="none" stroke={LIME} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="2" x2="5" y2="18"/><path d="M5 2L17 5.5L5 9"/></svg>
+          </div>
           <div style={{ flex: 1 }}>
             <div style={{ font: "600 13px 'Hanken Grotesk'", color: '#D0D0D0' }}>Zielrennen</div>
             <div style={{ font: "700 16px 'Space Grotesk'", color: LIME, marginTop: '3px' }}>

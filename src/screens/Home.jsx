@@ -297,7 +297,9 @@ export default function Home({ navigate }) {
           padding: '12px 14px',
           display: 'flex', gap: '10px', alignItems: 'flex-start'
         }}>
-          <div style={{ fontSize: '16px', marginTop: '1px' }}>⚡</div>
+          <div style={{ display:'flex', alignItems:'center', marginTop: '1px' }}>
+            <svg viewBox="0 0 12 12" width="15" height="15" fill="#B6F23E"><path d="M7 1L2 7h3.5L4 11l6-6.5H6.5z"/></svg>
+          </div>
           <div style={{ font: "400 13.5px 'Hanken Grotesk'", color: '#B8B8B8', lineHeight: 1.5 }}>
             Deine Erholung ist bei <span style={{ color: LIME, fontWeight: 600 }}>92 %</span> — perfekter Tag für intensive Intervalle. Du bist auf Kurs für dein Wochenziel!
           </div>

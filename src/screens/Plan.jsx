@@ -99,7 +99,7 @@ export default function Plan() {
                   borderRadius: '999px', padding: '4px 10px',
                   font: "600 11px 'Hanken Grotesk'", color: LIME, marginBottom: '10px'
                 }}>
-                  ⚡ KI-generiert
+                  <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor" style={{flexShrink:0}}><path d="M7 1L2 7h3.5L4 11l6-6.5H6.5z"/></svg> KI-generiert
                 </div>
                 <div style={{ font: "700 22px 'Space Grotesk'", letterSpacing: '-0.4px' }}>
                   {GENERATED_PLAN.name}
@@ -330,7 +330,7 @@ export default function Plan() {
               Berechne…
             </>
           ) : (
-            <>⚡ Neuen KI-Plan erstellen</>
+            <><svg viewBox="0 0 12 12" width="11" height="11" fill="currentColor" style={{flexShrink:0}}><path d="M7 1L2 7h3.5L4 11l6-6.5H6.5z"/></svg> Neuen KI-Plan erstellen</>
           )}
         </button>
         <div style={{ font: "400 12px 'Hanken Grotesk'", color: '#4A4A4A', textAlign: 'center', marginTop: '10px' }}>

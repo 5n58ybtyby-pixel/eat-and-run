@@ -44,11 +44,12 @@ const zones = [
   { name:'Tempo',  color:'#F5A524', pct:18 },
   { name:'VO₂max', color:'#F2555A', pct:10 },
 ]
+const RIC = { fill:'none', stroke:'#7A7A7A', strokeWidth:'1.5', strokeLinecap:'round', strokeLinejoin:'round' }
 const records = [
-  { label:'Längster Lauf',       value:'14,0 km', icon:'📏' },
-  { label:'Bestes 5-km-Tempo',   value:'28:12',   icon:'⚡' },
-  { label:'Bestes 10-km-Tempo',  value:'58:40',   icon:'🏃' },
-  { label:'Monatsdistanz',       value:'112 km',  icon:'📅' },
+  { label:'Längster Lauf',      value:'14,0 km', icon:<svg viewBox="0 0 20 20" width="17" height="17" {...RIC}><path d="M3 15C5 11 7 13 9 10C11 7 13 9 17 6"/><circle cx="3" cy="15" r="1.5" fill="#7A7A7A" stroke="none"/><circle cx="17" cy="6" r="1.5" fill="#7A7A7A" stroke="none"/></svg> },
+  { label:'Bestes 5-km-Tempo',  value:'28:12',   icon:<svg viewBox="0 0 20 20" width="17" height="17" {...RIC}><polygon points="8,2 2,10 8,10 7,18 16,8 10,8" fill="#7A7A7A" stroke="none"/></svg> },
+  { label:'Bestes 10-km-Tempo', value:'58:40',   icon:<svg viewBox="0 0 20 20" width="17" height="17" {...RIC}><circle cx="12" cy="4" r="2"/><path d="M10 7L12 6L14 9M10 7L8.5 12M12 9L11 13.5M8.5 12L7 15M12 9L14.5 11.5"/></svg> },
+  { label:'Monatsdistanz',      value:'112 km',  icon:<svg viewBox="0 0 20 20" width="17" height="17" {...RIC}><rect x="2" y="4" width="16" height="13" rx="2"/><line x1="2" y1="8.5" x2="18" y2="8.5"/><line x1="6.5" y1="2" x2="6.5" y2="6"/><line x1="13.5" y1="2" x2="13.5" y2="6"/><circle cx="7" cy="12" r="1" fill="#7A7A7A" stroke="none"/><circle cx="10" cy="12" r="1" fill="#7A7A7A" stroke="none"/><circle cx="13" cy="12" r="1" fill="#7A7A7A" stroke="none"/></svg> },
 ]
 
 // ─── SUB-COMPONENTS ───────────────────────────────────────────────────────────
@@ -144,7 +145,7 @@ function PlanView() {
                 <div style={{ display:'inline-flex', alignItems:'center', gap:5,
                   background:'rgba(182,242,62,.12)', border:'1px solid rgba(182,242,62,.2)',
                   borderRadius:999, padding:'4px 10px', font:"600 11px 'Hanken Grotesk'",
-                  color:LIME, marginBottom:10 }}>⚡ KI-generiert</div>
+                  color:LIME, marginBottom:10 }}><svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor" style={{flexShrink:0}}><path d="M7 1L2 7h3.5L4 11l6-6.5H6.5z"/></svg> KI-generiert</div>
                 <div style={{ font:"700 22px 'Space Grotesk'", letterSpacing:'-0.4px' }}>10 km in 8 Wochen</div>
                 <div style={{ font:"600 14px 'Hanken Grotesk'", color:LIME, marginTop:3 }}>Ziel: Sub 55:00</div>
               </div>
@@ -268,7 +269,7 @@ function PlanView() {
         {loading ? (
           <><div style={{ width:16, height:16, border:'2px solid #333',
             borderTop:`2px solid ${LIME}`, borderRadius:'50%', animation:'spin .7s linear infinite' }}/>Berechne…</>
-        ) : <>⚡ Neuen KI-Plan erstellen</>}
+        ) : <><svg viewBox="0 0 12 12" width="11" height="11" fill="currentColor" style={{flexShrink:0}}><path d="M7 1L2 7h3.5L4 11l6-6.5H6.5z"/></svg> Neuen KI-Plan erstellen</>}
       </button>
       <div style={{ font:"400 12px 'Hanken Grotesk'", color:'#4A4A4A', textAlign:'center', marginTop:8 }}>
         Die KI analysiert dein Level, deine Verfügbarkeit & dein Zielrennen

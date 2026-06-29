@@ -143,11 +143,12 @@ export default function Analyse() {
     { name: 'VO₂max', color: '#F2555A', pct: 10 },
   ]
 
+  const RIC = { fill:'none', stroke:'#7A7A7A', strokeWidth:'1.5', strokeLinecap:'round', strokeLinejoin:'round' }
   const records = [
-    { label: 'Längster Lauf', value: '14,0 km', icon: '📏' },
-    { label: 'Bestes 5-km-Tempo', value: '28:12', icon: '⚡' },
-    { label: 'Bestes 10-km-Tempo', value: '58:40', icon: '🏃' },
-    { label: 'Monatsdistanz', value: '112 km', icon: '📅' },
+    { label: 'Längster Lauf',      value: '14,0 km', icon: <svg viewBox="0 0 20 20" width="17" height="17" {...RIC}><path d="M3 15C5 11 7 13 9 10C11 7 13 9 17 6"/><circle cx="3" cy="15" r="1.5" fill="#7A7A7A" stroke="none"/><circle cx="17" cy="6" r="1.5" fill="#7A7A7A" stroke="none"/></svg> },
+    { label: 'Bestes 5-km-Tempo',  value: '28:12',   icon: <svg viewBox="0 0 20 20" width="17" height="17" {...RIC}><polygon points="8,2 2,10 8,10 7,18 16,8 10,8" fill="#7A7A7A" stroke="none"/></svg> },
+    { label: 'Bestes 10-km-Tempo', value: '58:40',   icon: <svg viewBox="0 0 20 20" width="17" height="17" {...RIC}><circle cx="12" cy="4" r="2"/><path d="M10 7L12 6L14 9M10 7L8.5 12M12 9L11 13.5M8.5 12L7 15M12 9L14.5 11.5"/></svg> },
+    { label: 'Monatsdistanz',      value: '112 km',  icon: <svg viewBox="0 0 20 20" width="17" height="17" {...RIC}><rect x="2" y="4" width="16" height="13" rx="2"/><line x1="2" y1="8.5" x2="18" y2="8.5"/><line x1="6.5" y1="2" x2="6.5" y2="6"/><line x1="13.5" y1="2" x2="13.5" y2="6"/><circle cx="7" cy="12" r="1" fill="#7A7A7A" stroke="none"/><circle cx="10" cy="12" r="1" fill="#7A7A7A" stroke="none"/><circle cx="13" cy="12" r="1" fill="#7A7A7A" stroke="none"/></svg> },
   ]
 
   return (

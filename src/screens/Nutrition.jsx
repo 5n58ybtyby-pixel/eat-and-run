@@ -247,15 +247,17 @@ export default function Nutrition() {
               animation: 'fadeInUp 0.4s ease'
             }}>
               <div style={{ font: "700 11px 'Space Mono'", letterSpacing: '2px', color: LIME, textAlign: 'center', marginBottom: '16px' }}>
-                ⚡ KI-ERKENNUNG ABGESCHLOSSEN
+                <svg viewBox="0 0 12 12" width="10" height="10" fill={LIME} style={{marginRight:6,flexShrink:0}}><path d="M7 1L2 7h3.5L4 11l6-6.5H6.5z"/></svg> KI-ERKENNUNG ABGESCHLOSSEN
               </div>
               <div style={{
                 background: '#111', border: `1px solid rgba(182,242,62,.25)`,
                 borderRadius: '24px', padding: '24px',
                 boxShadow: '0 0 40px rgba(182,242,62,.1)'
               }}>
-                <div style={{ fontSize: '40px', textAlign: 'center', marginBottom: '12px' }}>
-                  {scanResult.emoji}
+                <div style={{ display:'flex', justifyContent:'center', marginBottom:'12px' }}>
+                  <div style={{ width:56, height:56, borderRadius:'50%', background:'rgba(182,242,62,0.1)', border:'2px solid rgba(182,242,62,0.25)', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#B6F23E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
                 </div>
                 <div style={{ font: "600 18px 'Space Grotesk'", textAlign: 'center', letterSpacing: '-0.3px', marginBottom: '4px' }}>
                   {scanResult.name}
@@ -383,7 +385,9 @@ export default function Nutrition() {
                       padding: '10px 16px',
                       borderBottom: i < items.length - 1 ? '1px solid #141414' : 'none'
                     }}>
-                      <div style={{ fontSize: '20px' }}>{item.emoji}</div>
+                      <div style={{ width:22, height:22, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+                        <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="#4A4A4A" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><circle cx="8" cy="9" r="5"/><path d="M5.5 4.5L6 3M8 4V2.5M10.5 4.5L10 3"/></svg>
+                      </div>
                       <div style={{ flex: 1 }}>
                         <div style={{ font: "500 13px 'Hanken Grotesk'" }}>{item.name}</div>
                         <div style={{ font: "400 11px 'Hanken Grotesk'", color: '#5A5A5A', marginTop: '2px' }}>
