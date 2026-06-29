@@ -14,17 +14,15 @@ export default function Logo({ size = 36, showWordmark = true }) {
         boxShadow: '0 0 18px rgba(182,242,62,.15)'
       }}>
         <svg viewBox="0 0 56 56" width={size} height={size}>
-          {/* E — bold block letter */}
-          <rect x="6"  y="10" width="7"  height="36" rx="2" fill={LIME}/>
-          <rect x="6"  y="10" width="20" height="7"  rx="2" fill={LIME}/>
-          <rect x="6"  y="24.5" width="16" height="7" rx="2" fill={LIME}/>
-          <rect x="6"  y="39" width="20" height="7"  rx="2" fill={LIME}/>
-          {/* R — bold block letter */}
-          <rect x="31" y="10" width="7"  height="36" rx="2" fill={LIME}/>
-          {/* R bowl */}
-          <path d="M38 10 Q52 10 52 21 Q52 32 38 32 L38 25 Q44 25 44 21 Q44 17 38 17 Z" fill={LIME}/>
-          {/* R leg */}
-          <path d="M38 29 L50 46 L42 46 L31 29 Z" fill={LIME}/>
+          {/* E — lower-left (y 14→52) */}
+          <rect x="3"  y="14" width="7"  height="38" rx="2" fill={LIME}/>
+          <rect x="3"  y="14" width="22" height="7"  rx="2" fill={LIME}/>
+          <rect x="3"  y="28" width="16" height="6"  rx="2" fill={LIME}/>
+          <rect x="3"  y="45" width="22" height="7"  rx="2" fill={LIME}/>
+          {/* R — upper-right (y 3→41), shifted up by 11px */}
+          <rect x="26" y="3"  width="7"  height="38" rx="2" fill={LIME}/>
+          <path d="M33 3 Q50 3 50 14 Q50 25 33 25 L33 19 Q43 19 43 14 Q43 9 33 9 Z" fill={LIME}/>
+          <path d="M33 21 L47 41 L39 41 L27 21 Z" fill={LIME}/>
         </svg>
       </div>
       {showWordmark && (
