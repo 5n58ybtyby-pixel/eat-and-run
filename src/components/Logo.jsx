@@ -8,21 +8,24 @@ export default function Logo({ size = 36, showWordmark = true }) {
         background: '#000',
         borderRadius: `${size * 0.22}px`,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        border: '1.5px solid rgba(182,242,62,.25)',
         flexShrink: 0,
         overflow: 'hidden',
-        boxShadow: '0 0 18px rgba(182,242,62,.15)'
       }}>
         <svg viewBox="0 0 56 56" width={size} height={size}>
-          {/* E — lower-left (y 14→52) */}
-          <rect x="3"  y="14" width="7"  height="38" rx="2" fill={LIME}/>
-          <rect x="3"  y="14" width="22" height="7"  rx="2" fill={LIME}/>
-          <rect x="3"  y="28" width="16" height="6"  rx="2" fill={LIME}/>
-          <rect x="3"  y="45" width="22" height="7"  rx="2" fill={LIME}/>
-          {/* R — upper-right (y 3→41), shifted up by 11px */}
-          <rect x="26" y="3"  width="7"  height="38" rx="2" fill={LIME}/>
-          <path d="M33 3 Q50 3 50 14 Q50 25 33 25 L33 19 Q43 19 43 14 Q43 9 33 9 Z" fill={LIME}/>
-          <path d="M33 21 L47 41 L39 41 L27 21 Z" fill={LIME}/>
+          {/* E: Left vertical bar */}
+          <rect x="4" y="4" width="7" height="48" rx="2" fill={LIME}/>
+          {/* E: Top bar */}
+          <rect x="4" y="4" width="27" height="7" rx="2" fill={LIME}/>
+          {/* E: Middle bar (shorter) */}
+          <rect x="4" y="24" width="20" height="6" rx="2" fill={LIME}/>
+          {/* E: Bottom bar */}
+          <rect x="4" y="45" width="27" height="7" rx="2" fill={LIME}/>
+          {/* R: Spine (shared vertical bar, right side) */}
+          <rect x="24" y="4" width="7" height="48" rx="2" fill={LIME}/>
+          {/* R: Bowl with hollow center */}
+          <path fill={LIME} fillRule="evenodd" d="M 31,4 C 52,4 52,31 31,31 Z M 31,12 C 43,12 43,23 31,23 Z"/>
+          {/* R: Diagonal leg toward lower-left */}
+          <path d="M 31,31 L 48,31 L 31,52 L 14,52 Z" fill={LIME}/>
         </svg>
       </div>
       {showWordmark && (
