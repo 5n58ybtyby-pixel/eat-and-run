@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { store } from '../store'
 
 const LIME = '#B6F23E'
 
@@ -340,7 +341,7 @@ function GewichtView() {
 
 // ─── MAIN NUTRITION SCREEN ────────────────────────────────────────────────────
 
-export default function Nutrition() {
+export default function Nutrition({ navigate }) {
   const [view, setView] = useState('nutrition')
   const [meals, setMeals] = useState(INITIAL_MEALS)
   const [scanState, setScanState] = useState('idle')
@@ -380,6 +381,23 @@ export default function Nutrition() {
     setScanState('idle')
     setScanResult(null)
     setAddTarget(null)
+  }
+
+  const handleShareToCommunity = () => {
+    if (!scanResult) return
+    store.recipePost = {
+      id: 999, user: 'Nico', avatar: 'NI', time: 'gerade eben',
+      title: 'Magerquark Bowl', emoji: '🥛', tag: 'Frühstück · Post-Workout',
+      desc: 'Mein Frühstück nach dem Morgenrun. Einfach, proteinreich, perfekt für die Regeneration.',
+      ingredients: ['250 g Magerquark (0,2 %)', '1 Banane', '30 g Haferflocken', '100 g TK-Beeren', '1 TL Honig'],
+      nutrients: { kcal: 312, protein: 38, carbs: 28, fat: 4 },
+      aiLabel: 'KI-Analyse',
+      kudos: 0, myKudos: false, isNew: true
+    }
+    setScanState('idle')
+    setScanResult(null)
+    setAddTarget(null)
+    navigate('community')
   }
 
   const mealTotalKcal = (key) => meals[key].reduce((s, f) => s + f.kcal, 0)
@@ -489,6 +507,17 @@ export default function Nutrition() {
                   font: "700 15px 'Hanken Grotesk'", cursor: 'pointer', marginBottom: '10px'
                 }}>
                   Hinzufügen
+                </button>
+                <button onClick={handleShareToCommunity} style={{
+                  width: '100%', background: 'transparent', color: LIME,
+                  border: `1px solid rgba(182,242,62,0.4)`, borderRadius: '14px', padding: '14px',
+                  font: "600 14px 'Hanken Grotesk'", cursor: 'pointer', marginBottom: '10px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px'
+                }}>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke={LIME} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/>
+                  </svg>
+                  In Community teilen
                 </button>
                 <button onClick={handleDismissScan} style={{
                   width: '100%', background: 'transparent', color: '#5A5A5A',

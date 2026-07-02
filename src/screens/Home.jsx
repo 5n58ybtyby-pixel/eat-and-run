@@ -5,14 +5,13 @@ import { store } from '../store'
 const LIME = '#B6F23E'
 const TOTAL_TIME = 31 * 60
 
-const ROUTE_D = 'M 82,232 L 82,192 Q 82,165 98,145 L 122,120 Q 155,92 200,82 Q 245,74 278,88 L 305,112 Q 322,138 312,175 L 294,205 Q 270,228 228,242 L 172,250 Q 128,252 100,246 Z'
+const ROUTE_D = 'M 70,220 L 70,148 L 138,148 L 138,82 L 202,82 L 202,115 L 282,115 L 282,178 L 202,178 L 202,220 L 138,220 L 70,220'
 
 // ─── MUNICH MAP ───────────────────────────────────────────────────────────────
 
-function MunichMap({ elapsed = 0, mini = false }) {
+function MunichMap({ elapsed = 0 }) {
   const pathRef = useRef(null)
   const [pathLen, setPathLen] = useState(900)
-  const h = mini ? 130 : 260
 
   useEffect(() => {
     if (pathRef.current) setPathLen(pathRef.current.getTotalLength())
@@ -21,7 +20,7 @@ function MunichMap({ elapsed = 0, mini = false }) {
   const progress = Math.min(elapsed / TOTAL_TIME, 1)
   const filled = progress * pathLen
 
-  let dotX = 82, dotY = 232
+  let dotX = 70, dotY = 220
   if (pathRef.current && filled > 0) {
     try {
       const pt = pathRef.current.getPointAtLength(Math.min(filled, pathLen - 1))
@@ -30,48 +29,70 @@ function MunichMap({ elapsed = 0, mini = false }) {
   }
 
   return (
-    <svg viewBox={`0 0 390 ${h}`} style={{ width: '100%', display: 'block' }}>
-      <rect width="390" height={h} fill="#040C06"/>
-      <ellipse cx="195" cy={h * 0.48} rx="175" ry={h * 0.42} fill="#060E08"/>
-      <path d={`M 355,0 Q 375,${h*0.3} 365,${h*0.6} Q 355,${h*0.85} 360,${h} L 390,${h} L 390,0 Z`} fill="rgba(30,60,160,0.18)"/>
-      <line x1="0" y1={h-20} x2="390" y2={h-20} stroke="#0E1C0E" strokeWidth="7"/>
-      <line x1="80" y1="0" x2="80" y2={h} stroke="#0B160B" strokeWidth="4"/>
-      <line x1="310" y1="0" x2="310" y2={h} stroke="#0B160B" strokeWidth="4"/>
-      {!mini && <text x="135" y={h*0.55} fill="#122012" fontSize="9" fontFamily="Hanken Grotesk" fontWeight="600">Englischer Garten</text>}
+    <svg viewBox="0 0 390 260" style={{ width: '100%', display: 'block' }}>
+      {/* Dark city background */}
+      <rect width="390" height="260" fill="#050A07"/>
 
-      {/* Planned route (dim background) */}
-      <path d={ROUTE_D} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+      {/* City block fills */}
+      {[[0,0,68,260],[142,0,58,78],[0,0,390,78]].map(([x,y,w,h],i) => (
+        <rect key={i} x={x} y={y} width={w} height={h} fill="#060C08"/>
+      ))}
 
-      {/* Filled route (progress) - 3 glow layers */}
-      <path d={ROUTE_D} fill="none" stroke={LIME} strokeWidth="14" strokeOpacity="0.07"
-        strokeLinecap="round" strokeLinejoin="round"
+      {/* Minor streets (neighborhood grid) */}
+      {[32, 100, 170, 244, 322, 360].map(x => (
+        <line key={`mv${x}`} x1={x} y1="0" x2={x} y2="260" stroke="#07100A" strokeWidth="2"/>
+      ))}
+      {[35, 55, 98, 132, 163, 196, 232, 250].map(y => (
+        <line key={`mh${y}`} x1="0" y1={y} x2="390" y2={y} stroke="#07100A" strokeWidth="2"/>
+      ))}
+
+      {/* Major streets (route streets) */}
+      <line x1="70" y1="0" x2="70" y2="260" stroke="#0E1C0E" strokeWidth="5"/>
+      <line x1="138" y1="0" x2="138" y2="260" stroke="#0E1C0E" strokeWidth="5"/>
+      <line x1="202" y1="0" x2="202" y2="260" stroke="#0E1C0E" strokeWidth="5"/>
+      <line x1="282" y1="0" x2="282" y2="260" stroke="#0E1C0E" strokeWidth="5"/>
+      <line x1="0" y1="82" x2="390" y2="82" stroke="#0E1C0E" strokeWidth="5"/>
+      <line x1="0" y1="115" x2="390" y2="115" stroke="#0E1C0E" strokeWidth="5"/>
+      <line x1="0" y1="148" x2="390" y2="148" stroke="#0E1C0E" strokeWidth="5"/>
+      <line x1="0" y1="178" x2="390" y2="178" stroke="#0E1C0E" strokeWidth="5"/>
+      <line x1="0" y1="220" x2="390" y2="220" stroke="#0E1C0E" strokeWidth="5"/>
+
+      {/* Area label */}
+      <text x="84" y="26" fill="#132013" fontSize="8" fontFamily="Hanken Grotesk" fontWeight="600">Englischer Garten · München</text>
+
+      {/* Planned route (dim) */}
+      <path d={ROUTE_D} fill="none" stroke="rgba(182,242,62,0.06)" strokeWidth="4"
+        strokeLinecap="square" strokeLinejoin="miter"/>
+
+      {/* Filled route - glow layers */}
+      <path d={ROUTE_D} fill="none" stroke={LIME} strokeWidth="16" strokeOpacity="0.07"
+        strokeLinecap="square" strokeLinejoin="miter"
         strokeDasharray={pathLen} strokeDashoffset={pathLen - filled}
         style={{ transition: 'stroke-dashoffset 1s linear' }}/>
-      <path d={ROUTE_D} fill="none" stroke={LIME} strokeWidth="6" strokeOpacity="0.18"
-        strokeLinecap="round" strokeLinejoin="round"
+      <path d={ROUTE_D} fill="none" stroke={LIME} strokeWidth="7" strokeOpacity="0.2"
+        strokeLinecap="square" strokeLinejoin="miter"
         strokeDasharray={pathLen} strokeDashoffset={pathLen - filled}
         style={{ transition: 'stroke-dashoffset 1s linear' }}/>
-      <path ref={pathRef} d={ROUTE_D} fill="none" stroke={LIME} strokeWidth="2.5"
-        strokeLinecap="round" strokeLinejoin="round"
+      <path ref={pathRef} d={ROUTE_D} fill="none" stroke={LIME} strokeWidth="3"
+        strokeLinecap="square" strokeLinejoin="miter"
         strokeDasharray={pathLen} strokeDashoffset={pathLen - filled}
         style={{ transition: 'stroke-dashoffset 1s linear' }}/>
 
       {/* km markers */}
-      {!mini && <>
-        <circle cx="122" cy="120" r="3" fill={LIME} opacity="0.4"/>
-        <text x="128" y="118" fill={LIME} fontSize="7" fontFamily="Space Grotesk" opacity="0.4">1 km</text>
-        <circle cx="278" cy="88" r="3" fill={LIME} opacity="0.4"/>
-        <text x="284" y="86" fill={LIME} fontSize="7" fontFamily="Space Grotesk" opacity="0.4">2,5 km</text>
-      </>}
+      <circle cx="138" cy="148" r="3.5" fill={LIME} opacity="0.5"/>
+      <text x="143" y="145" fill={LIME} fontSize="7.5" fontFamily="Space Grotesk" opacity="0.5">1 km</text>
+      <circle cx="202" cy="82" r="3.5" fill={LIME} opacity="0.5"/>
+      <text x="207" y="79" fill={LIME} fontSize="7.5" fontFamily="Space Grotesk" opacity="0.5">2,5 km</text>
 
       {/* Start dot */}
-      <circle cx="82" cy="232" r={mini ? 4 : 7} fill="rgba(182,242,62,0.2)"/>
-      <circle cx="82" cy="232" r={mini ? 2.5 : 4} fill={LIME}/>
+      <circle cx="70" cy="220" r="8" fill="rgba(182,242,62,0.15)"/>
+      <circle cx="70" cy="220" r="4.5" fill={LIME}/>
+      <text x="75" y="238" fill={LIME} fontSize="7" fontFamily="Space Grotesk" opacity="0.5">START</text>
 
-      {/* GPS position dot */}
+      {/* GPS dot */}
       {elapsed > 0 && (
         <>
-          <circle cx={dotX} cy={dotY} r="18" fill="rgba(182,242,62,0.1)">
+          <circle cx={dotX} cy={dotY} r="18" fill="rgba(182,242,62,0.08)">
             <animate attributeName="r" values="14;22;14" dur="1.6s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="1;0.3;1" dur="1.6s" repeatCount="indefinite"/>
           </circle>
@@ -114,10 +135,10 @@ function WorkoutOverlay({ onClose, navigate }) {
 
   const handleShare = () => {
     store.workoutPost = {
-      id: 99, user: 'Du', avatar: 'MM', time: 'gerade eben',
+      id: 99, user: 'Patrick', avatar: 'PA', time: 'gerade eben',
       type: 'run', title: '5km Zone 2',
-      distance: `${dist.toFixed(1).replace('.',',')} km`,
-      pace: '6:12 /km', duration: fmt(Math.max(elapsed, 1)),
+      distance: '5,0 km',
+      pace: '6:12 /km', duration: '31:00',
       kudos: 0, myKudos: false, hasMap: true, isNew: true
     }
     navigate('community')
@@ -167,7 +188,7 @@ function WorkoutOverlay({ onClose, navigate }) {
         </div>
         <div style={{ background: '#0D0D0D', border: '1px solid #1E1E1E', borderRadius: 20, padding: 20, marginBottom: 16 }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10 }}>
-            {[['Distanz', `${dist.toFixed(1).replace('.',',')} km`], ['Zeit', fmt(elapsed)], ['Tempo', '6:12 /km']].map(([l,v]) => (
+            {[['Distanz', '5,0 km'], ['Zeit', '31 min'], ['Tempo', '6:12 /km']].map(([l,v]) => (
               <div key={l} style={{ textAlign: 'center' }}>
                 <div style={{ font: "700 18px 'Space Grotesk'", color: LIME, letterSpacing: '-0.3px', lineHeight: 1.2 }}>{v}</div>
                 <div style={{ font: "400 10px 'Hanken Grotesk'", color: '#555', marginTop: 4 }}>{l}</div>
@@ -176,7 +197,7 @@ function WorkoutOverlay({ onClose, navigate }) {
           </div>
         </div>
         <div style={{ background: '#040C06', border: '1px solid #0D1A0D', borderRadius: 16, overflow: 'hidden', marginBottom: 16 }}>
-          <MunichMap elapsed={elapsed} mini={false}/>
+          <MunichMap elapsed={TOTAL_TIME}/>
         </div>
         <button onClick={handleShare} style={{ width: '100%', padding: '16px', background: LIME, border: 'none', borderRadius: 14, font: "700 15px 'Space Grotesk'", color: '#000', cursor: 'pointer', marginBottom: 10 }}>
           In Community teilen →
@@ -192,7 +213,7 @@ function WorkoutOverlay({ onClose, navigate }) {
   return (
     <div style={{ ...base, display: 'flex', flexDirection: 'column' }}>
       <div style={{ position: 'relative', flexShrink: 0 }}>
-        <MunichMap elapsed={elapsed}/>
+        <MunichMap elapsed={elapsed} />
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 50, background: 'linear-gradient(transparent,#000)', pointerEvents: 'none' }}/>
         <div style={{ position: 'absolute', top: 14, right: 14, display: 'flex', alignItems: 'center', gap: 5, background: 'rgba(0,0,0,0.75)', border: '1px solid rgba(182,242,62,0.3)', borderRadius: 20, padding: '5px 10px' }}>
           <div style={{ width: 6, height: 6, borderRadius: '50%', background: LIME, animation: 'pulse-glow 1.4s ease-in-out infinite' }}/>

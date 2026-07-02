@@ -1,1 +1,1 @@
-export const store = { workoutPost: null }
+export const store = { workoutPost: null, recipePost: null }

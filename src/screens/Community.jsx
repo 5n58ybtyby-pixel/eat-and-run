@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Logo from '../components/Logo'
 import { store } from '../store'
 
@@ -15,14 +15,6 @@ const BASE_FRIENDS = [
 ]
 
 const BASE_FEED = [
-  {
-    id: 1, user: 'Patrick', avatar: 'PA', time: 'vor 35 Min.',
-    type: 'recipe', title: 'Magerquark Bowl',
-    desc: 'Mein Frühstück nach dem Morgenrun. Einfach, proteinreich, perfekt für die Regeneration.',
-    ingredients: ['250 g Magerquark (0,2 %)', '1 Banane', '30 g Haferflocken', '100 g TK-Beeren', '1 TL Honig'],
-    nutrients: { kcal: 312, protein: 38, carbs: 28, fat: 4 },
-    kudos: 23, myKudos: false
-  },
   {
     id: 2, user: 'Jonas K.', avatar: 'JK', time: 'vor 1 Std.',
     type: 'run', title: 'Morgenrunde',
@@ -54,16 +46,7 @@ const GROUPS = [
   { id: 3, name: 'Early Birds 5am', members: 67, recentRun: 'heute', emoji: '🌅' },
 ]
 
-const RECIPES = [
-  {
-    id: 1, user: 'Patrick', avatar: 'PA', time: 'vor 35 Min.',
-    title: 'Magerquark Bowl', emoji: '🥣', tag: 'Frühstück · Post-Workout',
-    desc: 'Mein Frühstück nach dem Morgenrun. Einfach, proteinreich, perfekt für die Regeneration.',
-    ingredients: ['250 g Magerquark (0,2 %)', '1 Banane', '30 g Haferflocken', '100 g TK-Beeren', '1 TL Honig'],
-    nutrients: { kcal: 312, protein: 38, carbs: 28, fat: 4 },
-    aiLabel: 'KI-Analyse',
-    kudos: 23, myKudos: false
-  },
+const BASE_RECIPES = [
   {
     id: 2, user: 'Lena B.', avatar: 'LB', time: 'gestern',
     title: 'Pre-Run Overnight Oats', emoji: '🌙', tag: 'Pre-Workout · Vorbereitung',
@@ -78,17 +61,31 @@ const RECIPES = [
 // ─── MINI MAP ─────────────────────────────────────────────────────────────────
 
 function MiniMap() {
-  const routeD = 'M 28,82 L 28,66 Q 30,55 38,48 L 50,40 Q 66,32 84,29 Q 102,26 116,32 L 128,40 Q 136,50 132,64 L 124,74 Q 114,82 96,86 L 72,88 Q 50,89 36,87 Z'
+  const routeD = 'M 29,85 L 29,57 L 57,57 L 57,32 L 82,32 L 82,44 L 116,44 L 116,68 L 82,68 L 82,85 L 57,85 L 29,85'
   return (
     <svg viewBox="0 0 160 100" style={{ width:'100%', display:'block' }}>
-      <rect width="160" height="100" fill="#040C06"/>
-      <ellipse cx="80" cy="50" rx="72" ry="40" fill="#060E08"/>
-      <path d={routeD} fill="none" stroke={LIME} strokeWidth="8" strokeOpacity="0.08" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d={routeD} fill="none" stroke={LIME} strokeWidth="3" strokeOpacity="0.2" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d={routeD} fill="none" stroke={LIME} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <circle cx="28" cy="82" r="4" fill="rgba(182,242,62,0.25)"/>
-      <circle cx="28" cy="82" r="2.5" fill={LIME}/>
-      <text x="8" y="96" fill="#1C2E1C" fontSize="5.5" fontFamily="Hanken Grotesk">Englischer Garten · München</text>
+      <rect width="160" height="100" fill="#050A07"/>
+      {/* Street grid */}
+      {[14, 42, 70, 100, 130, 148].map(x => (
+        <line key={`x${x}`} x1={x} y1="0" x2={x} y2="100" stroke="#0A120B" strokeWidth="2"/>
+      ))}
+      {[18, 44, 57, 68, 80].map(y => (
+        <line key={`y${y}`} x1="0" y1={y} x2="160" y2={y} stroke="#0A120B" strokeWidth="2"/>
+      ))}
+      {/* Route streets (brighter) */}
+      {[29, 57, 82, 116].map(x => (
+        <line key={`rx${x}`} x1={x} y1="0" x2={x} y2="100" stroke="#0E1C0E" strokeWidth="3"/>
+      ))}
+      {[32, 44, 57, 68, 85].map(y => (
+        <line key={`ry${y}`} x1="0" y1={y} x2="160" y2={y} stroke="#0E1C0E" strokeWidth="3"/>
+      ))}
+      {/* Full green route */}
+      <path d={routeD} fill="none" stroke={LIME} strokeWidth="10" strokeOpacity="0.08" strokeLinecap="square" strokeLinejoin="miter"/>
+      <path d={routeD} fill="none" stroke={LIME} strokeWidth="4" strokeOpacity="0.2" strokeLinecap="square" strokeLinejoin="miter"/>
+      <path d={routeD} fill="none" stroke={LIME} strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter"/>
+      <circle cx="29" cy="85" r="4" fill="rgba(182,242,62,0.2)"/>
+      <circle cx="29" cy="85" r="2.5" fill={LIME}/>
+      <text x="6" y="97" fill="#132013" fontSize="5" fontFamily="Hanken Grotesk">Englischer Garten · München</text>
     </svg>
   )
 }
@@ -210,11 +207,26 @@ export default function Community() {
     return BASE_FEED
   })
 
-  const [recipes, setRecipes] = useState(RECIPES)
+  const [recipes, setRecipes] = useState(() => {
+    if (store.recipePost) return [store.recipePost, ...BASE_RECIPES]
+    return BASE_RECIPES
+  })
+
+  // Slowly auto-increment likes on newly shared recipe
+  useEffect(() => {
+    if (!store.recipePost) return
+    const delays = [6000, 13000, 22000, 35000, 52000, 75000]
+    const timers = delays.map(d => setTimeout(() => {
+      setRecipes(prev => prev.map(r => r.isNew ? { ...r, kudos: r.kudos + 1 } : r))
+    }, d))
+    return () => timers.forEach(clearTimeout)
+  }, [])
 
   const toggleKudos = (id) => {
     setFeed(prev => prev.map(item => {
       if (item.id !== id) return item
+      // First like on a freshly shared post jumps to 12
+      if (item.isNew && !item.myKudos) return { ...item, myKudos: true, kudos: 12 }
       return { ...item, myKudos: !item.myKudos, kudos: item.myKudos ? item.kudos - 1 : item.kudos + 1 }
     }))
   }
