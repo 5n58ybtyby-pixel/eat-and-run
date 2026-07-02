@@ -1613,7 +1613,7 @@
   }
   const _ev = document.getElementById('emilyVideo');
   if (_ev) {
-    _ev.addEventListener('loadedmetadata', () => { _ev.currentTime = 1; });
+    _ev.addEventListener('loadedmetadata', () => { _ev.currentTime = 0.001; });
     _ev.addEventListener('ended', () => {
       const btn = document.getElementById('emilyPlayBtn');
       btn.style.opacity = '1';

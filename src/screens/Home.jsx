@@ -315,7 +315,7 @@ export default function Home({ navigate, onStartWorkout }) {
             onClick={onStartWorkout}
             style={{ width: '100%', background: LIME, color: '#07090A', border: 'none', borderRadius: 999, padding: 15, font: "600 15px 'Hanken Grotesk'", cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, animation: 'pulse-glow 2.5s ease-in-out infinite' }}
           >
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#07090A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#07090A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             Workout starten
           </button>
         </div>
