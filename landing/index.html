@@ -367,7 +367,7 @@
       display: flex; flex-direction: column; align-items: center; gap: 18px;
     }
     .emily-action { display: flex; flex-direction: column; align-items: center; gap: 3px; }
-    .emily-action-icon { font-size: 26px; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6)); }
+    .emily-action-icon { display: block; filter: drop-shadow(0 1px 4px rgba(0,0,0,0.7)); }
     .emily-action-count { font-size: 10px; color: rgba(255,255,255,0.95); font-weight: 700; font-family: 'Hanken Grotesk', sans-serif; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
     .emily-video-bottom {
       position: absolute; bottom: 0; left: 0; right: 52px; padding: 60px 14px 16px;
@@ -1079,9 +1079,24 @@
         <!-- Overlay gradient + UI elements -->
         <div class="emily-tiktok-overlay">
           <div class="emily-tiktok-actions">
-            <div class="emily-action"><div class="emily-action-icon">❤️</div><div class="emily-action-count">847K</div></div>
-            <div class="emily-action"><div class="emily-action-icon">💬</div><div class="emily-action-count">12,4K</div></div>
-            <div class="emily-action"><div class="emily-action-icon">↗</div><div class="emily-action-count">Teilen</div></div>
+            <div class="emily-action">
+              <svg class="emily-action-icon" viewBox="0 0 24 24" width="30" height="30" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+              <div class="emily-action-count">6.218</div>
+            </div>
+            <div class="emily-action">
+              <svg class="emily-action-icon" viewBox="0 0 24 24" width="30" height="30" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+              </svg>
+              <div class="emily-action-count">243</div>
+            </div>
+            <div class="emily-action">
+              <svg class="emily-action-icon" viewBox="0 0 24 24" width="30" height="30" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+              </svg>
+              <div class="emily-action-count">512</div>
+            </div>
           </div>
           <div class="emily-video-bottom">
             <div class="emily-video-username">@emily.runs</div>
@@ -1095,27 +1110,6 @@
         </button>
       </div>
 
-      <!-- Profile row below video -->
-      <div class="emily-profile-row">
-        <div class="emily-avatar-circle">EM</div>
-        <div>
-          <div class="emily-profile-name">Emily Hartmann</div>
-          <div class="emily-profile-handle">@emily.runs</div>
-          <div class="emily-profile-badge">✓ Fitness-Influencerin</div>
-        </div>
-      </div>
-
-      <!-- Quote + stats -->
-      <div class="emily-quote-card">
-        <div class="emily-quote-text">"Ich habe buchstäblich <strong>jede Lauf-App getestet</strong>. Eat&Run ist die einzige, die meinen Trainingsplan mit meiner Ernährung verbindet. Seit 8 Wochen laufe ich schneller, erhole mich besser und fühle mich <strong>stärker als je zuvor</strong>."</div>
-        <div class="emily-quote-stats">
-          <div class="emily-qs"><div class="emily-qs-val">8<em>Wo.</em></div><div class="emily-qs-lab">MIT EAT&RUN</div></div>
-          <div class="emily-qsdiv"></div>
-          <div class="emily-qs"><div class="emily-qs-val">–<em>4:20</em></div><div class="emily-qs-lab">10K-BESTZEIT</div></div>
-          <div class="emily-qsdiv"></div>
-          <div class="emily-qs"><div class="emily-qs-val">847<em>K</em></div><div class="emily-qs-lab">FOLLOWER</div></div>
-        </div>
-      </div>
     </div>
 
   </div>
