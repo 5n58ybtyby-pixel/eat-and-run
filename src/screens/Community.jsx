@@ -53,10 +53,105 @@ const BASE_RECIPES = [
     desc: 'Abends vorbereiten, morgens direkt laufen gehen. 45 g Carbs für die erste Stunde.',
     ingredients: ['80 g Haferflocken', '200 ml Hafermilch', '1 EL Erdnussmus', '1 Apfel'],
     nutrients: { kcal: 410, protein: 14, carbs: 62, fat: 9 },
-    aiLabel: 'KI-Analyse',
+    aiLabel: 'KI-Analyse', photo: 'overnightoats',
     kudos: 11, myKudos: false
   },
 ]
+
+// ─── FOOD PHOTOS ──────────────────────────────────────────────────────────────
+
+function MagerquarkPhoto() {
+  return (
+    <svg viewBox="0 0 300 140" style={{ width: '100%', display: 'block' }}>
+      <defs>
+        <radialGradient id="mqBg" cx="50%" cy="50%"><stop offset="0%" stopColor="#1A1508"/><stop offset="100%" stopColor="#0D0A05"/></radialGradient>
+        <radialGradient id="mqBowl" cx="45%" cy="40%"><stop offset="0%" stopColor="#FFFDF8"/><stop offset="100%" stopColor="#E8DDD0"/></radialGradient>
+        <radialGradient id="mqQuark" cx="40%" cy="35%"><stop offset="0%" stopColor="#FFFFFE"/><stop offset="100%" stopColor="#F0EAE0"/></radialGradient>
+      </defs>
+      <rect width="300" height="140" fill="url(#mqBg)"/>
+      {/* bowl shadow */}
+      <ellipse cx="150" cy="88" rx="86" ry="52" fill="rgba(0,0,0,0.5)"/>
+      {/* bowl rim */}
+      <ellipse cx="150" cy="82" rx="84" ry="50" fill="url(#mqBowl)"/>
+      {/* quark */}
+      <ellipse cx="150" cy="80" rx="78" ry="45" fill="url(#mqQuark)"/>
+      {/* blueberries */}
+      {[[126,68,9],[140,61,10],[155,66,9],[168,62,8],[161,74,7],[147,74,8]].map(([x,y,r],i) => (
+        <g key={i}>
+          <circle cx={x} cy={y} r={r} fill="#1A1042"/>
+          <circle cx={x} cy={y} r={r-2} fill="#2E1C6A"/>
+          <circle cx={x-1} cy={y-2} r={r*0.35} fill="rgba(90,70,180,0.4)"/>
+        </g>
+      ))}
+      {/* strawberry */}
+      <path d="M 115,82 Q 109,72 117,68 Q 126,64 128,74 Q 126,84 115,82 Z" fill="#B02030"/>
+      <path d="M 115,82 Q 109,72 117,68 Q 122,66 124,73 Q 122,83 115,82 Z" fill="#D43040"/>
+      {[[115,73],[119,70],[117,77],[121,75]].map(([sx,sy],i) => <ellipse key={i} cx={sx} cy={sy} rx="1" ry="1.4" fill="#8A1820" transform={`rotate(${i*18-18} ${sx} ${sy})`}/>)}
+      {/* banana slices */}
+      <ellipse cx="184" cy="82" rx="13" ry="9" fill="#E8CC30" transform="rotate(-15 184 82)"/>
+      <ellipse cx="184" cy="82" rx="10" ry="7" fill="#F5DC48" transform="rotate(-15 184 82)"/>
+      <ellipse cx="106" cy="89" rx="11" ry="7.5" fill="#E8CC30" transform="rotate(20 106 89)"/>
+      <ellipse cx="106" cy="89" rx="8.5" ry="5.5" fill="#F5DC48" transform="rotate(20 106 89)"/>
+      {/* oats/granola */}
+      {[[136,90,-20],[148,96,10],[160,92,-15],[172,88,25],[130,94,5]].map(([x,y,rot],i) => (
+        <ellipse key={i} cx={x} cy={y} rx="5" ry="2" fill="rgba(185,140,80,0.6)" transform={`rotate(${rot} ${x} ${y})`}/>
+      ))}
+      {/* honey drizzle */}
+      <path d="M 136,78 Q 150,73 162,80 Q 168,85 162,91" fill="none" stroke="#D4A017" strokeWidth="2" strokeOpacity="0.65" strokeLinecap="round"/>
+      {/* KI badge */}
+      <rect x="8" y="8" width="78" height="18" rx="5" fill="rgba(182,242,62,0.12)" stroke="rgba(182,242,62,0.2)" strokeWidth="0.5"/>
+      <text x="14" y="20.5" fill="#B6F23E" fontSize="8.5" fontFamily="Hanken Grotesk" fontWeight="700">📸 KI-ANALYSIERT</text>
+    </svg>
+  )
+}
+
+function OvernightOatsPhoto() {
+  return (
+    <svg viewBox="0 0 300 140" style={{ width: '100%', display: 'block' }}>
+      <defs>
+        <linearGradient id="ooBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#110C07"/><stop offset="100%" stopColor="#0A0806"/></linearGradient>
+        <linearGradient id="ooTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#D4A86C"/><stop offset="100%" stopColor="#B88848"/></linearGradient>
+        <linearGradient id="ooMid" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#C89850"/><stop offset="100%" stopColor="#A07030"/></linearGradient>
+      </defs>
+      <rect width="300" height="140" fill="url(#ooBg)"/>
+      {/* jar shadow */}
+      <ellipse cx="150" cy="134" rx="62" ry="8" fill="rgba(0,0,0,0.5)"/>
+      {/* jar body */}
+      <rect x="90" y="18" width="120" height="112" rx="9" fill="#080604" stroke="#1C1408" strokeWidth="1.5"/>
+      {/* lid */}
+      <rect x="84" y="8" width="132" height="14" rx="5" fill="#1A1208" stroke="#2A1E10" strokeWidth="1"/>
+      <rect x="88" y="11" width="124" height="8" rx="3" fill="#241A0C"/>
+      <rect x="84" y="20" width="132" height="4" rx="1" fill="#120E06"/>
+      {/* bottom oat layer */}
+      <rect x="92" y="100" width="116" height="28" rx="0 0 7 7" fill="#5C3818"/>
+      {/* middle layer */}
+      <rect x="92" y="64" width="116" height="38" fill="url(#ooMid)"/>
+      {/* top layer */}
+      <rect x="92" y="28" width="116" height="38" fill="url(#ooTop)"/>
+      {/* layer divider */}
+      <line x1="92" y1="64" x2="208" y2="64" stroke="rgba(220,195,140,0.4)" strokeWidth="1.5"/>
+      {/* apple chunks */}
+      <ellipse cx="128" cy="42" rx="16" ry="11" fill="#E8D478" transform="rotate(-12 128 42)"/>
+      <ellipse cx="128" cy="42" rx="13" ry="9" fill="#F2E08A" transform="rotate(-12 128 42)"/>
+      <path d="M 115 36 Q 120 30 130 33" fill="none" stroke="rgba(160,50,50,0.45)" strokeWidth="2.5" strokeLinecap="round"/>
+      <ellipse cx="165" cy="40" rx="13" ry="9" fill="#E8D478" transform="rotate(18 165 40)"/>
+      <ellipse cx="165" cy="40" rx="11" ry="7.5" fill="#F2E08A" transform="rotate(18 165 40)"/>
+      <path d="M 158 34 Q 163 28 170 31" fill="none" stroke="rgba(160,50,50,0.35)" strokeWidth="2" strokeLinecap="round"/>
+      {/* oat flakes */}
+      {[[108,52,12],[120,57,5],[135,52,18],[148,57,-8],[155,51,25],[170,54,-15],[182,49,10]].map(([x,y,rot],i) => (
+        <ellipse key={i} cx={x} cy={y} rx="5" ry="2.2" fill="rgba(185,150,90,0.55)" transform={`rotate(${rot} ${x} ${y})`}/>
+      ))}
+      {/* peanut butter drizzle */}
+      <path d="M 94 64 Q 130 59 168 64 Q 185 67 206 64" fill="none" stroke="#8A5818" strokeWidth="3.5" strokeOpacity="0.7" strokeLinecap="round"/>
+      <path d="M 94 64 Q 130 59 168 64 Q 185 67 206 64" fill="none" stroke="#C07A28" strokeWidth="1.5" strokeOpacity="0.5" strokeLinecap="round"/>
+      {/* glass shine */}
+      <rect x="90" y="18" width="14" height="112" rx="9 0 0 9" fill="rgba(255,255,255,0.035)"/>
+      {/* KI badge */}
+      <rect x="8" y="8" width="78" height="18" rx="5" fill="rgba(182,242,62,0.12)" stroke="rgba(182,242,62,0.2)" strokeWidth="0.5"/>
+      <text x="14" y="20.5" fill="#B6F23E" fontSize="8.5" fontFamily="Hanken Grotesk" fontWeight="700">📸 KI-ANALYSIERT</text>
+    </svg>
+  )
+}
 
 // ─── MINI MAP ─────────────────────────────────────────────────────────────────
 
@@ -139,12 +234,15 @@ function RecipeCard({ r, onKudos }) {
           <div style={{ background:'rgba(182,242,62,0.1)', border:'1px solid rgba(182,242,62,0.2)', borderRadius:'8px', padding:'4px 8px', font:"600 10px 'Space Grotesk'", color:LIME }}>Rezept</div>
         </div>
 
-        {/* Photo placeholder */}
-        <div style={{ background:'linear-gradient(135deg,#0A1A08,#061006)', borderRadius:'12px', height:'120px', display:'flex', alignItems:'center', justifyContent:'center', marginBottom:'12px', border:'1px solid #1E2A1E', position:'relative', overflow:'hidden' }}>
-          <div style={{ position:'absolute', inset:0, display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', gap:6 }}>
-            <div style={{ fontSize:40 }}>{r.emoji}</div>
-            <div style={{ font:"600 11px 'Hanken Grotesk'", color:'rgba(182,242,62,0.6)', letterSpacing:'1px' }}>📸 KI-ANALYSIERT</div>
-          </div>
+        {/* Food photo */}
+        <div style={{ borderRadius:'12px', overflow:'hidden', marginBottom:'12px', border:'1px solid #1A2A1A' }}>
+          {r.photo === 'magerquark' ? <MagerquarkPhoto/> :
+           r.photo === 'overnightoats' ? <OvernightOatsPhoto/> : (
+            <div style={{ background:'linear-gradient(135deg,#0A1A08,#061006)', height:'120px', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:6 }}>
+              <div style={{ fontSize:40 }}>{r.emoji}</div>
+              <div style={{ font:"600 11px 'Hanken Grotesk'", color:'rgba(182,242,62,0.6)', letterSpacing:'1px' }}>📸 KI-ANALYSIERT</div>
+            </div>
+          )}
         </div>
 
         <div style={{ font:"700 15px 'Space Grotesk'", color:'#fff', marginBottom:4 }}>{r.title}</div>

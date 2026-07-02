@@ -348,6 +348,7 @@ export default function Nutrition({ navigate }) {
   const [scanResult, setScanResult] = useState(null)
   const [addTarget, setAddTarget] = useState(null)
   const [expandedMeal, setExpandedMeal] = useState(null)
+  const [flashActive, setFlashActive] = useState(false)
 
   const allFoods = Object.values(meals).flat()
   const totalKcal = allFoods.reduce((s, f) => s + f.kcal, 0)
@@ -362,11 +363,19 @@ export default function Nutrition({ navigate }) {
 
   const handleCameraClick = (mealKey) => {
     setAddTarget(mealKey || 'breakfast')
-    setScanState('scanning')
+    setScanState('camera')
+  }
+
+  const handleShutter = () => {
+    setFlashActive(true)
+    setTimeout(() => setFlashActive(false), 220)
     setTimeout(() => {
-      setScanResult({ name: 'Magerquark Bowl', kcal: 312, kh: 28, pro: 38, fett: 4, emoji: '🥛' })
-      setScanState('result')
-    }, 2200)
+      setScanState('scanning')
+      setTimeout(() => {
+        setScanResult({ name: 'Magerquark Bowl', kcal: 312, kh: 28, pro: 38, fett: 4, emoji: '🥛' })
+        setScanState('result')
+      }, 2200)
+    }, 280)
   }
 
   const handleAddFood = () => {
@@ -391,7 +400,7 @@ export default function Nutrition({ navigate }) {
       desc: 'Mein Frühstück nach dem Morgenrun. Einfach, proteinreich, perfekt für die Regeneration.',
       ingredients: ['250 g Magerquark (0,2 %)', '1 Banane', '30 g Haferflocken', '100 g TK-Beeren', '1 TL Honig'],
       nutrients: { kcal: 312, protein: 38, carbs: 28, fat: 4 },
-      aiLabel: 'KI-Analyse',
+      aiLabel: 'KI-Analyse', photo: 'magerquark',
       kudos: 0, myKudos: false, isNew: true
     }
     setScanState('idle')
@@ -405,8 +414,92 @@ export default function Nutrition({ navigate }) {
   return (
     <div style={{ padding: '0 0 8px' }}>
 
+      {/* Camera overlay */}
+      {scanState === 'camera' && (
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 200,
+          display: 'flex', flexDirection: 'column', background: '#000',
+          animation: 'fadeIn 0.15s ease'
+        }}>
+          {/* Flash effect */}
+          {flashActive && (
+            <div style={{ position: 'absolute', inset: 0, background: '#fff', zIndex: 20, opacity: 0.9 }}/>
+          )}
+
+          {/* Top bar */}
+          <div style={{
+            padding: '52px 20px 14px',
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            background: 'rgba(0,0,0,0.8)', flexShrink: 0
+          }}>
+            <button onClick={handleDismissScan} style={{ background: 'none', border: 'none', color: '#fff', fontSize: 22, cursor: 'pointer', lineHeight: 1, padding: '4px 8px' }}>✕</button>
+            <span style={{ font: "600 14px 'Space Grotesk'", color: '#fff', letterSpacing: '0.2px' }}>Mahlzeit fotografieren</span>
+            <div style={{ width: 40 }}/>
+          </div>
+
+          {/* Viewfinder */}
+          <div style={{ flex: 1, position: 'relative', overflow: 'hidden', background: '#050805' }}>
+            {/* Simulated preview */}
+            <div style={{
+              position: 'absolute', inset: 0,
+              background: 'radial-gradient(ellipse at 50% 55%, #1C1409 0%, #0A0806 55%, #040502 100%)'
+            }}/>
+            {/* Subtle food shape hint */}
+            <div style={{
+              position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+              width: 180, height: 90, borderRadius: '50%',
+              background: 'radial-gradient(ellipse, rgba(245,238,225,0.05) 0%, transparent 70%)'
+            }}/>
+            {/* Rule-of-thirds grid */}
+            <div style={{ position: 'absolute', top: 0, left: '33.33%', width: 1, height: '100%', background: 'rgba(255,255,255,0.07)' }}/>
+            <div style={{ position: 'absolute', top: 0, left: '66.66%', width: 1, height: '100%', background: 'rgba(255,255,255,0.07)' }}/>
+            <div style={{ position: 'absolute', top: '33.33%', left: 0, width: '100%', height: 1, background: 'rgba(255,255,255,0.07)' }}/>
+            <div style={{ position: 'absolute', top: '66.66%', left: 0, width: '100%', height: 1, background: 'rgba(255,255,255,0.07)' }}/>
+            {/* Corner brackets */}
+            {[
+              { top: '14%', left: '8%', borderTop: '2.5px solid rgba(255,255,255,0.8)', borderLeft: '2.5px solid rgba(255,255,255,0.8)' },
+              { top: '14%', right: '8%', borderTop: '2.5px solid rgba(255,255,255,0.8)', borderRight: '2.5px solid rgba(255,255,255,0.8)' },
+              { bottom: '14%', left: '8%', borderBottom: '2.5px solid rgba(255,255,255,0.8)', borderLeft: '2.5px solid rgba(255,255,255,0.8)' },
+              { bottom: '14%', right: '8%', borderBottom: '2.5px solid rgba(255,255,255,0.8)', borderRight: '2.5px solid rgba(255,255,255,0.8)' },
+            ].map((s, i) => (
+              <div key={i} style={{ position: 'absolute', width: 30, height: 30, ...s }}/>
+            ))}
+            {/* Scan line animation */}
+            <div style={{
+              position: 'absolute', left: '8%', right: '8%', height: 1.5,
+              background: `linear-gradient(90deg, transparent, ${LIME}, transparent)`,
+              boxShadow: `0 0 8px ${LIME}`,
+              top: '50%', animation: 'scan-line 2s ease-in-out infinite'
+            }}/>
+            <div style={{
+              position: 'absolute', bottom: '8%', left: 0, right: 0,
+              textAlign: 'center', font: "400 12px 'Hanken Grotesk'", color: 'rgba(255,255,255,0.35)'
+            }}>
+              Mahlzeit in den Rahmen positionieren
+            </div>
+          </div>
+
+          {/* Shutter row */}
+          <div style={{
+            padding: '28px 20px 44px',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            background: '#0A0A0A', gap: 40, flexShrink: 0
+          }}>
+            <div style={{ width: 40 }}/>
+            <button onClick={handleShutter} style={{
+              width: 74, height: 74, borderRadius: '50%', background: '#fff',
+              border: '3px solid rgba(255,255,255,0.35)',
+              outline: '2.5px solid rgba(255,255,255,0.6)', outlineOffset: '5px',
+              cursor: 'pointer', flexShrink: 0,
+              boxShadow: '0 0 24px rgba(255,255,255,0.12)'
+            }}/>
+            <div style={{ width: 40 }}/>
+          </div>
+        </div>
+      )}
+
       {/* Scan overlay */}
-      {scanState !== 'idle' && (
+      {(scanState === 'scanning' || scanState === 'result') && (
         <div style={{
           position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)',
           display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',

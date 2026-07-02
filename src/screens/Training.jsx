@@ -525,18 +525,23 @@ function PlanView() {
       )}
 
       <button onClick={() => setWizardOpen(true)} disabled={loading} style={{
-        width:'100%', background: loading ? '#151515' : 'transparent',
-        color: loading ? '#5A5A5A' : LIME,
-        border:`1px solid ${loading ? '#222' : 'rgba(182,242,62,.3)'}`,
-        borderRadius:14, padding:16, font:"600 15px 'Hanken Grotesk'",
+        width:'100%',
+        background: loading ? '#151515' : LIME,
+        color: loading ? '#5A5A5A' : '#07090A',
+        border: loading ? '1px solid #222' : 'none',
+        borderRadius:16, padding:18, font:"700 16px 'Hanken Grotesk'",
         cursor: loading ? 'not-allowed' : 'pointer', transition:'all .2s',
-        display:'flex', alignItems:'center', justifyContent:'center', gap:8
+        display:'flex', alignItems:'center', justifyContent:'center', gap:10,
+        boxShadow: loading ? 'none' : '0 0 28px rgba(182,242,62,0.3)',
+        animation: loading ? 'none' : 'pulse-glow 3s ease-in-out infinite'
       }}>
         {loading ? (
           <><div style={{ width:16, height:16, border:'2px solid #333', borderTop:`2px solid ${LIME}`, borderRadius:'50%', animation:'spin .7s linear infinite' }}/>Berechne…</>
-        ) : <><svg viewBox="0 0 12 12" width="11" height="11" fill="currentColor"><path d="M7 1L2 7h3.5L4 11l6-6.5H6.5z"/></svg> Neuen KI-Plan erstellen</>}
+        ) : (
+          <><svg viewBox="0 0 12 12" width="12" height="12" fill="currentColor"><path d="M7 1L2 7h3.5L4 11l6-6.5H6.5z"/></svg> Neuen KI-Plan erstellen</>
+        )}
       </button>
-      <div style={{ font:"400 12px 'Hanken Grotesk'", color:'#4A4A4A', textAlign:'center', marginTop:8 }}>
+      <div style={{ font:"400 11.5px 'Hanken Grotesk'", color:'#4A4A4A', textAlign:'center', marginTop:8 }}>
         Die KI analysiert dein Level, deine Verfügbarkeit & dein Zielrennen
       </div>
     </div>
