@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eat&Run – Dein KI-Coach für Laufen & Ernährung</title>
-  <meta name="description" content="Der erste Monat kostenlos. KI-Trainingsplan, Kamera-Ernährungstracking, Community. Über 30.000 Bewertungen." />
+  <meta name="description" content="Der erste Monat kostenlos. KI-Trainingsplan, Kamera-Ernährungstracking, Community. Über 1.000 aktive Läufer." />
   <link rel="icon" type="image/png" href="/er-logo.png" />
   <link rel="apple-touch-icon" href="/er-logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -344,26 +344,61 @@
       .athlete-story-content { padding: 28px 24px; }
     }
 
-    .desire-quote {
-      background: linear-gradient(135deg, #0A1800, #060F00);
-      border: 1px solid var(--lime-border); border-radius: 24px;
-      padding: 48px 44px; text-align: center; position: relative;
+    /* Emily TikTok card */
+    .emily-tiktok {
+      background: linear-gradient(135deg, #0A0018, #060010);
+      border: 1px solid rgba(105,60,220,0.35); border-radius: 24px;
+      padding: 40px 44px; position: relative; overflow: hidden;
     }
-    .desire-quote-mark {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 80px; color: var(--lime); line-height: 0.5;
-      margin-bottom: 20px; opacity: 0.4;
+    .emily-tiktok::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(105,60,220,0.08) 0%, transparent 60%);
+      pointer-events: none;
     }
-    .desire-quote p {
-      font-size: clamp(17px, 2.5vw, 22px); color: #ddd;
-      line-height: 1.6; font-style: italic; max-width: 680px; margin: 0 auto 24px;
+    .emily-tiktok-header {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
     }
-    .desire-quote-author {
-      display: flex; align-items: center; gap: 12px; justify-content: center;
+    .emily-avatar {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, #69C, #e040fb, #ff0050);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 800; color: #fff; font-size: 18px;
+      flex-shrink: 0; box-shadow: 0 0 0 2px rgba(224,64,251,0.4);
     }
-    .dqa { width: 40px; height: 40px; border-radius: 50%; background: rgba(182,242,62,0.15); display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--lime); font-size: 14px; }
-    .dqn { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px; }
-    .dqm { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .emily-meta { flex: 1; }
+    .emily-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; color: #fff; }
+    .emily-handle { font-size: 13px; color: rgba(224,64,251,0.8); margin-top: 2px; }
+    .emily-verified { display: inline-flex; align-items: center; gap: 4px; background: rgba(224,64,251,0.12); border: 1px solid rgba(224,64,251,0.25); border-radius: 20px; padding: 3px 10px; font-size: 11px; color: #e040fb; font-weight: 600; letter-spacing: 0.05em; }
+    .emily-tiktok-badge {
+      background: #000; border: 1px solid #333; border-radius: 12px;
+      padding: 6px 14px; font-size: 12px; font-weight: 700;
+      color: #fff; letter-spacing: 0.05em; display: flex; align-items: center; gap: 6px;
+      flex-shrink: 0;
+    }
+    .emily-tiktok-badge span { color: #ff0050; }
+    .emily-video-frame {
+      background: #0a0010; border-radius: 16px; border: 1px solid rgba(105,60,220,0.2);
+      padding: 28px 32px; margin-bottom: 22px; position: relative;
+    }
+    .emily-play-tag {
+      position: absolute; top: 14px; right: 14px;
+      background: rgba(255,0,80,0.15); border: 1px solid rgba(255,0,80,0.3);
+      border-radius: 20px; padding: 4px 12px; font-size: 11px; color: #ff0050; font-weight: 700;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .emily-quote {
+      font-size: clamp(16px, 2.2vw, 21px); color: #eee; line-height: 1.65;
+      font-style: italic; margin: 0;
+    }
+    .emily-quote strong { color: #B6F23E; font-style: normal; }
+    .emily-stats {
+      display: flex; gap: 24px; flex-wrap: wrap;
+    }
+    .emily-stat { text-align: center; }
+    .emily-stat-val { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 22px; color: #fff; }
+    .emily-stat-val span { color: #B6F23E; }
+    .emily-stat-label { font-size: 11px; color: var(--muted); margin-top: 2px; letter-spacing: 0.04em; }
+    .emily-divider { width: 1px; background: rgba(255,255,255,0.08); align-self: stretch; }
 
     /* ─── [C] CONVICTION — SOCIAL PROOF ─── */
     .conviction-section { padding: 110px 20px; }
@@ -547,7 +582,7 @@
     .p-price { font-family: 'Space Grotesk', sans-serif; font-size: 50px; font-weight: 800; letter-spacing: -2px; line-height: 1; }
     .p-cur { font-size: 24px; vertical-align: top; margin-top: 10px; display: inline-block; }
     .p-period { font-size: 14px; color: var(--muted); margin: 6px 0 4px; }
-    .p-original { font-size: 13px; color: #444; text-decoration: line-through; }
+    .p-original { font-size: 13px; color: #888; text-decoration: line-through; }
     .p-save { font-size: 13px; color: var(--lime); font-weight: 600; margin-bottom: 4px; }
     .p-divider { border: none; border-top: 1px solid var(--border); margin: 22px 0; }
     .p-feat {
@@ -789,7 +824,7 @@
     <span class="hero-trust-stars">★★★★★</span>
     <span>4.9 von 5</span>
     <span class="hero-trust-sep"></span>
-    <span>30.000+ Bewertungen im App Store</span>
+    <span>1.000+ aktive Läufer</span>
     <span class="hero-trust-sep"></span>
     <span>Jederzeit kündbar</span>
   </div>
@@ -1024,14 +1059,38 @@
       <img src="/lifestyle-collage.JPG" alt="Eat&Run Lifestyle – trainieren, essen, gewinnen" class="desire-photo-img" />
     </div>
 
-    <div class="desire-quote fade-up">
-      <div class="desire-quote-mark">"</div>
-      <p>Ich dachte, ich mache schon alles richtig. Erst als ich meine Proteine zu tracken begann, habe ich verstanden warum ich nicht abnehme — ich habe viel zu wenig gegessen und mein Körper hat Muskeln abgebaut statt Fett. Mit genug Protein, regelmäßigem Laufen und dem Tracking habe ich –7 kg gemacht und bin heute deutlich fitter und definierter als vorher.</p>
-      <div class="desire-quote-author">
-        <div class="dqa">MI</div>
-        <div>
-          <div class="dqn">Mia, 23</div>
-          <div class="dqm">München · –7 kg in 12 Wochen</div>
+    <div class="emily-tiktok fade-up">
+      <div class="emily-tiktok-header">
+        <div class="emily-avatar">EM</div>
+        <div class="emily-meta">
+          <div class="emily-name">Emily Hartmann</div>
+          <div class="emily-handle">@emily.runs &nbsp;·&nbsp; <span class="emily-verified">✓ Fitness-Influencerin</span></div>
+        </div>
+        <div class="emily-tiktok-badge"><span>♪</span> TikTok</div>
+      </div>
+      <div class="emily-video-frame">
+        <div class="emily-play-tag">▶ VIRAL · 2,4 Mio. Views</div>
+        <p class="emily-quote">"Ich habe buchstäblich <strong>jede Lauf-App getestet</strong>. Eat&Run ist die einzige, die meinen Trainingsplan mit meiner Ernährung verbindet — und mir sagt wann ich was essen soll damit ich bei meinen Läufen <strong>wirklich Energie habe</strong>. Seit 8 Wochen laufe ich schneller, erhole mich besser und fühle mich stärker als je zuvor."</p>
+      </div>
+      <div class="emily-stats">
+        <div class="emily-stat">
+          <div class="emily-stat-val">8<span>Wo.</span></div>
+          <div class="emily-stat-label">MIT EAT&RUN</div>
+        </div>
+        <div class="emily-divider"></div>
+        <div class="emily-stat">
+          <div class="emily-stat-val">–<span>4:20</span></div>
+          <div class="emily-stat-label">10K-BESTZEIT</div>
+        </div>
+        <div class="emily-divider"></div>
+        <div class="emily-stat">
+          <div class="emily-stat-val">2,4<span>M</span></div>
+          <div class="emily-stat-label">TIKTOK VIEWS</div>
+        </div>
+        <div class="emily-divider"></div>
+        <div class="emily-stat">
+          <div class="emily-stat-val">847<span>K</span></div>
+          <div class="emily-stat-label">FOLLOWER</div>
         </div>
       </div>
     </div>
@@ -1051,14 +1110,18 @@
       <div class="rating-big">4.9</div>
       <div class="rating-details">
         <div class="rating-stars">★★★★★</div>
-        <div class="rating-count">30.000+ Bewertungen · App Store Deutschland</div>
+        <div class="rating-count">Einige hundert Bewertungen · App Store &amp; Google Play</div>
         <div class="rating-badges">
           <div class="rating-badge-item">
             <svg width="14" height="14" viewBox="0 0 20 24" fill="none"><path d="M16.4 12.8C16.4 10.1 18.2 8.8 18.3 8.7 17.2 7.1 15.5 6.9 14.9 6.9 13.4 6.8 12 7.8 11.2 7.8 10.4 7.8 9.2 6.9 7.9 6.9 6.3 6.9 4.8 7.9 4 9.4 2.3 12.5 3.6 17.1 5.2 19.7 6 20.9 7 22.4 8.4 22.3 9.7 22.3 10.2 21.5 11.7 21.5 13.2 21.5 13.7 22.3 15.1 22.3 16.5 22.3 17.4 21 18.2 19.8 19.1 18.3 19.5 16.9 19.5 16.8 19.5 16.8 16.4 15.4 16.4 12.8Z" fill="white"/><path d="M13.8 5.1C14.5 4.2 14.9 3 14.7 1.8 13.7 1.9 12.5 2.5 11.7 3.4 11.1 4.2 10.6 5.4 10.8 6.6 11.9 6.7 13.1 6.1 13.8 5.1Z" fill="white"/></svg>
             App Store
           </div>
-          <div class="rating-badge-item">🏆 #1 Fitness-App</div>
-          <div class="rating-badge-item">180.000+ aktive Nutzer</div>
+          <div class="rating-badge-item">
+            <svg width="14" height="14" viewBox="0 0 512 512" fill="none"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l232.6-232.6L47 0zm425.2 225.6l-58.3-33.5-65.4 64.8 65.4 64.8 59-33.5c16.8-9.4 16.8-33.7-.7-62.6zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" fill="white"/></svg>
+            Google Play
+          </div>
+          <div class="rating-badge-item">🏆 #1 Newcomer App</div>
+          <div class="rating-badge-item">1.000+ aktive Läufer</div>
         </div>
       </div>
     </div>
@@ -1438,7 +1501,7 @@
   <div class="final-cta-glow"></div>
   <div class="section-tag" style="display:inline-flex;position:relative;margin-bottom:20px">
     <span class="eyebrow-dot"></span>
-    180.000+ aktive Läufer warten auf dich
+    1.000+ aktive Läufer warten auf dich
   </div>
   <h2>Bereit für dein<br><span class="lime">nächstes Bestzeit?</span></h2>
   <p>Starte heute — kostenlos, ohne Kreditkarte, jederzeit kündbar.</p>
@@ -1456,7 +1519,7 @@
         </div>
         <span class="nav-logo-text">Eat<span>&amp;</span>Run</span>
       </a>
-      <p>Dein KI-Coach für Laufen und Ernährung. Über 180.000 Läufer vertrauen auf Eat&Run.</p>
+      <p>Dein KI-Coach für Laufen und Ernährung. Über 1.000 Läufer vertrauen auf Eat&Run.</p>
     </div>
     <div class="footer-col">
       <h5>Produkt</h5>
