@@ -538,7 +538,7 @@ function PlanView() {
         {loading ? (
           <><div style={{ width:16, height:16, border:'2px solid #333', borderTop:`2px solid ${LIME}`, borderRadius:'50%', animation:'spin .7s linear infinite' }}/>Berechne…</>
         ) : (
-          <><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><rect x="2" y="4" width="12" height="10" rx="1.5" ry="1.5"/><rect x="5" y="2" width="2" height="4" rx="1" ry="1" fill="#07090A"/><rect x="9" y="2" width="2" height="4" rx="1" ry="1" fill="#07090A"/><rect x="4.5" y="8" width="2" height="2" rx="0.5" fill="#07090A" opacity="0.6"/><rect x="7" y="8" width="2" height="2" rx="0.5" fill="#07090A" opacity="0.6"/><rect x="9.5" y="8" width="2" height="2" rx="0.5" fill="#07090A" opacity="0.6"/><rect x="4.5" y="10.5" width="2" height="1.5" rx="0.5" fill="#07090A" opacity="0.4"/><rect x="7" y="10.5" width="2" height="1.5" rx="0.5" fill="#07090A" opacity="0.4"/></svg> Neuen KI-Plan erstellen</>
+          <><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#07090A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Neuen KI-Plan erstellen</>
         )}
       </button>
       <div style={{ font:"400 11.5px 'Hanken Grotesk'", color:'#4A4A4A', textAlign:'center', marginTop:8 }}>

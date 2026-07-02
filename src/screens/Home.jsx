@@ -5,7 +5,7 @@ import { store } from '../store'
 const LIME = '#B6F23E'
 const TOTAL_TIME = 31 * 60
 
-const ROUTE_D = 'M 70,220 L 70,158 Q 70,148 80,148 L 128,148 Q 138,148 138,138 L 138,92 Q 138,82 148,82 L 192,82 Q 202,82 202,92 L 202,105 Q 202,115 212,115 L 272,115 Q 282,115 282,125 L 282,168 Q 282,178 272,178 L 212,178 Q 202,178 202,188 L 202,210 Q 202,220 192,220 L 80,220 Q 70,220 70,210 L 70,220'
+const ROUTE_D = 'M 72,240 C 44,212 38,170 54,124 C 70,80 108,52 160,40 C 210,28 262,46 300,88 C 336,128 326,180 300,214 C 274,244 230,254 182,250 C 138,246 100,256 72,240 Z'
 
 // ─── MUNICH MAP ───────────────────────────────────────────────────────────────
 
@@ -20,7 +20,7 @@ function MunichMap({ elapsed = 0 }) {
   const progress = Math.min(elapsed / TOTAL_TIME, 1)
   const filled = progress * pathLen
 
-  let dotX = 70, dotY = 220
+  let dotX = 72, dotY = 240
   if (pathRef.current && filled > 0) {
     try {
       const pt = pathRef.current.getPointAtLength(Math.min(filled, pathLen - 1))
@@ -30,35 +30,20 @@ function MunichMap({ elapsed = 0 }) {
 
   return (
     <svg viewBox="0 0 390 260" style={{ width: '100%', display: 'block' }}>
-      {/* Dark city background */}
+      {/* Dark background */}
       <rect width="390" height="260" fill="#050A07"/>
-
-      {/* City block fills */}
-      {[[0,0,68,260],[142,0,58,78],[0,0,390,78]].map(([x,y,w,h],i) => (
-        <rect key={i} x={x} y={y} width={w} height={h} fill="#060C08"/>
-      ))}
-
-      {/* Minor streets (neighborhood grid) */}
-      {[32, 100, 170, 244, 322, 360].map(x => (
-        <line key={`mv${x}`} x1={x} y1="0" x2={x} y2="260" stroke="#07100A" strokeWidth="2"/>
-      ))}
-      {[35, 55, 98, 132, 163, 196, 232, 250].map(y => (
-        <line key={`mh${y}`} x1="0" y1={y} x2="390" y2={y} stroke="#07100A" strokeWidth="2"/>
-      ))}
-
-      {/* Major streets (route streets) */}
-      <line x1="70" y1="0" x2="70" y2="260" stroke="#0E1C0E" strokeWidth="5"/>
-      <line x1="138" y1="0" x2="138" y2="260" stroke="#0E1C0E" strokeWidth="5"/>
-      <line x1="202" y1="0" x2="202" y2="260" stroke="#0E1C0E" strokeWidth="5"/>
-      <line x1="282" y1="0" x2="282" y2="260" stroke="#0E1C0E" strokeWidth="5"/>
-      <line x1="0" y1="82" x2="390" y2="82" stroke="#0E1C0E" strokeWidth="5"/>
-      <line x1="0" y1="115" x2="390" y2="115" stroke="#0E1C0E" strokeWidth="5"/>
-      <line x1="0" y1="148" x2="390" y2="148" stroke="#0E1C0E" strokeWidth="5"/>
-      <line x1="0" y1="178" x2="390" y2="178" stroke="#0E1C0E" strokeWidth="5"/>
-      <line x1="0" y1="220" x2="390" y2="220" stroke="#0E1C0E" strokeWidth="5"/>
-
-      {/* Area label */}
-      <text x="84" y="26" fill="#132013" fontSize="8" fontFamily="Hanken Grotesk" fontWeight="600">Englischer Garten · München</text>
+      {/* Park fill */}
+      <ellipse cx="188" cy="142" rx="178" ry="116" fill="#060D08"/>
+      {/* Isar river - right edge blob */}
+      <path d="M 358,0 Q 380,80 370,160 Q 360,220 368,260 L 390,260 L 390,0 Z" fill="rgba(20,50,140,0.16)"/>
+      {/* Streets */}
+      <line x1="0" y1="250" x2="390" y2="250" stroke="#0E1C0E" strokeWidth="7"/>
+      <line x1="0" y1="250" x2="390" y2="250" stroke="#141E14" strokeWidth="2"/>
+      <line x1="72" y1="0" x2="72" y2="260" stroke="#0B160B" strokeWidth="4"/>
+      <line x1="308" y1="0" x2="308" y2="260" stroke="#0B160B" strokeWidth="4"/>
+      <line x1="0" y1="96" x2="390" y2="96" stroke="#0A140A" strokeWidth="3"/>
+      {/* Label */}
+      <text x="110" y="148" fill="#122012" fontSize="9" fontFamily="Hanken Grotesk" fontWeight="600">Englischer Garten</text>
 
       {/* Planned route (dim) */}
       <path d={ROUTE_D} fill="none" stroke="rgba(182,242,62,0.06)" strokeWidth="4"
@@ -79,15 +64,15 @@ function MunichMap({ elapsed = 0 }) {
         style={{ transition: 'stroke-dashoffset 1s linear' }}/>
 
       {/* km markers */}
-      <circle cx="138" cy="148" r="3.5" fill={LIME} opacity="0.5"/>
-      <text x="143" y="145" fill={LIME} fontSize="7.5" fontFamily="Space Grotesk" opacity="0.5">1 km</text>
-      <circle cx="202" cy="82" r="3.5" fill={LIME} opacity="0.5"/>
-      <text x="207" y="79" fill={LIME} fontSize="7.5" fontFamily="Space Grotesk" opacity="0.5">2,5 km</text>
+      <circle cx="50" cy="148" r="3.5" fill={LIME} opacity="0.5"/>
+      <text x="56" y="145" fill={LIME} fontSize="7.5" fontFamily="Space Grotesk" opacity="0.5">1 km</text>
+      <circle cx="212" cy="38" r="3.5" fill={LIME} opacity="0.5"/>
+      <text x="218" y="35" fill={LIME} fontSize="7.5" fontFamily="Space Grotesk" opacity="0.5">2,5 km</text>
 
       {/* Start dot */}
-      <circle cx="70" cy="220" r="8" fill="rgba(182,242,62,0.15)"/>
-      <circle cx="70" cy="220" r="4.5" fill={LIME}/>
-      <text x="75" y="238" fill={LIME} fontSize="7" fontFamily="Space Grotesk" opacity="0.5">START</text>
+      <circle cx="72" cy="240" r="8" fill="rgba(182,242,62,0.15)"/>
+      <circle cx="72" cy="240" r="4.5" fill={LIME}/>
+      <text x="82" y="244" fill={LIME} fontSize="7" fontFamily="Space Grotesk" opacity="0.5">START</text>
 
       {/* GPS dot */}
       {elapsed > 0 && (
@@ -330,7 +315,7 @@ export default function Home({ navigate, onStartWorkout }) {
             onClick={onStartWorkout}
             style={{ width: '100%', background: LIME, color: '#07090A', border: 'none', borderRadius: 999, padding: 15, font: "600 15px 'Hanken Grotesk'", cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, animation: 'pulse-glow 2.5s ease-in-out infinite' }}
           >
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="#07090A"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#07090A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
             Workout starten
           </button>
         </div>

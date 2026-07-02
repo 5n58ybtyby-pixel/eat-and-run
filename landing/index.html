@@ -872,15 +872,15 @@
             <line x1="0" y1="235" x2="185" y2="235" stroke="#0D1A0E" stroke-width="8"/>
             <line x1="0" y1="314" x2="185" y2="314" stroke="#0C170D" stroke-width="6"/>
             <line x1="0" y1="314" x2="92" y2="87" stroke="#0C160D" stroke-width="5"/>
-            <path d="M 58 350 L 58 235 L 92 235 L 92 166 L 143 166 L 143 87 L 92 87 L 92 38 L 72 18"
+            <path d="M 62 335 C 40 305 34 262 48 218 C 62 174 88 148 116 130 C 144 114 152 88 144 62 C 136 38 114 24 90 22 C 66 20 44 36 36 62 C 28 88 40 118 60 140 C 78 162 88 186 86 222 C 84 262 76 312 62 335 Z"
               fill="none" stroke="rgba(182,242,62,0.2)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M 58 350 L 58 235 L 92 235 L 92 166 L 143 166 L 143 87 L 92 87 L 92 38 L 72 18"
+            <path d="M 62 335 C 40 305 34 262 48 218 C 62 174 88 148 116 130 C 144 114 152 88 144 62 C 136 38 114 24 90 22 C 66 20 44 36 36 62 C 28 88 40 118 60 140 C 78 162 88 186 86 222 C 84 262 76 312 62 335 Z"
               fill="none" stroke="#B6F23E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="58" cy="350" r="7" fill="rgba(182,242,62,0.15)"/>
-            <circle cx="58" cy="350" r="3.5" fill="#B6F23E"/>
-            <circle cx="72" cy="18" r="13" fill="rgba(182,242,62,0.1)"/>
-            <circle cx="72" cy="18" r="6.5" fill="rgba(182,242,62,0.35)"/>
-            <circle cx="72" cy="18" r="3.5" fill="#B6F23E"/>
+            <circle cx="62" cy="335" r="7" fill="rgba(182,242,62,0.15)"/>
+            <circle cx="62" cy="335" r="3.5" fill="#B6F23E"/>
+            <circle cx="144" cy="62" r="13" fill="rgba(182,242,62,0.1)"/>
+            <circle cx="144" cy="62" r="6.5" fill="rgba(182,242,62,0.35)"/>
+            <circle cx="144" cy="62" r="3.5" fill="#B6F23E"/>
           </svg>
 
           <!-- Status bar row below Dynamic Island -->
@@ -1613,6 +1613,7 @@
   }
   const _ev = document.getElementById('emilyVideo');
   if (_ev) {
+    _ev.addEventListener('loadedmetadata', () => { _ev.currentTime = 1; });
     _ev.addEventListener('ended', () => {
       const btn = document.getElementById('emilyPlayBtn');
       btn.style.opacity = '1';
