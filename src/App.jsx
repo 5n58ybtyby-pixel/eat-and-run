@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import TabBar from './components/TabBar'
-import Home from './screens/Home'
+import Home, { WorkoutOverlay } from './screens/Home'
 import Training from './screens/Training'
 import Analyse from './screens/Analyse'
 import Nutrition from './screens/Nutrition'
@@ -9,6 +9,7 @@ import Profile from './screens/Profile'
 
 export default function App() {
   const [tab, setTab] = useState('home')
+  const [showWorkout, setShowWorkout] = useState(false)
 
   const screens = {
     home: Home,
@@ -49,9 +50,15 @@ export default function App() {
             animation: 'fadeIn 0.2s ease'
           }}
         >
-          <Screen navigate={setTab} />
+          <Screen navigate={setTab} onStartWorkout={() => setShowWorkout(true)} />
         </div>
         <TabBar active={tab} onChange={setTab} />
+        {showWorkout && (
+          <WorkoutOverlay
+            navigate={setTab}
+            onClose={() => setShowWorkout(false)}
+          />
+        )}
       </div>
     </div>
   )

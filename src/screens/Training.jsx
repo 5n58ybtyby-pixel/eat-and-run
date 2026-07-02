@@ -529,7 +529,7 @@ function PlanView() {
         background: loading ? '#151515' : LIME,
         color: loading ? '#5A5A5A' : '#07090A',
         border: loading ? '1px solid #222' : 'none',
-        borderRadius:16, padding:18, font:"700 16px 'Hanken Grotesk'",
+        borderRadius:999, padding:18, font:"700 16px 'Hanken Grotesk'",
         cursor: loading ? 'not-allowed' : 'pointer', transition:'all .2s',
         display:'flex', alignItems:'center', justifyContent:'center', gap:10,
         boxShadow: loading ? 'none' : '0 0 28px rgba(182,242,62,0.3)',

@@ -345,63 +345,31 @@
     }
 
     /* Emily TikTok Video */
-    .emily-section { display: flex; flex-direction: column; align-items: center; gap: 40px; }
+    .emily-section { display: flex; flex-direction: column; align-items: center; gap: 28px; }
     .emily-section-title {
       font-family: 'Space Grotesk', sans-serif; font-weight: 700;
       font-size: clamp(20px, 3vw, 26px); color: #fff;
       text-align: center; letter-spacing: -0.4px; max-width: 520px; line-height: 1.3;
     }
     .emily-section-title span { color: #B6F23E; }
-    .emily-layout { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; justify-content: center; }
-    /* Phone mockup frame */
-    .emily-phone-wrap { position: relative; flex-shrink: 0; }
-    .emily-phone-glow {
-      position: absolute; inset: -30px; border-radius: 60px;
-      background: radial-gradient(ellipse at 50% 50%, rgba(255,0,80,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .emily-phone-frame {
-      position: relative; width: 256px;
-      background: #111; border-radius: 46px;
-      padding: 14px 9px 20px;
-      box-shadow:
-        inset 0 0 0 1.5px rgba(255,255,255,0.12),
-        0 50px 100px rgba(0,0,0,0.9),
-        0 0 60px rgba(255,0,80,0.06);
-    }
-    /* Dynamic island */
-    .emily-notch {
-      width: 88px; height: 10px; background: #000; border-radius: 8px;
-      margin: 0 auto 10px; position: relative; z-index: 2;
-    }
-    /* Volume / power buttons via pseudo */
-    .emily-phone-frame::before {
-      content: ''; position: absolute; left: -3px; top: 88px;
-      width: 3px; height: 30px; border-radius: 2px 0 0 2px;
-      background: rgba(255,255,255,0.1);
-      box-shadow: 0 42px 0 rgba(255,255,255,0.1);
-    }
-    .emily-phone-frame::after {
-      content: ''; position: absolute; right: -3px; top: 110px;
-      width: 3px; height: 44px; border-radius: 0 2px 2px 0;
-      background: rgba(255,255,255,0.1);
-    }
+    /* Green-tinted video card (like athlete story, portrait format) */
     .emily-tiktok-card {
-      position: relative; width: 100%; aspect-ratio: 9/16;
-      border-radius: 34px; overflow: hidden; cursor: pointer;
-      background: #000;
+      position: relative;
+      width: 100%; max-width: 340px;
+      aspect-ratio: 9/16;
+      border-radius: 24px; overflow: hidden; cursor: pointer;
+      background: linear-gradient(135deg, #0A1800, #060F00);
+      border: 1px solid rgba(182,242,62,0.2);
+      box-shadow:
+        0 0 0 4px rgba(182,242,62,0.04),
+        0 0 60px rgba(182,242,62,0.08),
+        0 30px 80px rgba(0,0,0,0.6);
     }
     .emily-tiktok-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    /* Home indicator */
-    .emily-home-indicator {
-      width: 100px; height: 4px; background: rgba(255,255,255,0.2); border-radius: 4px;
-      margin: 10px auto 0;
-    }
     .emily-tiktok-overlay {
       position: absolute; inset: 0; pointer-events: none;
       background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, transparent 30%, transparent 55%, rgba(0,0,0,0.8) 100%);
     }
-    /* Top bar inside video */
     .emily-video-topbar {
       position: absolute; top: 12px; left: 0; right: 0;
       display: flex; justify-content: center;
@@ -410,13 +378,12 @@
       text-shadow: 0 1px 4px rgba(0,0,0,0.5);
     }
     .emily-tiktok-actions {
-      position: absolute; right: 8px; bottom: 80px;
+      position: absolute; right: 10px; bottom: 80px;
       display: flex; flex-direction: column; align-items: center; gap: 16px;
     }
     .emily-action { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-    /* Profile avatar inside video */
     .emily-action-avatar {
-      width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+      width: 38px; height: 38px; border-radius: 50%;
       background: linear-gradient(135deg, #ff0050, #e040fb);
       display: flex; align-items: center; justify-content: center;
       font-family: 'Space Grotesk', sans-serif; font-weight: 800; color: #fff; font-size: 13px;
@@ -425,52 +392,19 @@
     .emily-action-icon { display: block; filter: drop-shadow(0 1px 4px rgba(0,0,0,0.7)); }
     .emily-action-count { font-size: 10px; color: rgba(255,255,255,0.95); font-weight: 700; font-family: 'Hanken Grotesk', sans-serif; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
     .emily-video-bottom {
-      position: absolute; bottom: 0; left: 0; right: 56px; padding: 50px 12px 14px;
+      position: absolute; bottom: 0; left: 0; right: 56px; padding: 50px 14px 18px;
     }
     .emily-video-username { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 13px; color: #fff; margin-bottom: 4px; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
     .emily-video-caption { font-size: 10.5px; color: rgba(255,255,255,0.9); line-height: 1.4; margin-bottom: 5px; text-shadow: 0 1px 3px rgba(0,0,0,0.7); }
     .emily-video-music { font-size: 9.5px; color: rgba(255,255,255,0.5); }
     .emily-play-btn {
       position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: 60px; height: 60px; border-radius: 50%; border: none;
+      width: 60px; height: 60px; border-radius: 50%;
       background: rgba(0,0,0,0.45); border: 2px solid rgba(255,255,255,0.5);
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; transition: all 0.2s; backdrop-filter: blur(8px);
     }
-    .emily-play-btn:hover { background: rgba(255,0,80,0.5); border-color: #ff0050; }
-    /* Right side info panel */
-    .emily-info { display: flex; flex-direction: column; gap: 20px; max-width: 320px; }
-    .emily-profile-row { display: flex; align-items: center; gap: 12px; }
-    .emily-avatar-circle {
-      width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
-      background: linear-gradient(135deg, #ff0050, #e040fb);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Space Grotesk', sans-serif; font-weight: 800; color: #fff; font-size: 16px;
-      box-shadow: 0 0 0 2px #111, 0 0 0 4px rgba(255,0,80,0.3);
-    }
-    .emily-profile-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: #fff; }
-    .emily-profile-handle { font-size: 12px; color: rgba(255, 80, 120, 0.85); margin-top: 2px; }
-    .emily-follower-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,0,80,0.08); border: 1px solid rgba(255,0,80,0.2); border-radius: 20px; padding: 3px 10px; font-size: 10px; color: rgba(255,100,140,0.9); font-weight: 600; margin-top: 5px; }
-    .emily-quote-card {
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px; padding: 18px 20px;
-      position: relative;
-    }
-    .emily-quote-card::before {
-      content: '"'; position: absolute; top: 10px; left: 16px;
-      font-size: 52px; line-height: 1; color: rgba(182,242,62,0.15);
-      font-family: Georgia, serif; pointer-events: none;
-    }
-    .emily-quote-text { font-size: clamp(13px, 1.8vw, 15px); color: #ccc; line-height: 1.7; padding-top: 12px; }
-    .emily-quote-text strong { color: #B6F23E; font-style: normal; font-weight: 600; }
-    .emily-tiktok-stats {
-      display: flex; gap: 0; border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px; overflow: hidden;
-    }
-    .emily-stat { flex: 1; padding: 12px 8px; text-align: center; background: rgba(255,255,255,0.02); }
-    .emily-stat:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.08); }
-    .emily-stat-val { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 16px; color: #fff; }
-    .emily-stat-lab { font-size: 9px; color: var(--muted); margin-top: 2px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .emily-play-btn:hover { background: rgba(182,242,62,0.25); border-color: rgba(182,242,62,0.7); }
 
     /* ─── [C] CONVICTION — SOCIAL PROOF ─── */
     .conviction-section { padding: 110px 20px; }
@@ -1132,103 +1066,50 @@
     </div>
 
     <div class="emily-section fade-up">
-      <!-- Title -->
       <h3 class="emily-section-title">Was <span>@emi</span> über uns sagt</h3>
 
-      <div class="emily-layout">
-        <!-- Phone mockup frame -->
-        <div class="emily-phone-wrap">
-          <div class="emily-phone-glow"></div>
-          <div class="emily-phone-frame">
-            <div class="emily-notch"></div>
-            <!-- TikTok-style video card -->
-            <div class="emily-tiktok-card" onclick="toggleEmilyVideo()">
-              <video
-                id="emilyVideo"
-                src="/emily-tiktok.mp4"
-                playsinline
-                webkit-playsinline
-                preload="metadata"
-              ></video>
-              <!-- Overlay gradient + UI elements -->
-              <div class="emily-tiktok-overlay"></div>
-              <div class="emily-video-topbar">Folge ich</div>
-              <div class="emily-tiktok-actions">
-                <!-- Profile avatar -->
-                <div class="emily-action">
-                  <div class="emily-action-avatar">E</div>
-                </div>
-                <!-- Heart -->
-                <div class="emily-action">
-                  <svg class="emily-action-icon" viewBox="0 0 24 24" width="28" height="28" fill="white">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                  </svg>
-                  <div class="emily-action-count">6.218</div>
-                </div>
-                <!-- Comment -->
-                <div class="emily-action">
-                  <svg class="emily-action-icon" viewBox="0 0 24 24" width="28" height="28" fill="white">
-                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
-                  </svg>
-                  <div class="emily-action-count">243</div>
-                </div>
-                <!-- Share -->
-                <div class="emily-action">
-                  <svg class="emily-action-icon" viewBox="0 0 24 24" width="28" height="28" fill="white">
-                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
-                  </svg>
-                  <div class="emily-action-count">512</div>
-                </div>
-              </div>
-              <div class="emily-video-bottom">
-                <div class="emily-video-username">@emi</div>
-                <div class="emily-video-caption">Ich habe wirklich JEDE Lauf-App getestet… diese ist anders 🏃‍♀️ #eatandrun</div>
-                <div class="emily-video-music">♪ Original Sound · emi</div>
-              </div>
-              <!-- Play/Pause button -->
-              <button class="emily-play-btn" id="emilyPlayBtn">
-                <svg viewBox="0 0 24 24" width="26" height="26" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
-              </button>
-            </div>
-            <div class="emily-home-indicator"></div>
+      <!-- Clean green-tinted video card, no phone frame -->
+      <div class="emily-tiktok-card" onclick="toggleEmilyVideo()">
+        <video
+          id="emilyVideo"
+          src="/emily-tiktok.mp4"
+          playsinline
+          webkit-playsinline
+          preload="metadata"
+        ></video>
+        <div class="emily-tiktok-overlay"></div>
+        <div class="emily-video-topbar">Folge ich</div>
+        <div class="emily-tiktok-actions">
+          <div class="emily-action">
+            <div class="emily-action-avatar">E</div>
+          </div>
+          <div class="emily-action">
+            <svg class="emily-action-icon" viewBox="0 0 24 24" width="28" height="28" fill="white">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <div class="emily-action-count">6.218</div>
+          </div>
+          <div class="emily-action">
+            <svg class="emily-action-icon" viewBox="0 0 24 24" width="28" height="28" fill="white">
+              <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+            </svg>
+            <div class="emily-action-count">243</div>
+          </div>
+          <div class="emily-action">
+            <svg class="emily-action-icon" viewBox="0 0 24 24" width="28" height="28" fill="white">
+              <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+            </svg>
+            <div class="emily-action-count">512</div>
           </div>
         </div>
-
-        <!-- Info panel beside the phone -->
-        <div class="emily-info">
-          <div class="emily-profile-row">
-            <div class="emily-avatar-circle">E</div>
-            <div>
-              <div class="emily-profile-name">Emily</div>
-              <div class="emily-profile-handle">@emi · TikTok</div>
-              <div class="emily-follower-badge">
-                <svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
-                Fitness-Influencerin
-              </div>
-            </div>
-          </div>
-
-          <div class="emily-quote-card">
-            <div class="emily-quote-text">
-              „Ich habe wirklich jede Lauf-App durchprobiert. Eat&Run ist die erste, die <strong>Ernährung und Training wirklich zusammendenkt</strong>. Meine 10k-Zeit hat sich in 8 Wochen um 4 Minuten verbessert."
-            </div>
-          </div>
-
-          <div class="emily-tiktok-stats">
-            <div class="emily-stat">
-              <div class="emily-stat-val">6.218</div>
-              <div class="emily-stat-lab">Likes</div>
-            </div>
-            <div class="emily-stat">
-              <div class="emily-stat-val">243</div>
-              <div class="emily-stat-lab">Kommentare</div>
-            </div>
-            <div class="emily-stat">
-              <div class="emily-stat-val">512</div>
-              <div class="emily-stat-lab">Geteilt</div>
-            </div>
-          </div>
+        <div class="emily-video-bottom">
+          <div class="emily-video-username">@emi</div>
+          <div class="emily-video-caption">Ich habe wirklich JEDE Lauf-App getestet… diese ist anders 🏃‍♀️ #eatandrun</div>
+          <div class="emily-video-music">♪ Original Sound · emi</div>
         </div>
+        <button class="emily-play-btn" id="emilyPlayBtn">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+        </button>
       </div>
 
     </div>

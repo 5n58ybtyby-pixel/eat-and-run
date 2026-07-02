@@ -5,7 +5,7 @@ import { store } from '../store'
 const LIME = '#B6F23E'
 const TOTAL_TIME = 31 * 60
 
-const ROUTE_D = 'M 70,220 L 70,148 L 138,148 L 138,82 L 202,82 L 202,115 L 282,115 L 282,178 L 202,178 L 202,220 L 138,220 L 70,220'
+const ROUTE_D = 'M 70,220 L 70,158 Q 70,148 80,148 L 128,148 Q 138,148 138,138 L 138,92 Q 138,82 148,82 L 192,82 Q 202,82 202,92 L 202,105 Q 202,115 212,115 L 272,115 Q 282,115 282,125 L 282,168 Q 282,178 272,178 L 212,178 Q 202,178 202,188 L 202,210 Q 202,220 192,220 L 80,220 Q 70,220 70,210 L 70,220'
 
 // ─── MUNICH MAP ───────────────────────────────────────────────────────────────
 
@@ -62,19 +62,19 @@ function MunichMap({ elapsed = 0 }) {
 
       {/* Planned route (dim) */}
       <path d={ROUTE_D} fill="none" stroke="rgba(182,242,62,0.06)" strokeWidth="4"
-        strokeLinecap="square" strokeLinejoin="miter"/>
+        strokeLinecap="round" strokeLinejoin="round"/>
 
       {/* Filled route - glow layers */}
       <path d={ROUTE_D} fill="none" stroke={LIME} strokeWidth="16" strokeOpacity="0.07"
-        strokeLinecap="square" strokeLinejoin="miter"
+        strokeLinecap="round" strokeLinejoin="round"
         strokeDasharray={pathLen} strokeDashoffset={pathLen - filled}
         style={{ transition: 'stroke-dashoffset 1s linear' }}/>
       <path d={ROUTE_D} fill="none" stroke={LIME} strokeWidth="7" strokeOpacity="0.2"
-        strokeLinecap="square" strokeLinejoin="miter"
+        strokeLinecap="round" strokeLinejoin="round"
         strokeDasharray={pathLen} strokeDashoffset={pathLen - filled}
         style={{ transition: 'stroke-dashoffset 1s linear' }}/>
       <path ref={pathRef} d={ROUTE_D} fill="none" stroke={LIME} strokeWidth="3"
-        strokeLinecap="square" strokeLinejoin="miter"
+        strokeLinecap="round" strokeLinejoin="round"
         strokeDasharray={pathLen} strokeDashoffset={pathLen - filled}
         style={{ transition: 'stroke-dashoffset 1s linear' }}/>
 
@@ -106,7 +106,7 @@ function MunichMap({ elapsed = 0 }) {
 
 // ─── WORKOUT OVERLAY ──────────────────────────────────────────────────────────
 
-function WorkoutOverlay({ onClose, navigate }) {
+export function WorkoutOverlay({ onClose, navigate }) {
   const [phase, setPhase] = useState('countdown')
   const [count, setCount] = useState(5)
   const [animKey, setAnimKey] = useState(0)
@@ -262,8 +262,7 @@ function StatCard({ label, value, unit, color }) {
 
 // ─── HOME SCREEN ──────────────────────────────────────────────────────────────
 
-export default function Home({ navigate }) {
-  const [showWorkout, setShowWorkout] = useState(false)
+export default function Home({ navigate, onStartWorkout }) {
   const hour = new Date().getHours()
   const greeting = hour < 12 ? 'Guten Morgen' : hour < 17 ? 'Guten Tag' : 'Guten Abend'
 
@@ -275,7 +274,6 @@ export default function Home({ navigate }) {
 
   return (
     <div style={{ padding: '0 0 8px' }}>
-      {showWorkout && <WorkoutOverlay onClose={() => setShowWorkout(false)} navigate={navigate}/>}
 
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '56px 20px 16px' }}>
@@ -329,8 +327,8 @@ export default function Home({ navigate }) {
             ))}
           </div>
           <button
-            onClick={() => setShowWorkout(true)}
-            style={{ width: '100%', background: LIME, color: '#07090A', border: 'none', borderRadius: 16, padding: 15, font: "600 15px 'Hanken Grotesk'", cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, animation: 'pulse-glow 2.5s ease-in-out infinite' }}
+            onClick={onStartWorkout}
+            style={{ width: '100%', background: LIME, color: '#07090A', border: 'none', borderRadius: 999, padding: 15, font: "600 15px 'Hanken Grotesk'", cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, animation: 'pulse-glow 2.5s ease-in-out infinite' }}
           >
             <svg viewBox="0 0 24 24" width="16" height="16" fill="#07090A"><polygon points="5,3 19,12 5,21"/></svg>
             Workout starten

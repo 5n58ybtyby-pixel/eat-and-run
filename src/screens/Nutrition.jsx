@@ -778,7 +778,7 @@ export default function Nutrition({ navigate }) {
               onClick={() => handleCameraClick('snacks')}
               style={{
                 width: '100%', background: LIME, color: '#07090A',
-                border: 'none', borderRadius: '16px', padding: '18px',
+                border: 'none', borderRadius: '999px', padding: '18px',
                 font: "700 16px 'Hanken Grotesk'", cursor: 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
                 boxShadow: '0 0 28px rgba(182,242,62,0.3)',

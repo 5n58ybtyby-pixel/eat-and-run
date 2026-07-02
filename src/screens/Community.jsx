@@ -72,7 +72,7 @@ function FoodPhoto({ src, label }) {
 // ─── MINI MAP ─────────────────────────────────────────────────────────────────
 
 function MiniMap() {
-  const routeD = 'M 29,85 L 29,57 L 57,57 L 57,32 L 82,32 L 82,44 L 116,44 L 116,68 L 82,68 L 82,85 L 57,85 L 29,85'
+  const routeD = 'M 29,85 L 29,61 Q 29,57 33,57 L 53,57 Q 57,57 57,53 L 57,36 Q 57,32 61,32 L 78,32 Q 82,32 82,36 L 82,40 Q 82,44 86,44 L 112,44 Q 116,44 116,48 L 116,64 Q 116,68 112,68 L 86,68 Q 82,68 82,72 L 82,81 Q 82,85 78,85 L 29,85'
   return (
     <svg viewBox="0 0 160 100" style={{ width:'100%', display:'block' }}>
       <rect width="160" height="100" fill="#050A07"/>
@@ -91,9 +91,9 @@ function MiniMap() {
         <line key={`ry${y}`} x1="0" y1={y} x2="160" y2={y} stroke="#0E1C0E" strokeWidth="3"/>
       ))}
       {/* Full green route */}
-      <path d={routeD} fill="none" stroke={LIME} strokeWidth="10" strokeOpacity="0.08" strokeLinecap="square" strokeLinejoin="miter"/>
-      <path d={routeD} fill="none" stroke={LIME} strokeWidth="4" strokeOpacity="0.2" strokeLinecap="square" strokeLinejoin="miter"/>
-      <path d={routeD} fill="none" stroke={LIME} strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter"/>
+      <path d={routeD} fill="none" stroke={LIME} strokeWidth="10" strokeOpacity="0.08" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d={routeD} fill="none" stroke={LIME} strokeWidth="4" strokeOpacity="0.2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d={routeD} fill="none" stroke={LIME} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
       <circle cx="29" cy="85" r="4" fill="rgba(182,242,62,0.2)"/>
       <circle cx="29" cy="85" r="2.5" fill={LIME}/>
       <text x="6" y="97" fill="#132013" fontSize="5" fontFamily="Hanken Grotesk">Englischer Garten · München</text>
