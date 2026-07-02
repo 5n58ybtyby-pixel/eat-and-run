@@ -330,7 +330,7 @@ export default function Home({ navigate }) {
           </div>
           <button
             onClick={() => setShowWorkout(true)}
-            style={{ width: '100%', background: LIME, color: '#07090A', border: 'none', borderRadius: 999, padding: 15, font: "600 15px 'Hanken Grotesk'", cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, animation: 'pulse-glow 2.5s ease-in-out infinite' }}
+            style={{ width: '100%', background: LIME, color: '#07090A', border: 'none', borderRadius: 16, padding: 15, font: "600 15px 'Hanken Grotesk'", cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, animation: 'pulse-glow 2.5s ease-in-out infinite' }}
           >
             <svg viewBox="0 0 24 24" width="16" height="16" fill="#07090A"><polygon points="5,3 19,12 5,21"/></svg>
             Workout starten

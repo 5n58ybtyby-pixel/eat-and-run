@@ -438,42 +438,37 @@ export default function Nutrition({ navigate }) {
           </div>
 
           {/* Viewfinder */}
-          <div style={{ flex: 1, position: 'relative', overflow: 'hidden', background: '#050805' }}>
-            {/* Simulated preview */}
-            <div style={{
-              position: 'absolute', inset: 0,
-              background: 'radial-gradient(ellipse at 50% 55%, #1C1409 0%, #0A0806 55%, #040502 100%)'
-            }}/>
-            {/* Subtle food shape hint */}
-            <div style={{
-              position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-              width: 180, height: 90, borderRadius: '50%',
-              background: 'radial-gradient(ellipse, rgba(245,238,225,0.05) 0%, transparent 70%)'
+          <div style={{ flex: 1, position: 'relative', overflow: 'hidden', background: '#000' }}>
+            {/* Real food photo as camera preview */}
+            <img src="/magerquark-bowl.png" alt="" style={{
+              position: 'absolute', inset: 0, width: '100%', height: '100%',
+              objectFit: 'cover', objectPosition: 'center'
             }}/>
             {/* Rule-of-thirds grid */}
-            <div style={{ position: 'absolute', top: 0, left: '33.33%', width: 1, height: '100%', background: 'rgba(255,255,255,0.07)' }}/>
-            <div style={{ position: 'absolute', top: 0, left: '66.66%', width: 1, height: '100%', background: 'rgba(255,255,255,0.07)' }}/>
-            <div style={{ position: 'absolute', top: '33.33%', left: 0, width: '100%', height: 1, background: 'rgba(255,255,255,0.07)' }}/>
-            <div style={{ position: 'absolute', top: '66.66%', left: 0, width: '100%', height: 1, background: 'rgba(255,255,255,0.07)' }}/>
+            <div style={{ position: 'absolute', top: 0, left: '33.33%', width: 1, height: '100%', background: 'rgba(255,255,255,0.12)' }}/>
+            <div style={{ position: 'absolute', top: 0, left: '66.66%', width: 1, height: '100%', background: 'rgba(255,255,255,0.12)' }}/>
+            <div style={{ position: 'absolute', top: '33.33%', left: 0, width: '100%', height: 1, background: 'rgba(255,255,255,0.12)' }}/>
+            <div style={{ position: 'absolute', top: '66.66%', left: 0, width: '100%', height: 1, background: 'rgba(255,255,255,0.12)' }}/>
             {/* Corner brackets */}
             {[
-              { top: '14%', left: '8%', borderTop: '2.5px solid rgba(255,255,255,0.8)', borderLeft: '2.5px solid rgba(255,255,255,0.8)' },
-              { top: '14%', right: '8%', borderTop: '2.5px solid rgba(255,255,255,0.8)', borderRight: '2.5px solid rgba(255,255,255,0.8)' },
-              { bottom: '14%', left: '8%', borderBottom: '2.5px solid rgba(255,255,255,0.8)', borderLeft: '2.5px solid rgba(255,255,255,0.8)' },
-              { bottom: '14%', right: '8%', borderBottom: '2.5px solid rgba(255,255,255,0.8)', borderRight: '2.5px solid rgba(255,255,255,0.8)' },
+              { top: '14%', left: '8%', borderTop: '2.5px solid rgba(255,255,255,0.9)', borderLeft: '2.5px solid rgba(255,255,255,0.9)' },
+              { top: '14%', right: '8%', borderTop: '2.5px solid rgba(255,255,255,0.9)', borderRight: '2.5px solid rgba(255,255,255,0.9)' },
+              { bottom: '14%', left: '8%', borderBottom: '2.5px solid rgba(255,255,255,0.9)', borderLeft: '2.5px solid rgba(255,255,255,0.9)' },
+              { bottom: '14%', right: '8%', borderBottom: '2.5px solid rgba(255,255,255,0.9)', borderRight: '2.5px solid rgba(255,255,255,0.9)' },
             ].map((s, i) => (
               <div key={i} style={{ position: 'absolute', width: 30, height: 30, ...s }}/>
             ))}
-            {/* Scan line animation */}
+            {/* Focus indicator */}
             <div style={{
-              position: 'absolute', left: '8%', right: '8%', height: 1.5,
-              background: `linear-gradient(90deg, transparent, ${LIME}, transparent)`,
-              boxShadow: `0 0 8px ${LIME}`,
-              top: '50%', animation: 'scan-line 2s ease-in-out infinite'
+              position: 'absolute', top: '50%', left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: 70, height: 70, borderRadius: '50%',
+              border: `2px solid ${LIME}`, boxShadow: `0 0 12px ${LIME}40`
             }}/>
             <div style={{
               position: 'absolute', bottom: '8%', left: 0, right: 0,
-              textAlign: 'center', font: "400 12px 'Hanken Grotesk'", color: 'rgba(255,255,255,0.35)'
+              textAlign: 'center', font: "400 12px 'Hanken Grotesk'",
+              color: 'rgba(255,255,255,0.7)', textShadow: '0 1px 4px rgba(0,0,0,0.8)'
             }}>
               Mahlzeit in den Rahmen positionieren
             </div>
@@ -511,6 +506,8 @@ export default function Nutrition({ navigate }) {
                 width: 240, height: 240, border: `2px solid ${LIME}`, borderRadius: '24px',
                 position: 'relative', margin: '0 auto 24px', overflow: 'hidden', background: '#0A0A0A'
               }}>
+                <img src="/magerquark-bowl.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', opacity: 0.75 }}/>
+                <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.2)' }}/>
                 {[['0','0','right','bottom'],['auto','0','left','bottom'],['0','auto','right','top'],['auto','auto','left','top']].map(([t,b,r,l], i) => (
                   <div key={i} style={{
                     position: 'absolute',
