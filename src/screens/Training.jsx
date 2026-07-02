@@ -18,11 +18,11 @@ const intensityColors = {
 }
 
 const WEEK_DAYS = [
-  { day: 'Mo', type: 'Intervalle',      detail: '6 × 800 m',             intensity: 'high', km: '8,4' },
+  { day: 'Mo', type: '5km Zone 2',      detail: '5 km lockeres Tempo',    intensity: 'low',  km: '5,0' },
   { day: 'Di', type: 'Easy Run',        detail: 'Lockeres Tempo',         intensity: 'low',  km: '7,0' },
   { day: 'Mi', type: 'Ruhe',            detail: 'Dehnen & Mobili.',       intensity: 'rest', km: '—'   },
   { day: 'Do', type: 'Tempo',           detail: '3 km @ Renntempo',       intensity: 'med',  km: '6,0' },
-  { day: 'Fr', type: 'Gesprächstempo',  detail: '5 km lockeres Tempo',    intensity: 'low',  km: '5,0', startable: true },
+  { day: 'Fr', type: 'Gesprächstempo',  detail: '5 km lockeres Tempo',    intensity: 'low',  km: '5,0' },
   { day: 'Sa', type: 'Langer Lauf',    detail: 'Aerobe Basis',           intensity: 'med',  km: '14,0'},
   { day: 'So', type: 'Ruhe',           detail: 'Ruhetag',                intensity: 'rest', km: '—'   },
 ]
@@ -406,7 +406,7 @@ function WorkoutView({ navigate, onClose }) {
 
 // ─── PLAN VIEW ────────────────────────────────────────────────────────────────
 
-function PlanView({ onStartWorkout }) {
+function PlanView() {
   const [loading, setLoading]     = useState(false)
   const [planReady, setPlanReady] = useState(true)
   const [stepIndex, setStepIndex] = useState(0)
@@ -491,49 +491,27 @@ function PlanView({ onStartWorkout }) {
             })}
           </div>
 
-          {/* Day detail / startable */}
-          {WEEK_DAYS[selectedDay]?.startable ? (
-            <div style={{ background:'rgba(182,242,62,0.05)', border:'1px solid rgba(182,242,62,0.2)', borderRadius:18, overflow:'hidden', marginBottom:14 }}>
-              <div style={{ padding:'16px', borderBottom:'1px solid rgba(182,242,62,0.1)' }}>
-                <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between' }}>
-                  <div>
-                    <div style={{ font:"600 15px 'Hanken Grotesk'", color:LIME }}>Gesprächstempo · Fr</div>
-                    <div style={{ font:"400 12px 'Hanken Grotesk'", color:'#6A6A6A', marginTop:2 }}>5 km lockeres Tempo · ~31 Min.</div>
+          {/* Day detail list */}
+          <div style={{ background:'#0D0D0D', border:'1px solid #1E1E1E', borderRadius:18, overflow:'hidden', marginBottom:14 }}>
+            {WEEK_DAYS.map((day, i) => {
+              const dc = intensityColors[day.intensity]
+              const sel = i===selectedDay
+              return (
+                <div key={i} onClick={() => setSelectedDay(i)} style={{ display:'flex', alignItems:'center', gap:14, padding:'13px 16px', borderBottom: i<WEEK_DAYS.length-1 ? '1px solid #171717' : 'none', background: sel ? dc.bg : 'transparent', cursor:'pointer', transition:'background .15s' }}>
+                  <div style={{ width:36, height:36, background: sel ? dc.bg : '#151515', border:`1px solid ${sel ? dc.dot : '#222'}`, borderRadius:10, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+                    <div style={{ font:"700 11px 'Space Grotesk'", color: sel ? dc.color : '#5A5A5A' }}>{day.day}</div>
                   </div>
-                  <div style={{ font:"600 14px 'Space Grotesk'", color:LIME }}>5,0 km</div>
+                  <div style={{ flex:1 }}>
+                    <div style={{ font:"600 14px 'Hanken Grotesk'", color: day.intensity==='rest' ? '#4A4A4A' : '#fff' }}>{day.type}</div>
+                    <div style={{ font:"400 12px 'Hanken Grotesk'", color:'#5A5A5A', marginTop:1 }}>{day.detail}</div>
+                  </div>
+                  <div style={{ font:"600 14px 'Space Grotesk'", color: day.intensity==='rest' ? '#3A3A3A' : '#fff' }}>
+                    {day.km}{day.km!=='—' && <span style={{ font:"400 10px 'Hanken Grotesk'", color:'#5A5A5A', marginLeft:2 }}>km</span>}
+                  </div>
                 </div>
-              </div>
-              <button onClick={onStartWorkout} style={{
-                width:'100%', padding:'14px', background:'rgba(182,242,62,0.1)', border:'none',
-                font:"700 14px 'Space Grotesk'", color:LIME, cursor:'pointer',
-                display:'flex', alignItems:'center', justifyContent:'center', gap:8
-              }}>
-                <svg viewBox="0 0 16 16" width="14" height="14" fill={LIME}><path d="M3 2l10 6-10 6V2z"/></svg>
-                Training starten
-              </button>
-            </div>
-          ) : (
-            <div style={{ background:'#0D0D0D', border:'1px solid #1E1E1E', borderRadius:18, overflow:'hidden', marginBottom:14 }}>
-              {WEEK_DAYS.map((day, i) => {
-                const dc = intensityColors[day.intensity]
-                const sel = i===selectedDay
-                return (
-                  <div key={i} onClick={() => setSelectedDay(i)} style={{ display:'flex', alignItems:'center', gap:14, padding:'13px 16px', borderBottom: i<WEEK_DAYS.length-1 ? '1px solid #171717' : 'none', background: sel ? dc.bg : 'transparent', cursor:'pointer', transition:'background .15s' }}>
-                    <div style={{ width:36, height:36, background: sel ? dc.bg : '#151515', border:`1px solid ${sel ? dc.dot : '#222'}`, borderRadius:10, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-                      <div style={{ font:"700 11px 'Space Grotesk'", color: sel ? dc.color : '#5A5A5A' }}>{day.day}</div>
-                    </div>
-                    <div style={{ flex:1 }}>
-                      <div style={{ font:"600 14px 'Hanken Grotesk'", color: day.intensity==='rest' ? '#4A4A4A' : '#fff' }}>{day.type}</div>
-                      <div style={{ font:"400 12px 'Hanken Grotesk'", color:'#5A5A5A', marginTop:1 }}>{day.detail}</div>
-                    </div>
-                    <div style={{ font:"600 14px 'Space Grotesk'", color: day.intensity==='rest' ? '#3A3A3A' : '#fff' }}>
-                      {day.km}{day.km!=='—' && <span style={{ font:"400 10px 'Hanken Grotesk'", color:'#5A5A5A', marginLeft:2 }}>km</span>}
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          )}
+              )
+            })}
+          </div>
 
           <div style={{ background:'#0D0D0D', border:'1px solid #1E1E1E', borderRadius:16, padding:16, display:'flex', justifyContent:'space-around', marginBottom:16 }}>
             {[['40,4','km'],['4','Läufe'],['~4,5','Std']].map(([v,u]) => (
@@ -681,11 +659,6 @@ function AnalyseView() {
 
 export default function Training({ navigate }) {
   const [view, setView] = useState('plan')
-  const [workoutActive, setWorkoutActive] = useState(false)
-
-  if (workoutActive) {
-    return <WorkoutView navigate={navigate} onClose={() => setWorkoutActive(false)}/>
-  }
 
   return (
     <div style={{ padding:'0 0 8px' }}>
@@ -703,7 +676,7 @@ export default function Training({ navigate }) {
         </div>
       </div>
       <div style={{ padding:'0 20px' }}>
-        {view === 'plan'    && <PlanView onStartWorkout={() => setWorkoutActive(true)}/>}
+        {view === 'plan'    && <PlanView/>}
         {view === 'analyse' && <AnalyseView/>}
       </div>
     </div>

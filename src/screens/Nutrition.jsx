@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 
 const LIME = '#B6F23E'
 
@@ -347,7 +347,6 @@ export default function Nutrition() {
   const [scanResult, setScanResult] = useState(null)
   const [addTarget, setAddTarget] = useState(null)
   const [expandedMeal, setExpandedMeal] = useState(null)
-  const fileRef = useRef()
 
   const allFoods = Object.values(meals).flat()
   const totalKcal = allFoods.reduce((s, f) => s + f.kcal, 0)
@@ -361,17 +360,10 @@ export default function Nutrition() {
   const GOAL_FETT = 73
 
   const handleCameraClick = (mealKey) => {
-    setAddTarget(mealKey)
-    fileRef.current?.click()
-  }
-
-  const handleFileChange = (e) => {
-    if (!e.target.files?.length) return
-    e.target.value = ''
+    setAddTarget(mealKey || 'breakfast')
     setScanState('scanning')
     setTimeout(() => {
-      const result = MOCK_FOODS[Math.floor(Math.random() * MOCK_FOODS.length)]
-      setScanResult(result)
+      setScanResult({ name: 'Magerquark Bowl', kcal: 312, kh: 28, pro: 38, fett: 4, emoji: '🥛' })
       setScanState('result')
     }, 2200)
   }
@@ -394,10 +386,6 @@ export default function Nutrition() {
 
   return (
     <div style={{ padding: '0 0 8px' }}>
-      <input
-        ref={fileRef} type="file" accept="image/*" capture="environment"
-        style={{ display: 'none' }} onChange={handleFileChange}
-      />
 
       {/* Scan overlay */}
       {scanState !== 'idle' && (
