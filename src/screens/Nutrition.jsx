@@ -686,6 +686,30 @@ export default function Nutrition({ navigate }) {
             </div>
           </div>
 
+          {/* Camera button */}
+          <div style={{ padding: '0 20px 16px' }}>
+            <button
+              onClick={() => handleCameraClick('snacks')}
+              style={{
+                width: '100%', background: LIME, color: '#07090A',
+                border: 'none', borderRadius: '999px', padding: '18px',
+                font: "700 16px 'Hanken Grotesk'", cursor: 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
+                boxShadow: '0 0 28px rgba(182,242,62,0.3)',
+                animation: 'pulse-glow 3s ease-in-out infinite'
+              }}
+            >
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+              Mahlzeit fotografieren · KI
+            </button>
+            <div style={{ font: "400 11.5px 'Hanken Grotesk'", color: '#4A4A4A', textAlign: 'center', marginTop: '8px' }}>
+              KI erkennt Lebensmittel & berechnet Kalorien und Makros
+            </div>
+          </div>
+
           {/* Meals */}
           <div style={{ padding: '0 20px 20px' }}>
             <div style={{ font: "700 11px 'Space Mono'", letterSpacing: '2px', color: '#5A5A5A', marginBottom: '14px' }}>
@@ -772,29 +796,6 @@ export default function Nutrition({ navigate }) {
             })}
           </div>
 
-          {/* Camera FAB */}
-          <div style={{ padding: '0 20px 8px' }}>
-            <button
-              onClick={() => handleCameraClick('snacks')}
-              style={{
-                width: '100%', background: LIME, color: '#07090A',
-                border: 'none', borderRadius: '999px', padding: '18px',
-                font: "700 16px 'Hanken Grotesk'", cursor: 'pointer',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
-                boxShadow: '0 0 28px rgba(182,242,62,0.3)',
-                animation: 'pulse-glow 3s ease-in-out infinite'
-              }}
-            >
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-                <circle cx="12" cy="13" r="4"/>
-              </svg>
-              Mahlzeit fotografieren · KI
-            </button>
-            <div style={{ font: "400 11.5px 'Hanken Grotesk'", color: '#4A4A4A', textAlign: 'center', marginTop: '8px' }}>
-              KI erkennt Lebensmittel & berechnet Kalorien und Makros
-            </div>
-          </div>
         </>
       )}
 

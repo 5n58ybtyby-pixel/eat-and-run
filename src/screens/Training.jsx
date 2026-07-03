@@ -474,6 +474,27 @@ function PlanView() {
         </div>
       )}
 
+      <button onClick={() => setWizardOpen(true)} disabled={loading} style={{
+        width:'100%',
+        background: loading ? '#151515' : LIME,
+        color: loading ? '#5A5A5A' : '#07090A',
+        border: loading ? '1px solid #222' : 'none',
+        borderRadius:999, padding:18, font:"700 16px 'Hanken Grotesk'",
+        cursor: loading ? 'not-allowed' : 'pointer', transition:'all .2s',
+        display:'flex', alignItems:'center', justifyContent:'center', gap:10,
+        boxShadow: loading ? 'none' : '0 0 28px rgba(182,242,62,0.3)',
+        animation: loading ? 'none' : 'pulse-glow 3s ease-in-out infinite'
+      }}>
+        {loading ? (
+          <><div style={{ width:16, height:16, border:'2px solid #333', borderTop:`2px solid ${LIME}`, borderRadius:'50%', animation:'spin .7s linear infinite' }}/>Berechne…</>
+        ) : (
+          <><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#07090A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Neuen KI-Plan erstellen</>
+        )}
+      </button>
+      <div style={{ font:"400 11.5px 'Hanken Grotesk'", color:'#4A4A4A', textAlign:'center', marginTop:8, marginBottom:20 }}>
+        Die KI analysiert dein Level, deine Verfügbarkeit & dein Zielrennen
+      </div>
+
       {planReady && !loading && (
         <>
           <div style={{ font:"700 11px 'Space Mono'", letterSpacing:'2px', color:'#5A5A5A', marginBottom:12 }}>DIESE WOCHE</div>
@@ -524,26 +545,6 @@ function PlanView() {
         </>
       )}
 
-      <button onClick={() => setWizardOpen(true)} disabled={loading} style={{
-        width:'100%',
-        background: loading ? '#151515' : LIME,
-        color: loading ? '#5A5A5A' : '#07090A',
-        border: loading ? '1px solid #222' : 'none',
-        borderRadius:999, padding:18, font:"700 16px 'Hanken Grotesk'",
-        cursor: loading ? 'not-allowed' : 'pointer', transition:'all .2s',
-        display:'flex', alignItems:'center', justifyContent:'center', gap:10,
-        boxShadow: loading ? 'none' : '0 0 28px rgba(182,242,62,0.3)',
-        animation: loading ? 'none' : 'pulse-glow 3s ease-in-out infinite'
-      }}>
-        {loading ? (
-          <><div style={{ width:16, height:16, border:'2px solid #333', borderTop:`2px solid ${LIME}`, borderRadius:'50%', animation:'spin .7s linear infinite' }}/>Berechne…</>
-        ) : (
-          <><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#07090A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Neuen KI-Plan erstellen</>
-        )}
-      </button>
-      <div style={{ font:"400 11.5px 'Hanken Grotesk'", color:'#4A4A4A', textAlign:'center', marginTop:8 }}>
-        Die KI analysiert dein Level, deine Verfügbarkeit & dein Zielrennen
-      </div>
     </div>
   )
 }
