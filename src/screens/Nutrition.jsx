@@ -29,6 +29,104 @@ const INITIAL_MEALS = {
 
 const MEAL_LABELS = { breakfast: 'Frühstück', lunch: 'Mittagessen', dinner: 'Abendessen', snacks: 'Snacks' }
 
+const INSPO = [
+  {
+    id: 1, title: 'Magerquark Bowl', subtitle: 'Post-Run · Regeneration',
+    kcal: 312, protein: 38, carbs: 28, fat: 4, time: '5 min',
+    photo: '/magerquark-bowl.png', tags: ['Protein-reich', 'Low Fat'], by: 'Nico'
+  },
+  {
+    id: 2, title: 'Overnight Oats', subtitle: 'Pre-Run · Energie',
+    kcal: 410, protein: 14, carbs: 62, fat: 9, time: '10 min',
+    photo: '/overnight-oats.png', tags: ['Carb-Loading', 'Vegan'], by: 'Lena B.'
+  },
+  {
+    id: 3, title: 'Avocado Toast mit Ei', subtitle: 'Frühstück · Kraft',
+    kcal: 380, protein: 18, carbs: 32, fat: 22, time: '8 min',
+    emoji: '🥑', color: '#0D1A0A', tags: ['Gesunde Fette', 'Sättigend'], by: 'Sara'
+  },
+  {
+    id: 4, title: 'Hähnchen & Süßkartoffel', subtitle: 'Abendessen · Regeneration',
+    kcal: 520, protein: 42, carbs: 48, fat: 12, time: '25 min',
+    emoji: '🍗', color: '#1A1200', tags: ['Protein-reich', 'Meal Prep'], by: 'Patrick'
+  },
+  {
+    id: 5, title: 'Grüner Power Smoothie', subtitle: 'Post-Run · Hydration',
+    kcal: 180, protein: 8, carbs: 28, fat: 3, time: '3 min',
+    emoji: '🥤', color: '#071408', tags: ['Antioxidantien', 'Schnell'], by: 'Sara'
+  },
+  {
+    id: 6, title: 'Lachs & Quinoa Bowl', subtitle: 'Mittagessen · Performance',
+    kcal: 490, protein: 36, carbs: 42, fat: 18, time: '20 min',
+    emoji: '🐟', color: '#00101A', tags: ['Omega-3', 'Vollwertig'], by: 'Jonas K.'
+  },
+]
+
+function InspirationFeed() {
+  const [saved, setSaved] = useState({})
+  return (
+    <div style={{ padding: '0 20px 20px' }}>
+      <div style={{ font: "400 13px 'Hanken Grotesk'", color: '#5A5A5A', marginBottom: 16 }}>
+        KI-kuratierte Gerichte passend zu deinem Trainingsplan
+      </div>
+      {INSPO.map(r => (
+        <div key={r.id} style={{ background: '#0D0D0D', border: '1px solid #1E1E1E', borderRadius: 20, overflow: 'hidden', marginBottom: 14, animation: 'fadeIn 0.3s ease' }}>
+          {/* Cover */}
+          {r.photo ? (
+            <div style={{ position: 'relative' }}>
+              <img src={r.photo} alt={r.title} style={{ width: '100%', height: 160, objectFit: 'cover', display: 'block' }}/>
+              <div style={{ position: 'absolute', top: 10, left: 10, background: 'rgba(182,242,62,0.12)', border: '0.5px solid rgba(182,242,62,0.25)', borderRadius: 6, padding: '3px 8px', font: "700 8px 'Hanken Grotesk'", color: LIME, backdropFilter: 'blur(6px)' }}>
+                ✦ KI-EMPFEHLUNG
+              </div>
+            </div>
+          ) : (
+            <div style={{ height: 120, background: r.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 52, position: 'relative' }}>
+              {r.emoji}
+              <div style={{ position: 'absolute', top: 10, left: 10, background: 'rgba(182,242,62,0.1)', border: '0.5px solid rgba(182,242,62,0.2)', borderRadius: 6, padding: '3px 8px', font: "700 8px 'Hanken Grotesk'", color: LIME }}>
+                ✦ KI-EMPFEHLUNG
+              </div>
+            </div>
+          )}
+          {/* Body */}
+          <div style={{ padding: '14px 16px 16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 4 }}>
+              <div style={{ font: "700 16px 'Space Grotesk'", letterSpacing: '-0.2px' }}>{r.title}</div>
+              <button onClick={() => setSaved(s => ({ ...s, [r.id]: !s[r.id] }))} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: saved[r.id] ? LIME : '#3A3A3A', fontSize: 18, lineHeight: 1 }}>
+                {saved[r.id] ? '♥' : '♡'}
+              </button>
+            </div>
+            <div style={{ font: "600 10px 'Space Mono'", color: LIME, letterSpacing: '0.5px', marginBottom: 12 }}>{r.subtitle}</div>
+            {/* Macros */}
+            <div style={{ display: 'flex', gap: 6, marginBottom: 14 }}>
+              {[['kcal', r.kcal, '#E8E8E8'], ['Prot', r.protein+'g', '#9B8CFA'], ['KH', r.carbs+'g', LIME], ['Fett', r.fat+'g', '#F2944A']].map(([l,v,c]) => (
+                <div key={l} style={{ flex: 1, background: '#151515', border: '1px solid #222', borderRadius: 10, padding: '8px 4px', textAlign: 'center' }}>
+                  <div style={{ font: "700 13px 'Space Grotesk'", color: c }}>{v}</div>
+                  <div style={{ font: "400 9px 'Hanken Grotesk'", color: '#4A4A4A', marginTop: 2 }}>{l}</div>
+                </div>
+              ))}
+            </div>
+            {/* Footer row */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 12 }}>
+              <span style={{ font: "400 11px 'Hanken Grotesk'", color: '#5A5A5A' }}>⏱ {r.time}</span>
+              <span style={{ font: "400 11px 'Hanken Grotesk'", color: '#3A3A3A' }}>·</span>
+              <span style={{ font: "400 11px 'Hanken Grotesk'", color: '#5A5A5A' }}>von {r.by}</span>
+              <div style={{ flex: 1 }}/>
+              {r.tags.map(t => (
+                <div key={t} style={{ background: 'rgba(182,242,62,.06)', border: '1px solid rgba(182,242,62,.12)', borderRadius: 99, padding: '3px 8px', font: "600 10px 'Hanken Grotesk'", color: LIME }}>{t}</div>
+              ))}
+            </div>
+            <button style={{ width: '100%', background: 'transparent', border: '1px solid #2A2A2A', borderRadius: 12, padding: '12px', font: "600 14px 'Hanken Grotesk'", color: '#8A8A8A', cursor: 'pointer', transition: 'all .15s' }}
+              onMouseEnter={e => { e.target.style.borderColor = '#3A3A3A'; e.target.style.color = '#C0C0C0' }}
+              onMouseLeave={e => { e.target.style.borderColor = '#2A2A2A'; e.target.style.color = '#8A8A8A' }}>
+              + Zum Tagesplan hinzufügen
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 const WEIGHT_DATA = [
   { date: '01.05', weight: 84.2 },
   { date: '08.05', weight: 83.8 },
@@ -625,11 +723,11 @@ export default function Nutrition({ navigate }) {
       {/* Header */}
       <div style={{ padding: '56px 20px 0' }}>
         <div style={{ font: "700 11px 'Space Mono'", letterSpacing: '2px', color: '#5A5A5A', marginBottom: 8 }}>
-          {view === 'nutrition' ? 'ERNÄHRUNG' : 'GEWICHTSPROTOKOLL'}
+          {{ nutrition: 'ERNÄHRUNG', inspiration: 'INSPIRATION', gewicht: 'GEWICHTSPROTOKOLL' }[view]}
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
           <div style={{ font: "700 28px 'Space Grotesk'", letterSpacing: '-0.6px' }}>
-            {view === 'nutrition' ? 'Heute' : 'Gewicht'}
+            {{ nutrition: 'Heute', inspiration: 'Gerichte', gewicht: 'Gewicht' }[view]}
           </div>
 
           {/* Segment control */}
@@ -637,12 +735,12 @@ export default function Nutrition({ navigate }) {
             display: 'inline-flex', background: '#111', border: '1px solid #1E1E1E',
             borderRadius: 12, padding: 3
           }}>
-            {[['nutrition', 'Ernährung'], ['gewicht', 'Gewicht']].map(([id, label]) => (
+            {[['nutrition', 'Ernährung'], ['inspiration', 'Inspiration'], ['gewicht', 'Gewicht']].map(([id, label]) => (
               <button key={id} onClick={() => setView(id)} style={{
-                padding: '8px 14px', borderRadius: 9, border: 'none',
+                padding: '8px 11px', borderRadius: 9, border: 'none',
                 background: view === id ? LIME : 'transparent',
                 color: view === id ? '#000' : '#6A6A6A',
-                font: `600 13px 'Hanken Grotesk'`, cursor: 'pointer', transition: 'all .15s'
+                font: `600 12px 'Hanken Grotesk'`, cursor: 'pointer', transition: 'all .15s'
               }}>{label}</button>
             ))}
           </div>
@@ -798,6 +896,9 @@ export default function Nutrition({ navigate }) {
 
         </>
       )}
+
+      {/* ── INSPIRATION VIEW ── */}
+      {view === 'inspiration' && <InspirationFeed />}
 
       {/* ── GEWICHT VIEW ── */}
       {view === 'gewicht' && <GewichtView />}

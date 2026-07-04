@@ -111,7 +111,7 @@ export default function Profile() {
               {DEMO_USER.initials}
             </div>
             <div style={{ flex: 1 }}>
-              <div style={{ font: "700 20px 'Space Grotesk'", letterSpacing: '-0.3px' }}>{DEMO_USER.name} {DEMO_USER.surname}</div>
+              <div style={{ font: "700 20px 'Space Grotesk'", letterSpacing: '-0.3px' }}>{DEMO_USER.name}</div>
               <div style={{ font: "400 13px 'Hanken Grotesk'", color: LIME, marginTop: '2px' }}>{DEMO_USER.handle}</div>
               <div style={{ font: "400 12px 'Hanken Grotesk'", color: '#5A5A5A', marginTop: '4px' }}>
                 Läuft seit 2023 · München 🇩🇪
