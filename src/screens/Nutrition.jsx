@@ -35,7 +35,6 @@ const INSPO_SECTIONS = [
       { id: 1, title: 'Avocado Toast mit Ei', kcal: 380, protein: 18, carbs: 32, fat: 22, time: '8 min', photo: '/avocado-toast.webp', tag: 'Gesunde Fette' },
       { id: 2, title: 'Overnight Oats', kcal: 410, protein: 14, carbs: 62, fat: 9, time: '10 min', photo: '/overnight-oats.png', tag: 'Carb-Loading' },
       { id: 23, title: 'Magerquark Bowl', kcal: 312, protein: 38, carbs: 28, fat: 4, time: '5 min', photo: '/magerquark-bowl.png', tag: 'Protein-reich' },
-      { id: 4, title: 'Protein Pancakes', kcal: 340, protein: 28, carbs: 38, fat: 7, time: '12 min', emoji: '🥞', color: '#1A0A00', tag: 'Protein-reich' },
     ]
   },
   {
