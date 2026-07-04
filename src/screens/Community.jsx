@@ -72,31 +72,27 @@ function FoodPhoto({ src, label }) {
 // ─── MINI MAP ─────────────────────────────────────────────────────────────────
 
 function MiniMap() {
-  const routeD = 'M 29,85 L 29,61 Q 29,57 33,57 L 53,57 Q 57,57 57,53 L 57,36 Q 57,32 61,32 L 78,32 Q 82,32 82,36 L 82,40 Q 82,44 86,44 L 112,44 Q 116,44 116,48 L 116,64 Q 116,68 112,68 L 86,68 Q 82,68 82,72 L 82,81 Q 82,85 78,85 L 29,85'
+  const routeD = 'M 30,88 C 18,76 14,60 20,42 C 26,26 42,16 62,12 C 82,8 104,18 118,34 C 132,50 130,68 120,80 C 110,92 94,98 76,96 C 58,96 40,98 30,88 Z'
   return (
     <svg viewBox="0 0 160 100" style={{ width:'100%', display:'block' }}>
       <rect width="160" height="100" fill="#050A07"/>
-      {/* Street grid */}
-      {[14, 42, 70, 100, 130, 148].map(x => (
-        <line key={`x${x}`} x1={x} y1="0" x2={x} y2="100" stroke="#0A120B" strokeWidth="2"/>
-      ))}
-      {[18, 44, 57, 68, 80].map(y => (
-        <line key={`y${y}`} x1="0" y1={y} x2="160" y2={y} stroke="#0A120B" strokeWidth="2"/>
-      ))}
-      {/* Route streets (brighter) */}
-      {[29, 57, 82, 116].map(x => (
-        <line key={`rx${x}`} x1={x} y1="0" x2={x} y2="100" stroke="#0E1C0E" strokeWidth="3"/>
-      ))}
-      {[32, 44, 57, 68, 85].map(y => (
-        <line key={`ry${y}`} x1="0" y1={y} x2="160" y2={y} stroke="#0E1C0E" strokeWidth="3"/>
-      ))}
-      {/* Full green route */}
+      {/* Park fill */}
+      <ellipse cx="78" cy="54" rx="72" ry="44" fill="#060D08"/>
+      {/* Isar river right edge */}
+      <path d="M 148,0 Q 158,30 154,60 Q 150,82 153,100 L 160,100 L 160,0 Z" fill="rgba(20,50,140,0.15)"/>
+      {/* Streets */}
+      <line x1="0" y1="94" x2="160" y2="94" stroke="#0E1C0E" strokeWidth="4"/>
+      <line x1="30" y1="0" x2="30" y2="100" stroke="#0A140A" strokeWidth="2"/>
+      <line x1="122" y1="0" x2="122" y2="100" stroke="#0A140A" strokeWidth="2"/>
+      <line x1="0" y1="36" x2="160" y2="36" stroke="#0A140A" strokeWidth="1.5"/>
+      {/* Route glow layers */}
       <path d={routeD} fill="none" stroke={LIME} strokeWidth="10" strokeOpacity="0.08" strokeLinecap="round" strokeLinejoin="round"/>
       <path d={routeD} fill="none" stroke={LIME} strokeWidth="4" strokeOpacity="0.2" strokeLinecap="round" strokeLinejoin="round"/>
       <path d={routeD} fill="none" stroke={LIME} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      <circle cx="29" cy="85" r="4" fill="rgba(182,242,62,0.2)"/>
-      <circle cx="29" cy="85" r="2.5" fill={LIME}/>
-      <text x="6" y="97" fill="#132013" fontSize="5" fontFamily="Hanken Grotesk">Englischer Garten · München</text>
+      {/* Start dot */}
+      <circle cx="30" cy="88" r="4" fill="rgba(182,242,62,0.2)"/>
+      <circle cx="30" cy="88" r="2.5" fill={LIME}/>
+      <text x="8" y="98" fill="#132013" fontSize="5" fontFamily="Hanken Grotesk">Englischer Garten · München</text>
     </svg>
   )
 }
