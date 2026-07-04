@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { DEMO_USER } from '../store'
 
 const LIME = '#B6F23E'
 
@@ -107,11 +108,11 @@ export default function Profile() {
               color: '#07090A', flexShrink: 0,
               boxShadow: '0 0 24px rgba(182,242,62,.3)'
             }}>
-              MM
+              {DEMO_USER.initials}
             </div>
             <div style={{ flex: 1 }}>
-              <div style={{ font: "700 20px 'Space Grotesk'", letterSpacing: '-0.3px' }}>Max Müller</div>
-              <div style={{ font: "400 13px 'Hanken Grotesk'", color: LIME, marginTop: '2px' }}>@maxrunner</div>
+              <div style={{ font: "700 20px 'Space Grotesk'", letterSpacing: '-0.3px' }}>{DEMO_USER.name} {DEMO_USER.surname}</div>
+              <div style={{ font: "400 13px 'Hanken Grotesk'", color: LIME, marginTop: '2px' }}>{DEMO_USER.handle}</div>
               <div style={{ font: "400 12px 'Hanken Grotesk'", color: '#5A5A5A', marginTop: '4px' }}>
                 Läuft seit 2023 · München 🇩🇪
               </div>

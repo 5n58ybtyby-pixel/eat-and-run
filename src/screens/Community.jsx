@@ -22,7 +22,7 @@ const BASE_FEED = [
     kudos: 5, myKudos: false, hasMap: false
   },
   {
-    id: 3, user: 'Sarah M.', avatar: 'SM', time: 'vor 3 Std.',
+    id: 3, user: 'Sara M.', avatar: 'SM', time: 'vor 3 Std.',
     type: 'run', title: 'Intervalltraining',
     distance: '8,0 km', pace: '4:30 /km', duration: '36:00',
     kudos: 8, myKudos: true, hasMap: false

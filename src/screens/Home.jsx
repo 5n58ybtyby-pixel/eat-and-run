@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import Logo from '../components/Logo'
-import { store } from '../store'
+import { store, DEMO_USER } from '../store'
 
 const LIME = '#B6F23E'
 const TOTAL_TIME = 31 * 60
@@ -274,7 +274,7 @@ export default function Home({ navigate, onStartWorkout }) {
 
       {/* Greeting */}
       <div style={{ padding: '4px 20px 20px' }}>
-        <div style={{ font: "700 26px 'Space Grotesk'", letterSpacing: '-0.6px', lineHeight: 1.2 }}>{greeting}, Max! 👋</div>
+        <div style={{ font: "700 26px 'Space Grotesk'", letterSpacing: '-0.6px', lineHeight: 1.2 }}>{greeting}, {DEMO_USER.greeting}! 👋</div>
         <div style={{ marginTop: 8, background: 'rgba(182,242,62,.07)', border: '1px solid rgba(182,242,62,.15)', borderRadius: 12, padding: '12px 14px', display: 'flex', gap: 10, alignItems: 'flex-start' }}>
           <svg viewBox="0 0 12 12" width="15" height="15" fill={LIME} style={{ marginTop: 1, flexShrink: 0 }}><path d="M7 1L2 7h3.5L4 11l6-6.5H6.5z"/></svg>
           <div style={{ font: "400 13.5px 'Hanken Grotesk'", color: '#B8B8B8', lineHeight: 1.5 }}>
