@@ -29,97 +29,94 @@ const INITIAL_MEALS = {
 
 const MEAL_LABELS = { breakfast: 'Frühstück', lunch: 'Mittagessen', dinner: 'Abendessen', snacks: 'Snacks' }
 
-const INSPO = [
+const INSPO_SECTIONS = [
   {
-    id: 1, title: 'Magerquark Bowl', subtitle: 'Post-Run · Regeneration',
-    kcal: 312, protein: 38, carbs: 28, fat: 4, time: '5 min',
-    photo: '/magerquark-bowl.png', tags: ['Protein-reich', 'Low Fat'], by: 'Nico'
+    id: 'breakfast', label: 'Frühstück', dishes: [
+      { id: 1, title: 'Avocado Toast mit Ei', kcal: 380, protein: 18, carbs: 32, fat: 22, time: '8 min', photo: '/avocado-toast.webp', tag: 'Gesunde Fette' },
+      { id: 2, title: 'Overnight Oats', kcal: 410, protein: 14, carbs: 62, fat: 9, time: '10 min', photo: '/overnight-oats.png', tag: 'Carb-Loading' },
+      { id: 3, title: 'Porridge mit Früchten', kcal: 290, protein: 10, carbs: 52, fat: 5, time: '8 min', emoji: '🥣', color: '#120D00', tag: 'Vegan' },
+      { id: 4, title: 'Protein Pancakes', kcal: 340, protein: 28, carbs: 38, fat: 7, time: '12 min', emoji: '🥞', color: '#1A0A00', tag: 'Protein-reich' },
+      { id: 5, title: 'Granola & Joghurt', kcal: 260, protein: 12, carbs: 40, fat: 6, time: '3 min', emoji: '🫐', color: '#0A0A18', tag: 'Schnell' },
+    ]
   },
   {
-    id: 2, title: 'Overnight Oats', subtitle: 'Pre-Run · Energie',
-    kcal: 410, protein: 14, carbs: 62, fat: 9, time: '10 min',
-    photo: '/overnight-oats.png', tags: ['Carb-Loading', 'Vegan'], by: 'Lena B.'
+    id: 'mealprep', label: 'Meal Prep', dishes: [
+      { id: 6, title: 'Hähnchen & Süßkartoffel', kcal: 520, protein: 42, carbs: 48, fat: 12, time: '25 min', photo: '/haehnchen-suesskartoffel.webp', tag: 'Meal Prep' },
+      { id: 7, title: 'Lachs & Quinoa Bowl', kcal: 490, protein: 36, carbs: 42, fat: 18, time: '20 min', photo: '/lachs-quinoa.webp', tag: 'Omega-3' },
+      { id: 8, title: 'Magerquark Bowl', kcal: 312, protein: 38, carbs: 28, fat: 4, time: '5 min', photo: '/magerquark-bowl.png', tag: 'Low Fat' },
+      { id: 9, title: 'Linsen Curry & Reis', kcal: 440, protein: 18, carbs: 72, fat: 8, time: '30 min', emoji: '🍛', color: '#1A0800', tag: 'Vegan' },
+      { id: 10, title: 'Türkei Meatballs', kcal: 390, protein: 34, carbs: 30, fat: 14, time: '35 min', emoji: '🍝', color: '#1A0400', tag: 'Meal Prep' },
+    ]
   },
   {
-    id: 3, title: 'Avocado Toast mit Ei', subtitle: 'Frühstück · Kraft',
-    kcal: 380, protein: 18, carbs: 32, fat: 22, time: '8 min',
-    photo: '/avocado-toast.webp', tags: ['Gesunde Fette', 'Sättigend'], by: 'Sara'
+    id: 'smoothies', label: 'Smoothies', dishes: [
+      { id: 11, title: 'Grüner Power Smoothie', kcal: 180, protein: 8, carbs: 28, fat: 3, time: '3 min', photo: '/green-smoothie.webp', tag: 'Antioxidantien' },
+      { id: 12, title: 'Bananen Protein Shake', kcal: 280, protein: 24, carbs: 36, fat: 4, time: '3 min', emoji: '🍌', color: '#1A1400', tag: 'Protein-reich' },
+      { id: 13, title: 'Berry Recovery Shake', kcal: 210, protein: 16, carbs: 30, fat: 3, time: '3 min', emoji: '🍓', color: '#1A0010', tag: 'Regeneration' },
+      { id: 14, title: 'Mango Kurkuma Shake', kcal: 195, protein: 8, carbs: 34, fat: 2, time: '3 min', emoji: '🥭', color: '#1A0D00', tag: 'Entzündungshemmend' },
+    ]
   },
   {
-    id: 4, title: 'Hähnchen & Süßkartoffel', subtitle: 'Abendessen · Regeneration',
-    kcal: 520, protein: 42, carbs: 48, fat: 12, time: '25 min',
-    photo: '/haehnchen-suesskartoffel.webp', tags: ['Protein-reich', 'Meal Prep'], by: 'Patrick'
+    id: 'postrun', label: 'Post-Run', dishes: [
+      { id: 15, title: 'Magerquark mit Beeren', kcal: 210, protein: 30, carbs: 18, fat: 2, time: '2 min', emoji: '🫐', color: '#0A0A18', tag: 'Protein-reich' },
+      { id: 16, title: 'Reiskuchen & Erdnussmus', kcal: 230, protein: 8, carbs: 34, fat: 8, time: '2 min', emoji: '🥜', color: '#120900', tag: 'Schnell' },
+      { id: 17, title: 'Overnight Oats', kcal: 410, protein: 14, carbs: 62, fat: 9, time: '10 min', photo: '/overnight-oats.png', tag: 'Carb-Loading' },
+      { id: 18, title: 'Griechischer Joghurt', kcal: 195, protein: 20, carbs: 14, fat: 5, time: '2 min', emoji: '🧴', color: '#0A0A12', tag: 'Low Fat' },
+    ]
   },
   {
-    id: 5, title: 'Grüner Power Smoothie', subtitle: 'Post-Run · Hydration',
-    kcal: 180, protein: 8, carbs: 28, fat: 3, time: '3 min',
-    photo: '/green-smoothie.webp', tags: ['Antioxidantien', 'Schnell'], by: 'Sara'
-  },
-  {
-    id: 6, title: 'Lachs & Quinoa Bowl', subtitle: 'Mittagessen · Performance',
-    kcal: 490, protein: 36, carbs: 42, fat: 18, time: '20 min',
-    photo: '/lachs-quinoa.webp', tags: ['Omega-3', 'Vollwertig', 'Meal Prep'], by: 'Jonas K.'
+    id: 'prerun', label: 'Pre-Run', dishes: [
+      { id: 19, title: 'Haferflocken & Banane', kcal: 320, protein: 10, carbs: 62, fat: 5, time: '5 min', emoji: '🍌', color: '#1A1400', tag: 'Energie' },
+      { id: 20, title: 'Toast mit Honig', kcal: 220, protein: 5, carbs: 46, fat: 2, time: '2 min', emoji: '🍯', color: '#1A0D00', tag: 'Schnell' },
+      { id: 21, title: 'Overnight Oats', kcal: 410, protein: 14, carbs: 62, fat: 9, time: '10 min', photo: '/overnight-oats.png', tag: 'Vorbereitung' },
+      { id: 22, title: 'Datteln & Nüsse', kcal: 180, protein: 4, carbs: 32, fat: 6, time: '1 min', emoji: '🌰', color: '#0D0800', tag: 'Natürlich' },
+    ]
   },
 ]
 
+function InspoCard({ d, saved, onSave }) {
+  return (
+    <div style={{ width: 158, flexShrink: 0, background: '#0D0D0D', border: '1px solid #1E1E1E', borderRadius: 16, overflow: 'hidden' }}>
+      {d.photo ? (
+        <img src={d.photo} alt={d.title} style={{ width: '100%', height: 110, objectFit: 'cover', display: 'block' }}/>
+      ) : (
+        <div style={{ height: 110, background: d.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 40 }}>{d.emoji}</div>
+      )}
+      <div style={{ padding: '10px 10px 12px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 4, marginBottom: 6 }}>
+          <div style={{ font: "600 12.5px 'Space Grotesk'", lineHeight: 1.3, letterSpacing: '-0.1px' }}>{d.title}</div>
+          <button onClick={() => onSave(d.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, color: saved ? LIME : '#3A3A3A', fontSize: 15, lineHeight: 1, flexShrink: 0 }}>
+            {saved ? '♥' : '♡'}
+          </button>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+          <span style={{ font: "700 12px 'Space Grotesk'", color: LIME }}>{d.kcal}</span>
+          <span style={{ font: "400 10px 'Hanken Grotesk'", color: '#4A4A4A' }}>kcal · {d.time}</span>
+        </div>
+        <div style={{ background: 'rgba(182,242,62,.06)', border: '1px solid rgba(182,242,62,.12)', borderRadius: 99, padding: '3px 8px', display: 'inline-block', font: "600 9px 'Hanken Grotesk'", color: LIME }}>{d.tag}</div>
+      </div>
+    </div>
+  )
+}
+
 function InspirationFeed() {
   const [saved, setSaved] = useState({})
+  const toggle = id => setSaved(s => ({ ...s, [id]: !s[id] }))
   return (
-    <div style={{ padding: '0 20px 20px' }}>
-      <div style={{ font: "400 13px 'Hanken Grotesk'", color: '#5A5A5A', marginBottom: 16 }}>
+    <div style={{ paddingBottom: 20 }}>
+      <div style={{ font: "400 13px 'Hanken Grotesk'", color: '#5A5A5A', padding: '0 20px 16px' }}>
         KI-kuratierte Gerichte passend zu deinem Trainingsplan
       </div>
-      {INSPO.map(r => (
-        <div key={r.id} style={{ background: '#0D0D0D', border: '1px solid #1E1E1E', borderRadius: 20, overflow: 'hidden', marginBottom: 14, animation: 'fadeIn 0.3s ease' }}>
-          {/* Cover */}
-          {r.photo ? (
-            <div style={{ position: 'relative' }}>
-              <img src={r.photo} alt={r.title} style={{ width: '100%', height: 160, objectFit: 'cover', display: 'block' }}/>
-              <div style={{ position: 'absolute', top: 10, left: 10, background: 'rgba(182,242,62,0.12)', border: '0.5px solid rgba(182,242,62,0.25)', borderRadius: 6, padding: '3px 8px', font: "700 8px 'Hanken Grotesk'", color: LIME, backdropFilter: 'blur(6px)' }}>
-                ✦ KI-EMPFEHLUNG
-              </div>
-            </div>
-          ) : (
-            <div style={{ height: 120, background: r.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 52, position: 'relative' }}>
-              {r.emoji}
-              <div style={{ position: 'absolute', top: 10, left: 10, background: 'rgba(182,242,62,0.1)', border: '0.5px solid rgba(182,242,62,0.2)', borderRadius: 6, padding: '3px 8px', font: "700 8px 'Hanken Grotesk'", color: LIME }}>
-                ✦ KI-EMPFEHLUNG
-              </div>
-            </div>
-          )}
-          {/* Body */}
-          <div style={{ padding: '14px 16px 16px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 4 }}>
-              <div style={{ font: "700 16px 'Space Grotesk'", letterSpacing: '-0.2px' }}>{r.title}</div>
-              <button onClick={() => setSaved(s => ({ ...s, [r.id]: !s[r.id] }))} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: saved[r.id] ? LIME : '#3A3A3A', fontSize: 18, lineHeight: 1 }}>
-                {saved[r.id] ? '♥' : '♡'}
-              </button>
-            </div>
-            <div style={{ font: "600 10px 'Space Mono'", color: LIME, letterSpacing: '0.5px', marginBottom: 12 }}>{r.subtitle}</div>
-            {/* Macros */}
-            <div style={{ display: 'flex', gap: 6, marginBottom: 14 }}>
-              {[['kcal', r.kcal, '#E8E8E8'], ['Prot', r.protein+'g', '#9B8CFA'], ['KH', r.carbs+'g', LIME], ['Fett', r.fat+'g', '#F2944A']].map(([l,v,c]) => (
-                <div key={l} style={{ flex: 1, background: '#151515', border: '1px solid #222', borderRadius: 10, padding: '8px 4px', textAlign: 'center' }}>
-                  <div style={{ font: "700 13px 'Space Grotesk'", color: c }}>{v}</div>
-                  <div style={{ font: "400 9px 'Hanken Grotesk'", color: '#4A4A4A', marginTop: 2 }}>{l}</div>
-                </div>
-              ))}
-            </div>
-            {/* Footer row */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 12 }}>
-              <span style={{ font: "400 11px 'Hanken Grotesk'", color: '#5A5A5A' }}>⏱ {r.time}</span>
-              <span style={{ font: "400 11px 'Hanken Grotesk'", color: '#3A3A3A' }}>·</span>
-              <span style={{ font: "400 11px 'Hanken Grotesk'", color: '#5A5A5A' }}>von {r.by}</span>
-              <div style={{ flex: 1 }}/>
-              {r.tags.map(t => (
-                <div key={t} style={{ background: 'rgba(182,242,62,.06)', border: '1px solid rgba(182,242,62,.12)', borderRadius: 99, padding: '3px 8px', font: "600 10px 'Hanken Grotesk'", color: LIME }}>{t}</div>
-              ))}
-            </div>
-            <button style={{ width: '100%', background: 'transparent', border: '1px solid #2A2A2A', borderRadius: 12, padding: '12px', font: "600 14px 'Hanken Grotesk'", color: '#8A8A8A', cursor: 'pointer', transition: 'all .15s' }}
-              onMouseEnter={e => { e.target.style.borderColor = '#3A3A3A'; e.target.style.color = '#C0C0C0' }}
-              onMouseLeave={e => { e.target.style.borderColor = '#2A2A2A'; e.target.style.color = '#8A8A8A' }}>
-              + Zum Tagesplan hinzufügen
-            </button>
+      {INSPO_SECTIONS.map(sec => (
+        <div key={sec.id} style={{ marginBottom: 28 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 20px', marginBottom: 12 }}>
+            <div style={{ font: "700 16px 'Space Grotesk'", letterSpacing: '-0.2px' }}>{sec.label}</div>
+            <div style={{ font: "400 12px 'Hanken Grotesk'", color: '#5A5A5A' }}>{sec.dishes.length} Gerichte</div>
+          </div>
+          <div style={{ display: 'flex', gap: 10, overflowX: 'auto', paddingLeft: 20, paddingRight: 20, paddingBottom: 4 }}>
+            {sec.dishes.map(d => (
+              <InspoCard key={d.id} d={d} saved={!!saved[d.id]} onSave={toggle}/>
+            ))}
           </div>
         </div>
       ))}
