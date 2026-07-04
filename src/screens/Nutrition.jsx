@@ -34,6 +34,7 @@ const INSPO_SECTIONS = [
     id: 'breakfast', label: 'Frühstück', dishes: [
       { id: 1, title: 'Avocado Toast mit Ei', kcal: 380, protein: 18, carbs: 32, fat: 22, time: '8 min', photo: '/avocado-toast.webp', tag: 'Gesunde Fette' },
       { id: 2, title: 'Overnight Oats', kcal: 410, protein: 14, carbs: 62, fat: 9, time: '10 min', photo: '/overnight-oats.png', tag: 'Carb-Loading' },
+      { id: 23, title: 'Magerquark Bowl', kcal: 312, protein: 38, carbs: 28, fat: 4, time: '5 min', photo: '/magerquark-bowl.png', tag: 'Protein-reich' },
       { id: 3, title: 'Porridge mit Früchten', kcal: 290, protein: 10, carbs: 52, fat: 5, time: '8 min', emoji: '🥣', color: '#120D00', tag: 'Vegan' },
       { id: 4, title: 'Protein Pancakes', kcal: 340, protein: 28, carbs: 38, fat: 7, time: '12 min', emoji: '🥞', color: '#1A0A00', tag: 'Protein-reich' },
       { id: 5, title: 'Granola & Joghurt', kcal: 260, protein: 12, carbs: 40, fat: 6, time: '3 min', emoji: '🫐', color: '#0A0A18', tag: 'Schnell' },
@@ -43,8 +44,7 @@ const INSPO_SECTIONS = [
     id: 'mealprep', label: 'Meal Prep', dishes: [
       { id: 6, title: 'Hähnchen & Süßkartoffel', kcal: 520, protein: 42, carbs: 48, fat: 12, time: '25 min', photo: '/haehnchen-suesskartoffel.webp', tag: 'Meal Prep' },
       { id: 7, title: 'Lachs & Quinoa Bowl', kcal: 490, protein: 36, carbs: 42, fat: 18, time: '20 min', photo: '/lachs-quinoa.webp', tag: 'Omega-3' },
-      { id: 8, title: 'Magerquark Bowl', kcal: 312, protein: 38, carbs: 28, fat: 4, time: '5 min', photo: '/magerquark-bowl.png', tag: 'Low Fat' },
-      { id: 9, title: 'Linsen Curry & Reis', kcal: 440, protein: 18, carbs: 72, fat: 8, time: '30 min', emoji: '🍛', color: '#1A0800', tag: 'Vegan' },
+{ id: 9, title: 'Linsen Curry & Reis', kcal: 440, protein: 18, carbs: 72, fat: 8, time: '30 min', emoji: '🍛', color: '#1A0800', tag: 'Vegan' },
       { id: 10, title: 'Türkei Meatballs', kcal: 390, protein: 34, carbs: 30, fat: 14, time: '35 min', emoji: '🍝', color: '#1A0400', tag: 'Meal Prep' },
     ]
   },
