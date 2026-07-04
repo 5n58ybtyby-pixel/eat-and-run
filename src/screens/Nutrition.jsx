@@ -43,7 +43,7 @@ const INSPO_SECTIONS = [
       { id: 6, title: 'Hähnchen & Süßkartoffel', kcal: 520, protein: 42, carbs: 48, fat: 12, time: '25 min', photo: '/haehnchen-suesskartoffel.webp', tag: 'Meal Prep' },
       { id: 7, title: 'Lachs & Quinoa Bowl', kcal: 490, protein: 36, carbs: 42, fat: 18, time: '20 min', photo: '/lachs-quinoa.webp', tag: 'Omega-3' },
 { id: 9, title: 'Linsen Curry & Reis', kcal: 440, protein: 18, carbs: 72, fat: 8, time: '30 min', emoji: '🍛', color: '#1A0800', tag: 'Vegan' },
-      { id: 10, title: 'Türkei Meatballs', kcal: 390, protein: 34, carbs: 30, fat: 14, time: '35 min', emoji: '🍝', color: '#1A0400', tag: 'Meal Prep' },
+      { id: 10, title: 'Meatballs & Pasta', kcal: 390, protein: 34, carbs: 30, fat: 14, time: '35 min', emoji: '🍝', color: '#1A0400', tag: 'Meal Prep' },
     ]
   },
   {
