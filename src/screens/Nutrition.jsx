@@ -35,9 +35,7 @@ const INSPO_SECTIONS = [
       { id: 1, title: 'Avocado Toast mit Ei', kcal: 380, protein: 18, carbs: 32, fat: 22, time: '8 min', photo: '/avocado-toast.webp', tag: 'Gesunde Fette' },
       { id: 2, title: 'Overnight Oats', kcal: 410, protein: 14, carbs: 62, fat: 9, time: '10 min', photo: '/overnight-oats.png', tag: 'Carb-Loading' },
       { id: 23, title: 'Magerquark Bowl', kcal: 312, protein: 38, carbs: 28, fat: 4, time: '5 min', photo: '/magerquark-bowl.png', tag: 'Protein-reich' },
-      { id: 3, title: 'Porridge mit Früchten', kcal: 290, protein: 10, carbs: 52, fat: 5, time: '8 min', emoji: '🥣', color: '#120D00', tag: 'Vegan' },
       { id: 4, title: 'Protein Pancakes', kcal: 340, protein: 28, carbs: 38, fat: 7, time: '12 min', emoji: '🥞', color: '#1A0A00', tag: 'Protein-reich' },
-      { id: 5, title: 'Granola & Joghurt', kcal: 260, protein: 12, carbs: 40, fat: 6, time: '3 min', emoji: '🫐', color: '#0A0A18', tag: 'Schnell' },
     ]
   },
   {
@@ -51,7 +49,6 @@ const INSPO_SECTIONS = [
   {
     id: 'smoothies', label: 'Smoothies', dishes: [
       { id: 11, title: 'Grüner Power Smoothie', kcal: 180, protein: 8, carbs: 28, fat: 3, time: '3 min', photo: '/green-smoothie.webp', tag: 'Antioxidantien' },
-      { id: 12, title: 'Bananen Protein Shake', kcal: 280, protein: 24, carbs: 36, fat: 4, time: '3 min', emoji: '🍌', color: '#1A1400', tag: 'Protein-reich' },
       { id: 13, title: 'Berry Recovery Shake', kcal: 210, protein: 16, carbs: 30, fat: 3, time: '3 min', emoji: '🍓', color: '#1A0010', tag: 'Regeneration' },
       { id: 14, title: 'Mango Kurkuma Shake', kcal: 195, protein: 8, carbs: 34, fat: 2, time: '3 min', emoji: '🥭', color: '#1A0D00', tag: 'Entzündungshemmend' },
     ]
