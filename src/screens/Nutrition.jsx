@@ -56,22 +56,6 @@ const INSPO_SECTIONS = [
       { id: 14, title: 'Mango Kurkuma Shake', kcal: 195, protein: 8, carbs: 34, fat: 2, time: '3 min', emoji: '🥭', color: '#1A0D00', tag: 'Entzündungshemmend' },
     ]
   },
-  {
-    id: 'postrun', label: 'Post-Run', dishes: [
-      { id: 15, title: 'Magerquark mit Beeren', kcal: 210, protein: 30, carbs: 18, fat: 2, time: '2 min', emoji: '🫐', color: '#0A0A18', tag: 'Protein-reich' },
-      { id: 16, title: 'Reiskuchen & Erdnussmus', kcal: 230, protein: 8, carbs: 34, fat: 8, time: '2 min', emoji: '🥜', color: '#120900', tag: 'Schnell' },
-      { id: 17, title: 'Overnight Oats', kcal: 410, protein: 14, carbs: 62, fat: 9, time: '10 min', photo: '/overnight-oats.png', tag: 'Carb-Loading' },
-      { id: 18, title: 'Griechischer Joghurt', kcal: 195, protein: 20, carbs: 14, fat: 5, time: '2 min', emoji: '🧴', color: '#0A0A12', tag: 'Low Fat' },
-    ]
-  },
-  {
-    id: 'prerun', label: 'Pre-Run', dishes: [
-      { id: 19, title: 'Haferflocken & Banane', kcal: 320, protein: 10, carbs: 62, fat: 5, time: '5 min', emoji: '🍌', color: '#1A1400', tag: 'Energie' },
-      { id: 20, title: 'Toast mit Honig', kcal: 220, protein: 5, carbs: 46, fat: 2, time: '2 min', emoji: '🍯', color: '#1A0D00', tag: 'Schnell' },
-      { id: 21, title: 'Overnight Oats', kcal: 410, protein: 14, carbs: 62, fat: 9, time: '10 min', photo: '/overnight-oats.png', tag: 'Vorbereitung' },
-      { id: 22, title: 'Datteln & Nüsse', kcal: 180, protein: 4, carbs: 32, fat: 6, time: '1 min', emoji: '🌰', color: '#0D0800', tag: 'Natürlich' },
-    ]
-  },
 ]
 
 function InspoCard({ d, saved, onSave }) {
