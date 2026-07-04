@@ -42,15 +42,15 @@ const INSPO_SECTIONS = [
     id: 'mealprep', label: 'Meal Prep', dishes: [
       { id: 6, title: 'Hähnchen & Süßkartoffel', kcal: 520, protein: 42, carbs: 48, fat: 12, time: '25 min', photo: '/haehnchen-suesskartoffel.webp', tag: 'Meal Prep' },
       { id: 7, title: 'Lachs & Quinoa Bowl', kcal: 490, protein: 36, carbs: 42, fat: 18, time: '20 min', photo: '/lachs-quinoa.webp', tag: 'Omega-3' },
-{ id: 9, title: 'Linsen Curry & Reis', kcal: 440, protein: 18, carbs: 72, fat: 8, time: '30 min', emoji: '🍛', color: '#1A0800', tag: 'Vegan' },
-      { id: 10, title: 'Meatballs & Pasta', kcal: 390, protein: 34, carbs: 30, fat: 14, time: '35 min', emoji: '🍝', color: '#1A0400', tag: 'Meal Prep' },
+      { id: 9, title: 'Linsen Curry & Reis', kcal: 440, protein: 18, carbs: 72, fat: 8, time: '30 min', photo: '/linsen-curry.webp', tag: 'Vegan' },
+      { id: 10, title: 'Meatballs & Pasta', kcal: 390, protein: 34, carbs: 30, fat: 14, time: '35 min', photo: '/meatballs-pasta.webp', tag: 'Meal Prep' },
     ]
   },
   {
     id: 'smoothies', label: 'Smoothies', dishes: [
       { id: 11, title: 'Grüner Power Smoothie', kcal: 180, protein: 8, carbs: 28, fat: 3, time: '3 min', photo: '/green-smoothie.webp', tag: 'Antioxidantien' },
-      { id: 13, title: 'Berry Recovery Shake', kcal: 210, protein: 16, carbs: 30, fat: 3, time: '3 min', emoji: '🍓', color: '#1A0010', tag: 'Regeneration' },
-      { id: 14, title: 'Mango Kurkuma Shake', kcal: 195, protein: 8, carbs: 34, fat: 2, time: '3 min', emoji: '🥭', color: '#1A0D00', tag: 'Entzündungshemmend' },
+      { id: 13, title: 'Berry Recovery Shake', kcal: 210, protein: 16, carbs: 30, fat: 3, time: '3 min', photo: '/berry-shake.webp', tag: 'Regeneration' },
+      { id: 14, title: 'Mango Kurkuma Shake', kcal: 195, protein: 8, carbs: 34, fat: 2, time: '3 min', photo: '/mango-shake.jpg', tag: 'Entzündungshemmend' },
     ]
   },
 ]
