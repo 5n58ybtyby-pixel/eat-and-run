@@ -43,22 +43,22 @@ const INSPO = [
   {
     id: 3, title: 'Avocado Toast mit Ei', subtitle: 'Frühstück · Kraft',
     kcal: 380, protein: 18, carbs: 32, fat: 22, time: '8 min',
-    emoji: '🥑', color: '#0D1A0A', tags: ['Gesunde Fette', 'Sättigend'], by: 'Sara'
+    photo: '/avocado-toast.webp', tags: ['Gesunde Fette', 'Sättigend'], by: 'Sara'
   },
   {
     id: 4, title: 'Hähnchen & Süßkartoffel', subtitle: 'Abendessen · Regeneration',
     kcal: 520, protein: 42, carbs: 48, fat: 12, time: '25 min',
-    emoji: '🍗', color: '#1A1200', tags: ['Protein-reich', 'Meal Prep'], by: 'Patrick'
+    photo: '/haehnchen-suesskartoffel.webp', tags: ['Protein-reich', 'Meal Prep'], by: 'Patrick'
   },
   {
     id: 5, title: 'Grüner Power Smoothie', subtitle: 'Post-Run · Hydration',
     kcal: 180, protein: 8, carbs: 28, fat: 3, time: '3 min',
-    emoji: '🥤', color: '#071408', tags: ['Antioxidantien', 'Schnell'], by: 'Sara'
+    photo: '/green-smoothie.webp', tags: ['Antioxidantien', 'Schnell'], by: 'Sara'
   },
   {
     id: 6, title: 'Lachs & Quinoa Bowl', subtitle: 'Mittagessen · Performance',
     kcal: 490, protein: 36, carbs: 42, fat: 18, time: '20 min',
-    emoji: '🐟', color: '#00101A', tags: ['Omega-3', 'Vollwertig'], by: 'Jonas K.'
+    photo: '/lachs-quinoa.webp', tags: ['Omega-3', 'Vollwertig', 'Meal Prep'], by: 'Jonas K.'
   },
 ]
 
