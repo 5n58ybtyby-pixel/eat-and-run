@@ -518,7 +518,7 @@ export default function Nutrition({ navigate }) {
             {/* Real food photo as camera preview */}
             <img src="/haehnchen-reis.jpg" alt="" style={{
               position: 'absolute', inset: 0, width: '100%', height: '100%',
-              objectFit: 'cover', objectPosition: 'center'
+              objectFit: 'cover', objectPosition: '70% center'
             }}/>
             {/* Rule-of-thirds grid */}
             <div style={{ position: 'absolute', top: 0, left: '33.33%', width: 1, height: '100%', background: 'rgba(255,255,255,0.12)' }}/>
@@ -582,7 +582,7 @@ export default function Nutrition({ navigate }) {
                 width: 240, height: 240, border: `2px solid ${LIME}`, borderRadius: '24px',
                 position: 'relative', margin: '0 auto 24px', overflow: 'hidden', background: '#0A0A0A'
               }}>
-                <img src="/magerquark-bowl.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', opacity: 0.75 }}/>
+                <img src="/haehnchen-reis.jpg" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '70% center', opacity: 0.75 }}/>
                 <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.2)' }}/>
                 {[['0','0','right','bottom'],['auto','0','left','bottom'],['0','auto','right','top'],['auto','auto','left','top']].map(([t,b,r,l], i) => (
                   <div key={i} style={{
