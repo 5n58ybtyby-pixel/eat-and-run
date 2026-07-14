@@ -41,6 +41,7 @@ const INSPO_SECTIONS = [
     id: 'mealprep', label: 'Meal Prep', dishes: [
       { id: 6, title: 'Hähnchen & Süßkartoffel', kcal: 520, protein: 42, carbs: 48, fat: 12, time: '25 min', photo: '/haehnchen-suesskartoffel.webp', tag: 'Meal Prep' },
       { id: 7, title: 'Lachs & Quinoa Bowl', kcal: 490, protein: 36, carbs: 42, fat: 18, time: '20 min', photo: '/lachs-quinoa.webp', tag: 'Omega-3' },
+      { id: 15, title: 'Hähnchen mit Reis', kcal: 450, protein: 38, carbs: 52, fat: 8, time: '20 min', photo: '/haehnchen-reis.jpg', tag: 'Meal Prep' },
       { id: 9, title: 'Linsen Curry & Reis', kcal: 440, protein: 18, carbs: 72, fat: 8, time: '30 min', photo: '/linsen-curry.webp', tag: 'Vegan' },
       { id: 10, title: 'Meatballs & Pasta', kcal: 390, protein: 34, carbs: 30, fat: 14, time: '35 min', photo: '/meatballs-pasta.webp', tag: 'Meal Prep' },
     ]
@@ -447,7 +448,7 @@ export default function Nutrition({ navigate }) {
     setTimeout(() => {
       setScanState('scanning')
       setTimeout(() => {
-        setScanResult({ name: 'Magerquark Bowl', kcal: 312, kh: 28, pro: 38, fett: 4, emoji: '🥛' })
+        setScanResult({ name: 'Hähnchen mit Reis', kcal: 450, kh: 52, pro: 38, fett: 8, emoji: '🍗' })
         setScanState('result')
       }, 2200)
     }, 280)
@@ -471,11 +472,11 @@ export default function Nutrition({ navigate }) {
     if (!scanResult) return
     store.recipePost = {
       id: 999, user: 'Nico', avatar: 'NI', time: 'gerade eben',
-      title: 'Magerquark Bowl', emoji: '🥛', tag: 'Frühstück · Post-Workout',
-      desc: 'Mein Frühstück nach dem Morgenrun. Einfach, proteinreich, perfekt für die Regeneration.',
-      ingredients: ['250 g Magerquark (0,2 %)', '1 Banane', '30 g Haferflocken', '100 g TK-Beeren', '1 TL Honig'],
-      nutrients: { kcal: 312, protein: 38, carbs: 28, fat: 4 },
-      aiLabel: 'KI-Analyse', photo: 'magerquark',
+      title: 'Hähnchen mit Reis', emoji: '🍗', tag: 'Meal Prep · Post-Workout',
+      desc: 'Mein klassisches Meal-Prep nach dem Training. Einfach, sauber, proteinreich — genau das was der Körper braucht.',
+      ingredients: ['200 g Hähnchenbrustfilet', '150 g Basmatireis (roh)', '1 TL Olivenöl', 'Salz, Pfeffer, Knoblauch', '1 Prise Paprika'],
+      nutrients: { kcal: 450, protein: 38, carbs: 52, fat: 8 },
+      aiLabel: 'KI-Analyse', photo: 'haehnchen-reis',
       kudos: 0, myKudos: false, isNew: true
     }
     setScanState('idle')
@@ -515,7 +516,7 @@ export default function Nutrition({ navigate }) {
           {/* Viewfinder */}
           <div style={{ flex: 1, position: 'relative', overflow: 'hidden', background: '#000' }}>
             {/* Real food photo as camera preview */}
-            <img src="/magerquark-bowl.png" alt="" style={{
+            <img src="/haehnchen-reis.jpg" alt="" style={{
               position: 'absolute', inset: 0, width: '100%', height: '100%',
               objectFit: 'cover', objectPosition: 'center'
             }}/>

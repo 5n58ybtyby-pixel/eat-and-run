@@ -148,7 +148,8 @@ function RecipeCard({ r, onKudos }) {
 
         {/* Food photo */}
         <div style={{ borderRadius:'12px', overflow:'hidden', marginBottom:'12px', border:'1px solid #1A2A1A' }}>
-          {r.photo === 'magerquark' ? <FoodPhoto src="/magerquark-bowl.png" label="Magerquark Bowl"/> :
+          {r.photo === 'haehnchen-reis' ? <FoodPhoto src="/haehnchen-reis.jpg" label="Hähnchen mit Reis"/> :
+           r.photo === 'magerquark' ? <FoodPhoto src="/magerquark-bowl.png" label="Magerquark Bowl"/> :
            r.photo === 'overnightoats' ? <FoodPhoto src="/overnight-oats.png" label="Overnight Oats"/> : (
             <div style={{ background:'linear-gradient(135deg,#0A1A08,#061006)', height:'120px', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:6 }}>
               <div style={{ fontSize:40 }}>{r.emoji}</div>
